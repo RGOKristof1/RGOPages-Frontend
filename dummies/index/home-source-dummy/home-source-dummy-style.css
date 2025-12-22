@@ -8,20 +8,21 @@
 
 
 body{
-    /*Display*/
-    display: grid;
+  /*Display*/
+  display: grid;
 
-    /*Style*/
-    background-color: var(--mBackground);
+  /*Style*/
+  background-color: var(--mBackground);
 }
 
 
 header{
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-a{
+#logo a{
   display:inline-block;
   color: var(--mPrimary);
 }
@@ -35,4 +36,19 @@ a{
 }
 #search input::placeholder{
   color:  hsl( from var(--mSecondary) h s calc(l - 13));
+}
+
+@media (max-width: 425px) {
+  header{
+    height: auto;
+    margin: 0 10px;
+    padding: 5px;
+  }
+  .header-boxes{
+    font-size: 3vw;
+    height: 100%;
+  }
+  #logo a{
+    font-size: 10px; 
+  }
 }

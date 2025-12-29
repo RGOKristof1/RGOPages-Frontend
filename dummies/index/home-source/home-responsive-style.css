@@ -16,13 +16,10 @@
     font-size: 6vw;
   }
 
+  
+
   header #search #search-box{
     width: 45vw;
-
-    border-radius: 2vw;
-    border: .5vw white solid;
-    padding: 1vw;
-    font-size: 3vw;
   }
   header #search #search-box::placeholder{
     text-align: center;
@@ -32,11 +29,12 @@
     display: none;
   }
 
-  header #menu #login-button{
+  header #menu #login-button,header #search #search-button,header #search #search-box{
     border-radius: 2vw;
     border: .5vw white solid;
-    font-size: 3.8vw;
     padding: 1vw;
+
+    font-size: 3vw;
   }
 }
 
@@ -46,7 +44,7 @@
 
 @media (min-width: 500px) and (max-width: 768px) {
   header{
-    height: 7vw;
+    height: 6vw;
     margin: 2vw;
   }
 
@@ -59,30 +57,19 @@
     gap: .5vw;
   }
   header #search #search-box{
-    width: 45vw;
-    border-radius: 2vw;
-    border: .4vw white solid;
-    padding: 1vw;
-
-    font-size: 3vw;
+    width: 40vw;
   }
   header #search #search-box::placeholder{
     text-align: center;
     font-size: 2.5vw;
   }
-  header #search #search-button{
-    
-    border-radius: 2vw;
-    border: .4vw white solid;
-    padding: 1vw;
-    font-size: 3vw;
-  }
 
-  header #menu #login-button{
+  header #menu #login-button,header #search #search-button,header #search #search-box{
     border-radius: 2vw;
-    border: .4vw white solid;
+    border: .3vw white solid;
     padding: 1vw;
-    font-size: 3vw;
+
+    font-size: 2.5vw;
   }
 }
 
@@ -105,30 +92,17 @@
   }
   header #search #search-box{
     width: 45vw;
-    border-radius: 2vw;
-    border: .2vw white solid;
-    padding: 1vw;
-
-    font-size: 2.5vw;
   }
   header #search #search-box::placeholder{
     font-size: 2.5vw;
   }
-  header #search #search-button{
-    
-    border-radius: 2vw;
+
+  header #menu #login-button,header #search #search-button,header #search #search-box{
+    border-radius: 1.8vw;
     border: .2vw white solid;
     padding: 1vw;
 
-    font-size: 2vw;
-  }
-
-  header #menu #login-button{
-    border-radius: 2vw;
-    border: .2vw white solid;
-    padding: 1vw;
-
-    font-size: 2vw;
+    font-size: 2.5vw;
   }
 }
 
@@ -138,7 +112,7 @@
 
 @media (min-width: 1024px) and (max-width: 1440px) {
   header{
-    height: 5vw;
+    height: 3vw;
     margin: 2vw;
   }
 
@@ -151,30 +125,53 @@
     gap: .5vw;
   }
   header #search #search-box{
-    width: 45vw;
-    border-radius: 2vw;
-    border: .2vw white solid;
-    padding: 1vw;
+    width: 35vw;
 
-    font-size: 2.5vw;
+    font-size: 1.3vw;
   }
   header #search #search-box::placeholder{
-    font-size: 2.5vw;
+    font-size: 1.3vw;
   }
-  header #search #search-button{
-    
-    border-radius: 2vw;
-    border: .2vw white solid;
-    padding: 1vw;
+  
+  header #menu #login-button,header #search #search-button,header #search #search-box{
+    border-radius: 1vw;
+    border: .1vw white solid;
+    padding: .5vw;
 
+    font-size: 1.3vw;
+  }
+}
+
+
+
+
+
+@media (min-width: 1440px) {
+  header{
+    height: 2vw;
+    margin: 1vw;
+  }
+
+  header #logo a{
     font-size: 2vw;
   }
+  
+  header #search{
+    display: flex;
+    gap: .5vw;
+  }
+  header #search #search-box{
+    width: 30vw;
+  }
+  header #search #search-box::placeholder{
+    font-size: 1vw;
+  }
 
-  header #menu #login-button{
-    border-radius: 2vw;
-    border: .2vw white solid;
-    padding: 1vw;
+  header #menu #login-button,header #search #search-button,header #search #search-box{
+    border-radius: .5vw;
+    border: .1vw white solid;
+    padding: .3vw;
 
-    font-size: 2vw;
+    font-size: 1vw;
   }
 }

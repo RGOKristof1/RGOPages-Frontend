@@ -2,8 +2,8 @@ const form = document.getElementById("search-form");
 const input = document.getElementById("search-box");
 
 function doSearch() {
-  let szoveg = document.getElementById('search-box').value
-  alert(szoveg);
+  let szoveg = document.getElementById('search-box').value;
+  document.getElementById('output').innerHTML = szoveg;
 }
 
 form.addEventListener("submit", function (e) {

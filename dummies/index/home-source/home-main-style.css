@@ -1,0 +1,57 @@
+:root{
+  --mPrimary: hsl(300, 63%, 80%);
+  --mAccent: hsl(from var(--mPrimary) h s calc(l - 30));
+  --mText: hsl(from var(--mPrimary) h s calc(l + 10));
+  --mBackground: hsl(240, 14%, 10%);
+  --mSecondary: hsl(from var(--mBackground) h s calc(l + 30));
+}
+*, *::before, *::after { box-sizing: border-box; }
+
+
+
+body{
+  background-color: var(--mBackground);
+}
+
+
+header{
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+header div, header nav{
+  height: 100%;
+}
+header #menu button, header #search input {
+  height: 100%;
+}
+
+header #menu #login-button{
+  background-color: var(--mSecondary);
+  color: var(--mPrimary);
+}
+header #logo{
+  align-content: center;
+}
+header #logo a{
+  color: var(--mPrimary);
+}
+
+
+header #search input{
+  border: none;
+  background-color: var(--mSecondary);
+  color: var(--mText);
+}
+
+header #search input::placeholder{
+  color: hsl(from var(--mSecondary) h s calc(l - 13));
+}
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: none;
+}
+

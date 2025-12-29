@@ -16,16 +16,17 @@
     border-radius: 3vw;
   }
 
+  header #menu{
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+  }
+
   header #logo a{
     font-size: 5vw;
   }
 
   header #search form{
-    display: flex;
-    align-items: center;
-  }
-
-  header #menu{
     display: flex;
     align-items: center;
   }
@@ -61,9 +62,17 @@
       inset 0px -1px 3px;
   }
 
+  header #menu #other-button{
+    line-height: .9vw;
+    width: 4.5vw;
+    height: 4.5vw;
+    border-radius: 4vw;
+  }
+  header #menu .other-hidden{
+    display: none;
+  }
 
-
-  header #menu #login-button,header #search #search-button,header #search #search-box{
+  header #menu button,header #search #search-button,header #search #search-box{
     border-radius: 1vw;
     border-width: .2vw;
     padding: .4vw;
@@ -83,6 +92,12 @@
     padding: 2vw;
     border-width: .1vw;
     border-radius: 2.5vw;
+  }
+
+  header #menu{
+    display: flex;
+    align-items: center;
+    gap: 1vw;
   }
 
   header #logo a{
@@ -121,9 +136,17 @@
       inset 0px -2px 4px;
   }
 
+  header #menu #other-button{
+    line-height: .7vw;
+    width: 4.5vw;
+    height: 4.5vw;
+    border-radius: 4vw;
+  }
+  header #menu .other-hidden{
+    display: none;
+  }
 
-
-  header #menu #login-button,header #search #search-button,header #search #search-box{
+  header #menu button,header #search #search-button,header #search #search-box{
     border-radius: 1.5vw;
     border-width: .2vw;
     padding: 1vw;
@@ -142,6 +165,12 @@
     padding: 2vw;
     border-width: .1vw;
     border-radius: 2.8vw;
+  }
+
+  header #menu{
+    display: flex;
+    align-items: center;
+    gap: 1vw;
   }
 
   header #logo a{
@@ -189,9 +218,17 @@
       inset 0px -4px 4px;
   }
 
+  header #menu #other-button{
+    line-height: .7vw;
+    width: 4.5vw;
+    height: 4.5vw;
+    border-radius: 4vw;
+  }
+  header #menu .other-hidden{
+    display: none;
+  }
 
-
-  header #menu #login-button,header #search #search-button,header #search #search-box{
+  header #menu button,header #search #search-button,header #search #search-box{
     border-radius: 1.8vw;
     border-width: .1vw;
     padding: 1vw;
@@ -211,6 +248,12 @@
     padding: 1vw;
     border-width: .1vw;
     border-radius: 1.7vw;
+  }
+
+  header #menu{
+    display: flex;
+    align-items: center;
+    gap: 1vw;
   }
 
   header #logo a{
@@ -260,9 +303,12 @@
       inset 0px -3px 4px;
   }
 
-
+  header #menu #other-button{
+    display: none;
+  }
   
-  header #menu #login-button,header #search #search-button,header #search #search-box{
+  
+  header #menu button,header #search #search-button,header #search #search-box{
     border-radius: .7vw;
     border-width: .1vw;
     padding: .5vw;
@@ -282,6 +328,12 @@
     padding: 1vw;
     border-width: .1vw;
     border-radius: 1.5vw;
+  }
+  
+  header #menu{
+    display: flex;
+    align-items: center;
+    gap: 1vw;
   }
 
   header #logo a{
@@ -328,9 +380,12 @@
       inset 0px 4px 6px,
       inset 0px -4px 6px;
   }
+  
+  header #menu #other-button{
+    display: none;
+  }
 
-
-  header #menu #login-button,header #search #search-button,header #search #search-box{
+  header #menu button,header #search #search-button,header #search #search-box{
     border-radius: .5vw;
     border-width: .1vw;
     padding: .3vw;

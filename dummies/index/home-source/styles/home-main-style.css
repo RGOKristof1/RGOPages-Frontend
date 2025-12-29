@@ -20,6 +20,15 @@ header div, header nav{
 }
 
 
+
+header #menu button{
+  background-color: var(--mSecondary);
+  color: var(--mText);
+}
+header #menu button:active{
+  background-color: hsl(from var(--mSecondary) h s calc(l - 6));
+  color: hsl(from var(--mText) h s calc(l + 6));
+}
 header #menu #login-button{
   background-color: var(--mSecondary);
   color: var(--mPrimary);
@@ -28,8 +37,6 @@ header #menu #login-button:active{
   background-color: hsl(from var(--mSecondary) h s calc(l - 6));
   color: hsl(from var(--mPrimary) h s calc(l + 6));
 }
-
-
 
 
 
@@ -78,10 +85,23 @@ header #search #search-box::placeholder{
 header #search #search-box:focus {
   outline: none;
 }
+header #menu #other-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: rotate .3s;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+header #menu .open{
+  rotate: -90deg;
+}
+
+header #menu .other-open{
+  display: block;
+}
 
 
-
-header #menu #login-button,header #search #search-button,header #search #search-box{
+header #menu button,header #search #search-button,header #search #search-box{
   border-style: solid;
   border-color: var(--mBorder);
 }

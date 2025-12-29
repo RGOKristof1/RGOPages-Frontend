@@ -4,22 +4,31 @@
   --mText: hsl(from var(--mPrimary) h s calc(l + 10));
   --mBackground: hsl(240, 14%, 10%);
   --mSecondary: hsl(from var(--mBackground) h s calc(l + 30));
+  --mLightShadow: hsl(300, 63%, 90%);
 }
 
 @media (max-width: 500px) {
   header{
-    height: 7vw;
-    margin: 2vw;
+    height: 10vw;
+    margin: .6vw;
+    padding: 1.5vw;
+    border-radius: 3vw;
   }
 
   header #logo a{
-    font-size: 6vw;
+    font-size: 5vw;
   }
 
-  
   header #search{
     display: flex;
+    align-items: center;
   }
+
+  header #menu{
+    display: flex;
+    align-items: center;
+  }
+
   header #search #search-box{
     width: 45vw;
   }
@@ -31,9 +40,31 @@
     display: none;
   }
 
+  header #menu button,
+  header #search #search-button,
+  header #search #search-box{
+    transition: all 0.2s;
+    box-shadow:
+      0px 0px 0px,
+      inset 0px 0px 0px,
+      inset 0px 0px 0px;
+  }
+
+  header #menu button:active,
+  header #search #search-button:active,
+  header #search #search-box:focus{
+    transition: all 0.05s;
+    box-shadow:
+      0px 1px 3px,
+      inset 0px 1px 3px,
+      inset 0px -1px 3px;
+  }
+
+
+
   header #menu #login-button,header #search #search-button,header #search #search-box{
-    border-radius: 2vw;
-    border: .5vw white solid;
+    border-radius: 1vw;
+    border-width: .5vw;
     padding: .4vw;
 
     font-size: 2.8vw;
@@ -46,8 +77,10 @@
 
 @media (min-width: 500px) and (max-width: 768px) {
   header{
-    height: 6vw;
-    margin: 2vw;
+    height: 9vw;
+    margin: .6vw;
+    padding: 2vw;
+    border-radius: 2.5vw;
   }
 
   header #logo a{
@@ -66,9 +99,31 @@
     font-size: 2.5vw;
   }
 
+  header #menu button,
+  header #search #search-button,
+  header #search #search-box{
+    transition: all 0.2s;
+    box-shadow:
+      0px 0px 0px,
+      inset 0px 0px 0px,
+      inset 0px 0px 0px;
+  }
+
+  header #menu button:active,
+  header #search #search-button:active,
+  header #search #search-box:focus{
+    transition: all 0.05s;
+    box-shadow:
+      0px 2px 5px,
+      inset 0px 2px 4px,
+      inset 0px -2px 4px;
+  }
+
+
+
   header #menu #login-button,header #search #search-button,header #search #search-box{
-    border-radius: 2vw;
-    border: .3vw white solid;
+    border-radius: 1.5vw;
+    border-width: .3vw;
     padding: 1vw;
 
     font-size: 2.5vw;
@@ -78,10 +133,12 @@
 
 
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 770px) and (max-width: 1024px) {
   header{
-    height: 5vw;
-    margin: 2vw;
+    height: 9vw;
+    margin: .6vw;
+    padding: 2vw;
+    border-radius: 2.8vw;
   }
 
   header #logo a{
@@ -99,9 +156,41 @@
     font-size: 2.5vw;
   }
 
+  header #menu button,
+  header #search #search-button,
+  header #search #search-box{
+    transition: all 0.2s;
+    box-shadow:
+      0px 0px 0px,
+      inset 0px 0px 0px,
+      inset 0px 0px 0px;
+  }
+
+  header #menu button:hover,
+  header #search #search-button:hover,
+  header #search #search-box:hover{
+    transition: all 0.2s;
+    box-shadow:
+      0px 3px 5px,
+      inset 0px 1px 3px,
+      inset 0px -1px 3px;
+  }
+
+  header #menu button:active,
+  header #search #search-button:active,
+  header #search #search-box:focus{
+    transition: all 0.05s;
+    box-shadow:
+      0px 3px 5px,
+      inset 0px 4px 4px,
+      inset 0px -4px 4px;
+  }
+
+
+
   header #menu #login-button,header #search #search-button,header #search #search-box{
     border-radius: 1.8vw;
-    border: .2vw white solid;
+    border-width: .2vw;
     padding: 1vw;
 
     font-size: 2.5vw;
@@ -114,8 +203,10 @@
 
 @media (min-width: 1024px) and (max-width: 1440px) {
   header{
-    height: 3vw;
-    margin: 2vw;
+    height: 4.5vw;
+    margin: 1vw;
+    padding: 1vw;
+    border-radius: 1.7vw;
   }
 
   header #logo a{
@@ -134,10 +225,42 @@
   header #search #search-box::placeholder{
     font-size: 1.3vw;
   }
+
+  header #menu button,
+  header #search #search-button,
+  header #search #search-box{
+    transition: all 0.2s;
+    box-shadow:
+      0px 0px 0px,
+      inset 0px 0px 0px,
+      inset 0px 0px 0px;
+  }
+
+  header #menu button:hover,
+  header #search #search-button:hover,
+  header #search #search-box:hover{
+    transition: all 0.2s;
+    box-shadow:
+      0px 3px 5px,
+      inset 0px 1px 5px,
+      inset 0px -1px 5px;
+  }
+
+  header #menu button:active,
+  header #search #search-button:active,
+  header #search #search-box:focus{
+    transition: all 0.05s;
+    box-shadow:
+      0px 3px 5px,
+      inset 0px 3px 4px,
+      inset 0px -3px 4px;
+  }
+
+
   
   header #menu #login-button,header #search #search-button,header #search #search-box{
-    border-radius: 1vw;
-    border: .1vw white solid;
+    border-radius: .7vw;
+    border-width: .1vw;
     padding: .5vw;
 
     font-size: 1.3vw;
@@ -150,8 +273,10 @@
 
 @media (min-width: 1440px) {
   header{
-    height: 2vw;
+    height: 4vw;
     margin: 1vw;
+    padding: 1vw;
+    border-radius: 1.5vw;
   }
 
   header #logo a{
@@ -169,9 +294,40 @@
     font-size: 1vw;
   }
 
+  header #menu button,
+  header #search #search-button,
+  header #search #search-box{
+    transition: all 0.2s;
+    box-shadow:
+      0px 0px 0px,
+      inset 0px 0px 0px,
+      inset 0px 0px 0px;
+  }
+
+  header #menu button:hover,
+  header #search #search-button:hover,
+  header #search #search-box:hover{
+    transition: all 0.2s;
+    box-shadow:
+      0px 3px 5px,
+      inset 0px 1px 5px,
+      inset 0px -1px 5px;
+  }
+
+  header #menu button:active,
+  header #search #search-button:active,
+  header #search #search-box:focus{
+    transition: all 0.05s;
+    box-shadow:
+      0px 3px 5px,
+      inset 0px 4px 6px,
+      inset 0px -4px 6px;
+  }
+
+
   header #menu #login-button,header #search #search-button,header #search #search-box{
     border-radius: .5vw;
-    border: .1vw white solid;
+    border-width: .1vw;
     padding: .3vw;
 
     font-size: 1vw;

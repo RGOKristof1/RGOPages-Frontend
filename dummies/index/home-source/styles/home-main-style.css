@@ -4,6 +4,8 @@
   --mText: hsl(from var(--mPrimary) h s calc(l + 10));
   --mBackground: hsl(240, 14%, 10%);
   --mSecondary: hsl(from var(--mBackground) h s calc(l + 30));
+  --mBorder: hsl(0, 0%, 25%);
+  --mLightShadow: hsl(300, 63%, 90%);
 }
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -13,6 +15,24 @@ body{
   background-color: var(--mBackground);
 }
 
+header div, header nav{
+  height: 100%;
+}
+
+
+header #menu #login-button{
+  background-color: var(--mSecondary);
+  color: var(--mPrimary);
+}
+header #menu #login-button:active{
+  background-color: hsl(from var(--mSecondary) h s calc(l - 6));
+  color: hsl(from var(--mPrimary) h s calc(l + 6));
+}
+
+
+
+
+
 
 header{
   position: sticky;
@@ -21,37 +41,45 @@ header{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-header div, header nav{
-  height: 100%;
-}
-header #menu button, header #search input {
-  height: 100%;
+
+  background-color: hsl(from var(--mBackground) h s calc(l + 5));
+  box-shadow:0px 5px 8px rgba(0, 0, 0, 0.5);
 }
 
-header #menu #login-button{
-  background-color: var(--mSecondary);
-  color: var(--mPrimary);
-}
 header #logo{
   align-content: center;
 }
 header #logo a{
   color: var(--mPrimary);
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
-
 header #search input{
-  border: none;
   background-color: var(--mSecondary);
   color: var(--mText);
 }
+header #search input:active,header #search input:focus{
+  background-color: hsl(from var(--mSecondary) h s calc(l - 6));
+  color: hsl(from var(--mText) h s calc(l + 6));
+}
 
-header #search input::placeholder{
+header #search form{
+  height: 100%;
+}
+header #search #search-box::selection{
+  color: var(--mPrimary);
+  background-color: var(--mBackground);
+}
+header #search #search-box::placeholder{
   color: hsl(from var(--mSecondary) h s calc(l - 13));
 }
-input[type="text"]:focus {
+header #search #search-box:focus {
   outline: none;
-  box-shadow: none;
 }
 
+
+
+header #menu #login-button,header #search #search-button,header #search #search-box{
+  border-style: solid;
+  border-color: var(--mBorder);
+}

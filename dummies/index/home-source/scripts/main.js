@@ -1,0 +1,3 @@
+function alertonblur() {
+  alert("yo");
+}

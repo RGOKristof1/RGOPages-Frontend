@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RGOPages</title>
-    <link rel="shortcut icon" href="home-source/rgopages.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="home-source/media/rgopages.ico" type="image/x-icon">
     <link rel="stylesheet" href="/global-source/global-style.css">
-    <link rel="stylesheet" href="home-source/home-main-style.css">
-    <link rel="stylesheet" href="home-source/home-responsive-style.css">
+    <link rel="stylesheet" href="home-source/styles/home-main-style.css">
+    <link rel="stylesheet" href="home-source/styles/home-responsive-style.css">
 </head>
 <body>
     <header>
@@ -15,7 +15,17 @@
             <a id="logo-rgo" title="Rólam" href="https://rgopages.hu/nevjegy">RGO</a><a id="logo-pages" title="Összes listázott oldal" href="https://rgopages.hu/pages">Pages</a>
         </div>
         <div id="search">
-            <input autocomplete="off" type="text" id="search-box" class="header-boxes" placeholder="Keress az oldalak kozott"><input type="submit" id="search-button" value="Keress">
+            <input 
+                autocomplete="off"
+                type="text"
+                id="search-box"
+                class="header-boxes"
+                onblur="alertonblur()"
+                placeholder="Keress az oldalak kozott"><input
+
+                type="submit"
+                id="search-button"
+                value="Keress">
         </div>
         <nav id="menu">
             <button id="login-button" class="header-boxes">Login</button>
@@ -24,5 +34,6 @@
     <main>
 
     </main>
+    <script src="home-source/scripts/main.js"></script>
 </body>
 </html>

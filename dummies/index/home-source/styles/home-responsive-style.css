@@ -68,9 +68,6 @@
     height: 4.5vw;
     border-radius: 4vw;
   }
-  header #menu .other-hidden{
-    display: none;
-  }
 
   header #menu button,header #search #search-button,header #search #search-box{
     border-radius: 1vw;
@@ -142,9 +139,6 @@
     height: 4.5vw;
     border-radius: 4vw;
   }
-  header #menu .other-hidden{
-    display: none;
-  }
 
   header #menu button,header #search #search-button,header #search #search-box{
     border-radius: 1.5vw;
@@ -170,6 +164,7 @@
   header #menu{
     display: flex;
     align-items: center;
+    position: relative;
     gap: 1vw;
   }
 
@@ -224,8 +219,11 @@
     height: 4.5vw;
     border-radius: 4vw;
   }
-  header #menu .other-hidden{
-    display: none;
+
+  header #menu .other-open{
+  position: absolute;
+  top: 5vw;
+  right: 0;
   }
 
   header #menu button,header #search #search-button,header #search #search-box{

@@ -93,12 +93,21 @@ header #menu #other-button{
   transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 header #menu .open{
+  box-shadow: none;
   rotate: -90deg;
 }
-
-header #menu .other-open{
-  display: block;
+header #menu .other-closed{
+  display: none;
 }
+header #menu .other-open{
+  display: flex;
+  flex-direction: column;
+  gap: .5vw;
+}
+header #menu .other-open button{
+  display: inherit;
+}
+
 
 
 header #menu button,header #search #search-button,header #search #search-box{

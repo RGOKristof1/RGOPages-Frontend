@@ -15,18 +15,22 @@
             <a id="logo-rgo" title="Rólam" href="https://rgopages.hu/nevjegy">RGO</a><a id="logo-pages" title="Összes listázott oldal" href="https://rgopages.hu/pages">Pages</a>
         </div>
         <div id="search">
-            <input 
+            <form id="search-form" autocomplete="off">
+                <input
                 autocomplete="off"
                 type="text"
                 id="search-box"
                 class="header-boxes"
-                onblur="alertonblur()"
-                placeholder="Keress az oldalak kozott"><input
-
+                placeholder="Keress az oldalak kozott"
+                enterkeyhint="search"
+                ><input
                 type="submit"
                 id="search-button"
-                value="Keress">
+                value="Keress"
+                >
+            </form>
         </div>
+
         <nav id="menu">
             <button id="login-button" class="header-boxes">Login</button>
         </nav>

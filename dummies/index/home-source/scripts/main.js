@@ -1,20 +1,14 @@
 const form = document.getElementById("search-form");
 const input = document.getElementById("search-box");
+const output = document.getElementById("output");
 
 function doSearch() {
-  let szoveg = document.getElementById('search-box').value;
-  document.getElementById('output').innerHTML = szoveg;
-  input.blur()
+  const szoveg = input.value;
+  output.textContent = szoveg;   // biztonságosabb mint innerHTML
+  input.blur();
 }
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
+form.addEventListener("submit", (e) => {
+  e.preventDefault(); // maradhat
   doSearch();
-});
-
-input.addEventListener("keydown", function (e) {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    form.requestSubmit();
-  }
 });

@@ -12,7 +12,7 @@
   <meta name="keywords" content="rgo,RGO,pages,Pages,PAGES,rgopages,RGOPages,RGOPAGES,rgpages,rgopage,RGOPage,RGOpages,Rgopages,Rgopage">
   <meta name="description" content="Minden ami RGO az itt megtalálható! Üdv az RGOPages-en jelentkezz be vagy csinálj egy új fiókot és kérj saját weboldalt az RGOPages-en!">
   <meta name="author" content="RGOKristof">
-ss
+
   <title>RGOPages</title>
   <!--/meta-->
   <link rel="shortcut icon" href="/global-source/rgopages-icon.png" type="image/x-icon">
@@ -21,61 +21,110 @@ ss
 </head>
 
 <body>
+  <div id="content">
+    <input id="pass" type="password" style="background-color: black; border: none;" placeholder="kód">
+      <button onclick="login()" style="background-color: black; border: none;">Küld!</button>
+      <header>
+        <div id="logo">
+          <a href="/pages/" target="_blank">
+            <div>  r  </div>
+            <div>pages</div>
+            <div>  o  </div>
+          </a>
+        </div>
+        
+        <div></div>
 
-  <header>
-    
-    <div></div>
+      </header>
+      <main>
 
-    <div id="logo">
-      <a href="/pages/" target="_blank">
-        <div>  r  </div>
-        <div>pages</div>
-        <div>  o  </div>
-      </a>
-    </div>
-    
-    <div></div>
+        
 
-  </header>
-  <main>
+        
 
-    
+        <div class="item">
+          <a href="/rgohunt/" target="_blank">RGOhunt</a>
+        </div>
 
-    
+        <div class="item">
+          <a href="/pages/music/" target="_blank">Music</a>
+        </div>
+        
+        <div class="item">
+          <a href="/pages/roblox-shop/" target="_blank">Roblox Shop</a>
+        </div>
 
-    <div class="item">
-      <a href="/rgohunt/" target="_blank">RGOhunt</a>
-    </div>
+        <div class="family item">
 
-    <div class="item">
-      <a href="/pages/music/" target="_blank">Music</a>
-    </div>
-    
-    <div class="item">
-      <a href="/pages/roblox-shop/" target="_blank">Roblox Shop</a>
-    </div>
+          <div class="parent item"><a href="" target="_blank">Projects</a></div>
+          <div class="child item"><a href="/pages/top10games/" target="_blank">Top10Games</a></div>
 
-    <div class="family item">
+        </div>
+        
+        <div class="family item">
 
-      <div class="parent item"><a href="" target="_blank">Projects</a></div>
-      <div class="child item"><a href="/pages/top10games/" target="_blank">Top10Games</a></div>
+          <div class="parent item"><a href="/pages/calculators/" target="_blank">Calculators</a></div>
+          <div class="child item"><a href="/pages/calculators/money/" target="_blank">Money</a></div>
+          <div class="child item"><a href="/pages/calculators/normal/" target="_blank">Normal</a></div>
+          <div class="child item"><a href="/pages/calculators/gpt-calc/" target="_blank">GPTCalc</a></div>
 
-    </div>
-    
-    <div class="family item">
+        </div>
 
-      <div class="parent item"><a href="/pages/calculators/" target="_blank">Calculators</a></div>
-      <div class="child item"><a href="/pages/calculators/money/" target="_blank">Money</a></div>
-      <div class="child item"><a href="/pages/calculators/normal/" target="_blank">Normal</a></div>
-      <div class="child item"><a href="/pages/calculators/gpt-calc/" target="_blank">GPTCalc</a></div>
-
-    </div>
-
-    
+        
+      
+      </main>
+    <div id="shadow"></div>
+  </div>
   
-  </main>
-<div id="shadow"></div>
 <script src="home-source/home-script.js" ></script>
+<script>
+const BACKEND = "https://api.rgopages.hu";
+
+var pass = document.getElementById("pass");
+pass.addEventListener("keydown", function (e) {
+    if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
+        login()
+    }
+});
+
+async function login() {
+        const password = localStorage.getItem("password") || document.getElementById("pass").value;
+    
+    
+
+    const res = await fetch(BACKEND + "/login", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({password})
+    });
+
+    if (!res.ok) {
+        alert("Rossz kód!");
+        return;
+    }
+    localStorage.setItem("password",password);
+    const data = await res.json();
+    localStorage.setItem("token", data.token);
+
+    document.getElementById("loginDiv").style.display = "none";
+    document.getElementById("content").style.display = "block";
+    loadSecret();
+}
+
+async function loadSecret() {
+    const token = localStorage.getItem("token");
+
+    const res = await fetch(BACKEND + "/secret-data", {
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    });
+
+    const html = await res.text();  // <<-- fontos
+  
+    document.getElementById("content").innerHTML = html;
+}
+</script>
 </body>
 
 </html>

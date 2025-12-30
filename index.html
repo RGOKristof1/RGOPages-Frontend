@@ -88,10 +88,6 @@ pass.addEventListener("keydown", function (e) {
 });
 
 async function login() {
-        const password = localStorage.getItem("password") || document.getElementById("pass").value;
-    
-    
-
     const res = await fetch(BACKEND + "/login", {
         method: "POST",
         headers: {"Content-Type": "application/json"},

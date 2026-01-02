@@ -33,58 +33,117 @@ header{
   border-style: solid;
 }
 
-  /*RGOPages logo*/
-  header #logo{
-    align-content: center;
-  }
-  header #logo a{
-    color: var(--mPrimary);
-    text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
-  }
+/*RGOPages logo*/
+header #logo a{
+  color: var(--mPrimary);
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
 
-  /*Search Bar*/
-  /*
-  header #search form{
-    height: 100%;
-  }
-  */
-  /*Csak a szinekkel van valtozas*/
-  header #search #search-box, header #search #search-button{
-    background-color: var(--mSecondary);
-    color: var(--mText);
-  }
-  header #search #search-box::selection{
-    color: var(--mPrimary);
-    background-color: var(--mBackground);
-  }
-  header #search #search-box::placeholder{
-    color: hsl(from var(--mSecondary) h s calc(l - 13));
-  }
+/*Search Bar*/
+/*
+header #search form{
+  height: 100%;
+}
+*/
+/*Csak a szinekkel van valtozas*/
+header #search #search-box, header #search #search-button{
+  background-color: var(--mSecondary);
+  color: var(--mText);
+}
+header #search #search-box::selection{
+  color: var(--mPrimary);
+  background-color: var(--mBackground);
+}
+header #search #search-box::placeholder{
+  color: hsl(from var(--mSecondary) h s calc(l - 13));
+}
+
+header #search input:active,header #search input:focus{
+  background-color: var(--mDarkerSecoundary);
+  color: hsl(from var(--mText) h s calc(l + 6));
+}
+
+/*A Menu Bar*/
+/*Csak a szinekkel van valtozas*/
+header #menu button{
+  background-color: var(--mSecondary);
+  color: var(--mText);
+}
+header #menu button:active{
+  background-color: var(--mDarkerSecoundary);
+  color: hsl(from var(--mText) h s calc(l + 6));
+}
+header #menu #login-button{
+  background-color: var(--mSecondary);
+  color: var(--mPrimary);
+}
+header #menu #login-button:active{
+  background-color: var(--mDarkerSecoundary);
+  color: hsl(from var(--mPrimary) h s calc(l + 6));
+}
+header #menu button,header #search #search-button,header #search #search-box{
+  border-style: solid;
+  border-color: var(--mBorder);
+}
+
+
+
+  /*Responsibility*/
+
+
+
+/*RGOPages logo*/
+header{
+  margin: clamp(2px,1vw,10px);
+  padding: clamp(2px,1vw,10px);
+  border-radius: clamp(5px,1vw,15px);
+  border-width: clamp(1px,.2vw,2px);
+}
+
+header #logo a{
+  font-size: clamp(10px,4vw,65px);
+}
+
+/*Search Bar*/
+header #search{
+  display: flex;
+  flex-direction: row;
+  gap: clamp(1px,1vw,40px);
+}
+
+header #search #search-box{
+  width: clamp(170px,30vw,1000px)
+}
+header #search #search-box::placeholder{
+  font-size: clamp(8px,2vw,30px)
+}
+
+/*A Menu Bar*/
+/*Csak a szinekkel van valtozas*/
+header #menu{
+  display: flex;
+  flex-direction: row;
+  gap: clamp(1px,1vw,40px);
+}
+
+header #menu button{
+  background-color: var(--mSecondary);
+  color: var(--mText);
+}
+header #menu #login-button{
+  background-color: var(--mSecondary);
+  color: var(--mPrimary);
+}
+header #menu button,header #search input{
+  font-size: clamp(8px,2vw,30px);
   
-  header #search input:active,header #search input:focus{
-    background-color: var(--mDarkerSecoundary);
-    color: hsl(from var(--mText) h s calc(l + 6));
+  border-radius: clamp(5px,1vw,15px);
+  border-width: clamp(1px,.2vw,2px);
+}
+
+
+@media (max-width: 500px) {
+  header #search #search-button{
+    display: none;
   }
-  
-  /*A Menu Bar*/
-  /*Csak a szinekkel van valtozas*/
-  header #menu button{
-    background-color: var(--mSecondary);
-    color: var(--mText);
-  }
-  header #menu button:active{
-    background-color: var(--mDarkerSecoundary);
-    color: hsl(from var(--mText) h s calc(l + 6));
-  }
-  header #menu #login-button{
-    background-color: var(--mSecondary);
-    color: var(--mPrimary);
-  }
-  header #menu #login-button:active{
-    background-color: var(--mDarkerSecoundary);
-    color: hsl(from var(--mPrimary) h s calc(l + 6));
-  }
-  header #menu button,header #search #search-button,header #search #search-box{
-    border-style: solid;
-    border-color: var(--mBorder);
-  }
+}

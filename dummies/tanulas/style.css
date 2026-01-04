@@ -1,0 +1,69 @@
+:root{
+  --mPrimary: hsl(300, 63%, 80%);
+  --mAccent: hsl(from var(--mPrimary) h s calc(l - 30));
+  --mText: hsl(from var(--mPrimary) h s calc(l + 10));
+  --mBackground: hsl(240, 14%, 10%);
+  --mSecondary: hsl(from var(--mBackground) h s calc(l + 30));
+
+
+  --mBorder: hsl(0, 0%, 25%);
+  --mLightShadow: hsl(300, 63%, 90%);
+
+  --mDarkerSecoundary: hsl(from var(--mSecondary) h s calc(l - 6));
+}
+body{
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  gap: 1vw;
+  background-color: black;
+  color: #15ff00;
+  margin: 1vw;
+}
+input{
+  text-align: center;
+  width: clamp(150px,23vw,300px);
+  height: clamp(15px,2.3vw,30px);
+  background-color: var(--mSecondary);
+  border: none;
+  box-shadow: rgba(255, 255, 255, 0.425) 0px 0px 20px;
+  border-radius: clamp(8px,1vw,100px);
+  border: #ffffff 1px solid;
+  color: var(--mText);
+}
+nav{
+  position: relative;
+}
+span{
+  position: absolute;
+  align-self: center;
+  right: .5vw;
+}
+input::placeholder{
+  text-align: center;
+  color: var(--mText);
+}
+div{
+  background-color: #1b1b1b;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  justify-items: center;
+  padding: 20px 20px;
+  border-radius: clamp(8px,1vw,100px);
+  box-shadow: rgba(255, 255, 255, 0.425) 0px 0px 20px;
+  border: #ffffff 1px solid;
+}
+button{
+  border-radius: clamp(8px,1vw,100px);
+  color: inherit;
+  border: none;
+  font-size: clamp(8px,1vw,100px);
+  width: clamp(50px,8vw,120px);
+  height: clamp(30px,5vw,100px);
+  box-shadow: rgba(0, 0, 0, 0.582) 0px 0px 20px;
+  border: #ffffff 1px solid;
+}
+#alert{
+  background: linear-gradient(180deg,rgba(21, 255, 0, .1) 0%, rgb(13, 156, 0) 100%);
+}

@@ -9,10 +9,33 @@
   <link rel="stylesheet" href="tanulas-source/style.css">
 </head>
 <body>
+  <input id="secretInput" autocomplete="off" type="text">
+  <p id="messageBox" class="">somthing thats is not short at all beacouse it can be long</p>
   <main>
-    <div class="infoRow"><button onclick="console.log(document.getElementById('loginp').value || 'Irj be valamit :D')">Log</button><p>console.log('<input id="loginp" type="text" maxlength="6" autocomplete="off" placeholder="Type">')</p><a href="pl/1log/" target="_blank">More</a></div>
-    <div class="infoRow"><button onclick="alert(document.getElementById('alrtinp').value || 'Irj be valamit :D')">Alert</button><p>alert('<input id="alrtinp" type="text" maxlength="6" autocomplete="off" placeholder="Type">')</p><a href="pl/2alert/" target="_blank">More</a></div>
-  <footer><a href="source/" target="_blank">Source<br></a><span>© RGOPages 2026 All rights ©</span></footer>
-<script src="tanulas-source/main.js"></script>
+
+    <div class="infoRow">
+      <button onclick="logger()">Log</button>
+      <p>console.log('<input id="loginp" type="text" maxlength="6" autocomplete="off" placeholder="Type">');</p>
+      <a href="pl/1log/" target="_blank">More</a>
+    </div>
+
+    <div class="infoRow">
+      <button onclick="alerter()">Alert</button>
+      <p>alert('<input id="alrtinp" type="text" maxlength="6" autocomplete="off" placeholder="Type">');</p>
+      <a href="pl/2alert/" target="_blank">More</a>
+    </div>
+
+    <div class="infoRow">
+      <button onclick="confirmer()">confirm</button>
+      <p>confirm('<input id="confinp" type="text" maxlength="6" autocomplete="off" placeholder="Type">');</p>
+      <a href="pl/2alert/" target="_blank">More</a>
+    </div>
+
+  </main>
+  <footer>
+    <a href="source/" target="_blank">Source<br></a>
+    <span>© RGOPages 2026 All rights ©</span>
+  </footer>
+  <script src="tanulas-source/main.js"></script>
 </body>
 </html>

@@ -37,8 +37,14 @@ function alerter() {
 
 function confirmer() {
   let value = document.getElementById('confinp').value;
-  alert(value || 'Irj be valamit :D');
+  confirm(value || 'Irj be valamit :D');
   message(`Confirmation popped up that said: ${value || "nothing"}`);
+}
+
+function prompter() {
+  let value = document.getElementById('prmtinp').value;
+  let promptValue = prompt(value || 'Irj be valamit :D');
+  message(`Prompt popped up that said: ${value || "nothing"} and than you said:${promptValue}`);
 }
 
 

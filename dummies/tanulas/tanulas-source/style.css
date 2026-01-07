@@ -147,3 +147,36 @@ footer a span{
 #secretInput:hover{
   cursor: default;
 }
+
+#parent{
+  position: relative;
+  height: 1.5rem;
+  width: 5rem;
+}
+
+.ball{
+  position: absolute;
+  left: .25rem;
+  top: .3rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: #fff;
+  border-radius: .5rem;
+  
+  transition: left 1s;
+}
+.right{
+  transition: left 1s;
+  left: 3.7rem;
+}
+
+#mini-p{
+  font-size: .5rem;
+}
+#timeinp{
+  width: 1.5rem;
+  font-size: .4rem;
+}
+#timeinp::placeholder{
+  font-size: .4rem;
+}

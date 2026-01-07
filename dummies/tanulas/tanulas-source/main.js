@@ -47,9 +47,18 @@ function prompter() {
   message(`Prompt popped up that said: ${value || "nothing"} and than you said:${promptValue}`);
 }
 
+document.getElementById('timeinp').addEventListener('keyup', function (e) {
+  console.log("Keyup")
+  let time = document.getElementById('timeinp').value
+  console.log(time)
+  setInterval(function () {document.getElementById('ball').classList.toggle("right")},time)
+});
 
-
-
+function moveball() {
+  console.log("in move ball")
+  
+  console.log(document.getElementById('ball').classList)
+}
 
 document.getElementById('secretInput').addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {

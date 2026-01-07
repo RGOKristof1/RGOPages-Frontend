@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+    </style>
+    <script>
+        snowLevel = [];
+        for (let i = 0; i < 10; i++) {
+            snowLevel.push(Math.round(Math.random()*40));
+        }
+        let atlag = 0;
+        let atlagCounter = 0;
+        for (let i = 0; i < snowLevel.length; i++) {
+            atlag += snowLevel[i];
+            atlagCounter += 1;
+        };
+        console.log(Math.round((atlag/atlagCounter)*100)/100);
+
+        let legnagyobb = -99999;
+        for (let i = 0; i < snowLevel.length; i++) {
+            if (snowLevel[i] > legnagyobb) {
+                legnagyobb = snowLevel[i];
+            } 
+        }
+        console.log(legnagyobb)
+        let van = False;
+        for (let i = 0; i < snowLevel.length; i++) {
+            if (snowLevel[i] > 30) {
+                van = True;
+            } 
+        }
+        if (van = True) {
+            console.log("van nagyobb mint harminc!")
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

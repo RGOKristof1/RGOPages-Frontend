@@ -30,7 +30,8 @@ button{
   color: inherit;
   height: 100%;
   width: 100%;
-  background-color: hsl(from var(--mSecondary) h s calc(l - 6));
+  background-color: hsl(from var(--mSecondary) h s calc(l - 8));
+  padding: .25rem .5rem;
   border: none;
   font-size: 1rem;
 }

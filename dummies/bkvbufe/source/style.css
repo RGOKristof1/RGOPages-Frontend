@@ -53,3 +53,7 @@ caption{
 tr:nth-child(even) {
   background-color: hsl(from var(--mSecondary) h s calc(l - 6));
 }
+
+.leir{
+  background-color: hsl(from var(--mSecondary) calc(h - 300) s l);
+}

@@ -1,0 +1,54 @@
+:root{
+  --mPrimary: hsl(300, 63%, 80%);
+  --mAccent: hsl(from var(--mPrimary) h s calc(l - 30));
+  --mText: hsl(from var(--mPrimary) h s calc(l + 10));
+  --mBackground: hsl(240, 14%, 10%);
+  --mSecondary: hsl(from var(--mBackground) h s calc(l + 30));
+  --mDarkerSecoundary: hsl(from var(--mSecondary) h s calc(l - 6));
+  --mBorder: hsl(0, 0%, 25%);
+  --mLightShadow: hsl(300, 63%, 90%);
+}
+html{
+  font-size: clamp(12px,3vw,40px);
+}
+body{
+  background-color: var(--mBackground);
+  display: flex;
+  justify-content: center;
+  color: var(--mText);
+}
+h1{
+  font-size: 4rem;
+}
+main{
+  text-align: center;
+}
+.nap{
+  text-align: start;
+}
+button{
+  color: inherit;
+  height: 100%;
+  width: 100%;
+  background-color: hsl(from var(--mSecondary) h s calc(l - 6));
+  border: none;
+  font-size: 1rem;
+}
+table{
+  background-color: var(--mSecondary);
+  margin: 1rem;
+}
+td, th {
+  border: 1px solid var(--mBorder);
+  text-align: left;
+  padding: 8px;
+  font-size: 1rem;
+}
+
+
+caption{
+  font-size: 2rem;
+}
+tr:nth-child(even) {
+  background-color: hsl(from var(--mSecondary) h s calc(l - 6));
+}

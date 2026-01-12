@@ -1,11 +1,10 @@
 
 let list = []
-console.log(list.length)
 function confirmAdd() {
   let name = document.getElementById("name").value
   let count = document.getElementById("count").value
   if (name != "") {
-  list.push(`<li><p>${name} ${(count == 1) ? "" : `:${count}`}</p><button onclick="deleteThis(${(list.length == 1) ? "0" : `${list.length}`})">&#x2715;</button></li>`)
+  list.push(`<li><p>${name} ${(count == 1) ? "" : `:${count}`}</p><button onclick="deleteThis(${list.length})">&#x2715;</button></li>`)
   console.log(list.length)
   }
   refresh()

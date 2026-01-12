@@ -17,10 +17,13 @@ html{
   font-size: clamp(16px,5vw,50px);
 }
 body{
+  color: var(--mText);
   background-color: var(--mBackground);
   display: grid;
+  gap: 2rem;
   justify-content: center;
-  color: var(--mText);
+
+  margin-top: 5rem;
 }
 header{
   color: var(--mPrimary);

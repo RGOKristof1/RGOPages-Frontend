@@ -62,3 +62,8 @@ button{
   font-size: inherit;
   padding: .25rem .5rem;
 }
+
+li{
+  display: flex;
+  justify-content: space-between;
+}

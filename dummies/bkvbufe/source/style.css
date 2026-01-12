@@ -45,6 +45,9 @@ input{
   font-size: inherit;
   padding: .25rem .5rem;
 }
+input::placeholder{
+  color: hsl(from var(--mSecondary) h s calc(l - 6));
+}
 #name{
   text-align: start;
   width: 10rem;
@@ -62,8 +65,12 @@ button{
   font-size: inherit;
   padding: .25rem .5rem;
 }
+.hidden{
+  opacity: 0;
+}
 
 li{
   display: flex;
   justify-content: space-between;
 }
+

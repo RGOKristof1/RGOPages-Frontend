@@ -9,9 +9,15 @@
   <link rel="stylesheet" href="source/style.css">
 </head>
 <body>
-  <h1>Kik Eszik?</h1>
+  <h1>Kik Esznek?</h1>
   <main>
-    <input type="text" id="name" name="name" autocomplete="off"><div id="count-box"><button class="" onclick="plusOne()">+</button><input type="number" id="count" name="count" autocomplete="off" value="1"><button class="" onclick="minusOne()">-</button></div><button onclick="confirmAdd()">ok</button>
+    <input type="text" id="name" name="name" autocomplete="off" placeholder="Név" onkeyup="showPlusMinus()">
+    <div id="count-box">
+      <button id="plus" class="hidden" onclick="plusOne()">+</button>
+        <input type="text" id="count" name="count" autocomplete="off" value="1">
+      <button id="minus" class="hidden" onclick="minusOne()">-</button>
+    </div>
+    <button onclick="confirmAdd()">ok</button>
   </main>
   <ul id="list">
   </ul>

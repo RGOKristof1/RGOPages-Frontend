@@ -8,52 +8,54 @@
   --mBorder: hsl(0, 0%, 25%);
   --mLightShadow: hsl(300, 63%, 90%);
 }
+*{
+  color: inherit;
+  border: none;
+}
+
 html{
-  font-size: clamp(12px,3vw,40px);
+  font-size: clamp(16px,5vw,50px);
 }
 body{
   background-color: var(--mBackground);
-  display: flex;
+  display: grid;
   justify-content: center;
   color: var(--mText);
 }
-h1{
-  font-size: 4rem;
-}
-main{
-  text-align: center;
-}
-.nap{
-  text-align: start;
-}
-button{
-  color: inherit;
-  height: 100%;
-  width: 100%;
-  background-color: hsl(from var(--mSecondary) h s calc(l - 8));
-  padding: .25rem .5rem;
-  border: none;
-  font-size: 1rem;
-}
-table{
-  background-color: var(--mSecondary);
+header{
+  color: var(--mPrimary);
   margin: 1rem;
 }
-td, th {
-  border: 1px solid var(--mBorder);
-  text-align: left;
-  padding: 8px;
+h1{
+  text-align: center;
+  font-size: 2.5rem;
+}
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
   font-size: 1rem;
 }
-
-
-caption{
-  font-size: 2rem;
+input{
+  background-color: var(--mSecondary);
+  font-size: inherit;
+  padding: .25rem .5rem;
 }
-tr:nth-child(even) {
-  background-color: hsl(from var(--mSecondary) h s calc(l - 6));
+#name{
+  text-align: start;
+  width: 10rem;
 }
-
-.leir{
-  background-color: hsl(from var(--mSecondary) calc(h - 300) s l);
+#count{
+  text-align: center;
+  width: 1.5rem;
+}
+#count-box{
+  display: grid;
+  gap: .2rem;
+}
+button{
+  background-color: var(--mSecondary);
+  font-size: inherit;
+  padding: .25rem .5rem;
 }

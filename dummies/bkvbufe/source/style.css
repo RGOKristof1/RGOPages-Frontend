@@ -66,6 +66,7 @@ button{
   padding: .25rem .5rem;
 }
 .hidden{
+  transition: opacity 1s;
   opacity: 0;
 }
 

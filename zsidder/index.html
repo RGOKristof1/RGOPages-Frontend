@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            color: rgb(0, 0, 0);
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html,body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+        #bgimg{
+            position: absolute;
+            z-index: -1;
+            width: 100vw;
+            height: 100vh;
+            border: solid black 5px;
+        }
+        p{
+            position: absolute;
+            bottom: 1vw;
+            font-size: 6vw;
+        }
+        body {
+        perspective: 100vw;
+        }
+        h1 {
+            color: rgb(0, 255, 0);
+            font-size: 10vw;
+            text-align: center;
+            animation-name: spin, depth;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-duration: 10s;
+        }
+        @keyframes spin {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(-360deg); }
+        }
+        @keyframes depth {
+            0% { text-shadow: 0 0 black; }
+            25% { text-shadow: 1px 0 black, 2px 0 black, 3px 0 black, 4px 0 black, 5px 0 black; }
+            50% { text-shadow: 0 0 black; }
+            75% { text-shadow: -1px 0 black, -2px 0 black, -3px 0 black, -4px 0 black, -5px 0 black; }
+            100% { text-shadow: 0 0 black; }
+        }
+    </style>
+</head>
+<body>
+    <img id="bgimg" src="flag.jpg">
+    <h1>Brendon Egy Zsidó!</h1>
+</body>
+</html>

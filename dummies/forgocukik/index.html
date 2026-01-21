@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: none;
+            box-sizing: border-box;
+        }
+        body{
+            perspective: 50vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg) scale(0)}
+            to { transform: rotate(1080deg) scale(1)}
+            }
+        .spin { animation: spin 3s ease-out ; }
+
+        @keyframes spin3D {
+        from {
+            transform: rotateY(0deg)
+        }
+        to {
+            transform: rotateY(360deg)
+        }
+        }
+        .spin3D{
+            animation: spin3D 3s infinite;
+        }
+        @keyframes kocsi {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(88vw);
+        }
+        }
+        #verda{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            animation: kocsi 3s;
+        }
+    </style>
+</head>
+<body>
+    <img src="source/Image (1).png" alt="" class="spin">
+    <img src="source/williams-2024.png" id="verda" alt="">
+</body>
+</html>

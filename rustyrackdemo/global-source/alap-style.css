@@ -14,7 +14,7 @@ html{
 body{
   color: #a14318;
   background-color: rgb(40, 18, 9);
-  background-image: url("/rustyrack/global-source/rustyBGPattern.png");
+  background-image: url("global-source/rustyBGPattern.png");
 
   display: flex;
   justify-content: center;

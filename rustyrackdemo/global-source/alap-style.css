@@ -1,6 +1,6 @@
 @font-face {
   font-family: Hanuman;
-  src: url("global-source/Hanuman-ExtraBold.ttf");
+  src: url("/rustyrackdemo/global-source/Hanuman-ExtraBold.ttf");
 }
 *{
   font-family: Hanuman;
@@ -14,7 +14,7 @@ html{
 body{
   color: #a14318;
   background-color: rgb(40, 18, 9);
-  background-image: url("global-source/rustyBGPattern.png");
+  background-image: url("/rustyrackdemo/global-source/rustyBGPattern.png");
 
   display: flex;
   justify-content: center;

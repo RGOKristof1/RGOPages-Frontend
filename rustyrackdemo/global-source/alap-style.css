@@ -1,6 +1,6 @@
 @font-face {
   font-family: Hanuman;
-  src: url("/rustyrack/global-source/Hanuman-ExtraBold.ttf");
+  src: url("global-source/Hanuman-ExtraBold.ttf");
 }
 *{
   font-family: Hanuman;

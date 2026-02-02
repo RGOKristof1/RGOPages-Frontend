@@ -11,7 +11,10 @@ class Player:
 players = []
 
 os.system('cls' if os.name == 'nt' else 'clear')
-gameLength = int(input("A Jatek Hossza: "))
+while True:
+  gameLength = int(input("How many rounds: "))
+  if gameLength < 1:
+    print("You can't play less than one round!")
 time.sleep(1)
 os.system('cls' if os.name == 'nt' else 'clear')
 

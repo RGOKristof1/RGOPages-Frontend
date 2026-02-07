@@ -93,6 +93,7 @@ header{
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: rgba(0,0,0,0.4);
+  gap: 1rem;
   padding: 1rem;
   padding-bottom: 2rem;
   border-radius: .5rem;

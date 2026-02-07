@@ -1,0 +1,9 @@
+main{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+main img{
+  width: 18rem;
+  border-radius: .5rem;
+}

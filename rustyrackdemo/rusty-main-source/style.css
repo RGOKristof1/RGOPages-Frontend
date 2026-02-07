@@ -4,6 +4,8 @@
   margin: 1rem;
   border-radius: .5rem;
 }
+@media (min-width: 768px) and (max-width: 2100px) {.swiper{margin: 1rem clamp(1px,10vw,450px);}}
+@media (min-width: 2100px) {.swiper{margin: 1rem clamp(1px,18vw,1000px);}}
 
 .swiper-slide {
   display: grid;
@@ -14,8 +16,8 @@
   border-radius: .5rem;
 }
 .swiper-slide img{
-  width:  clamp(10px,18vw,360px);
-  border-radius: 1rem;
+  width:  clamp(1px,18vw,360px);
+  border-radius: clamp(5px,1vw,360px);
 }
 .swiper-slide section{
   display: grid;
@@ -62,6 +64,8 @@ section.swiper-right{
   background: white;
   transform: translateX(-17vw) translateY(.4rem);
 }
+@media (min-width: 768px) and (max-width: 2100px) {.swiper-pagination-bullet-active, .swiper-pagination-bullet{transform: translateX(-13vw) translateY(.4rem);}}
+@media (min-width: 2100px) {.swiper-pagination-bullet-active, .swiper-pagination-bullet{transform: translateX(-12vw) translateY(.4rem);}}
 .swiper-pagination-bullet{
   background: rgb(180, 180, 180);
 }

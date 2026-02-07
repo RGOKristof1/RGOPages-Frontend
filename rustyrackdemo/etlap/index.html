@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="/rustyrackdemo/global-source/alap-style.css">
+  <title>Főoldal</title>
+</head>
+<body>
+  <header>
+    <div id="header-left">
+      <a href="/rustyrackdemo/"><img src="/rustyrackdemo/global-source/rustyDeerNoEye.png" alt="deer" id="logo-img" loading="lazy"></a>
+      <button id="lang-selector" onclick="toggleLanguage()">
+        <img src="/rustyrackdemo/global-source/american-flag.webp" alt="usa-flag" id="lang-img">
+        <p id="lang-text">EN</p>
+      </button> 
+    </div>
+
+    <div id="header-center">
+      <a href="/rustyrackdemo/"><img src="/rustyrackdemo/global-source/rustyBanner.webp" alt="banner" id="banner-img" loading="lazy"></a>
+    </div>
+
+    <div id="header-right">
+      <a href="/rustyrackdemo/" id="etlap-button">Fooldal</a>
+    </div>
+  </header>
+
+  <main>
+  </main>
+<script src="global-source/rustyDeerEyeGlow.js"></script>
+<script src="rusty-etlap-source/script.js"></script>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 100,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: true,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+</script>
+<!-- Swiper JS END -->
+</body>
+</html>

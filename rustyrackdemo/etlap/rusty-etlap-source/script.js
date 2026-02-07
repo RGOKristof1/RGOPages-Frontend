@@ -1,0 +1,31 @@
+let language = localStorage.getItem("lang") || "hu";
+
+function toggleLanguage() {
+  if (language == "en") {
+    language = "hu"
+    localStorage.setItem("lang","hu")
+    refreshPageLanguage()
+  } else if (language == "hu") {
+    language = "en"
+    localStorage.setItem("lang","en")
+    refreshPageLanguage()
+  }
+}
+
+function refreshPageLanguage(){
+  if (language == "hu") {
+  document.getElementById("lang-img").setAttribute("src","/rustyrackdemo/global-source/american-flag.webp")
+  document.getElementById("lang-text").innerText = "EN"
+  document.getElementById("etlap-button").innerText = "Fooldal"
+  console.log("set to hungarian")
+  } else if (language == "en") {
+  document.getElementById("lang-img").setAttribute("src","/rustyrackdemo/global-source/hungarian-flag.webp")
+  document.getElementById("lang-text").innerText = "HU"
+  document.getElementById("etlap-button").innerText = "Home"
+  console.log("set to english")
+  }
+}
+
+refreshPageLanguage()
+
+

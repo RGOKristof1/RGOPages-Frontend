@@ -24,6 +24,17 @@
   display: grid;
   justify-content: center;
 }
+.swiper-slide section h1{
+  color: goldenrod;
+}
+.swiper-slide section p{
+  font-size: 1.7rem;
+}
+.swiper-slide section h2{
+  align-self: self-end;
+  color: #9f3e14;
+  text-align: center;
+}
 
 
 .swiper-pagination-bullet{

@@ -11,7 +11,7 @@
 </head>
 <body>
   <header>
-    <div id="header-left">
+    <div id="header-left"
       <a href="/rustyrackdemo/"><img src="global-source/rustyDeerNoEye.png" alt="deer" id="logo-img" loading="lazy"></a>
       <button id="lang-selector" onclick="toggleLanguage()">
         <img src="global-source/american-flag.webp" alt="usa-flag" id="lang-img">
@@ -32,22 +32,28 @@
     <div class="swiper mySwiper hero">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <section>
+          <section class="swipe-left">
             <h1 id="rendelj-text">Rendelj</h1><p id="rendelj-p">Rendelj a woltrol, ugyan olyan frissen kapod!</p><h2>Heltai Jeno ter 2.</h2>
           </section>
-          <img src="global-source/rustyBurger.jpg" alt="burger">
+          <section class="swipe-right">
+            <img src="global-source/rustyBurger.jpg" alt="burger">
+          </section>
         </div>
         <div class="swiper-slide">
-          <img src="global-source/rustyRib.png" alt="oldalas">
-          <section>
+          <section class="swipe-left">
+            <img src="global-source/rustyRib.png" alt="oldalas">
+          </section>
+          <section class="swipe-right">
             <h1>BBQ Time</h1><p id="bbq-p">Ha szombat, akkor oldalas a Rusty Rack-ben!</p><h2>Heltai Jeno ter 2.</h2>
           </section>
         </div>
         <div class="swiper-slide">
-          <section>
+          <section class="swipe-left">
             <h1 id="kostoldMeg-text">Kostold meg!</h1><p id="kostoldMeg-p">Kostold meg ma az extra sajtos pikans cheddar jalapenos burgerunket!</p><h2>Heltai Jeno ter 2.</h2>
           </section>
-          <img src="global-source/rustyCsipos.jpg" alt="cheddar">
+          <section class="swipe-right">
+            <img src="global-source/rustyCsipos.jpg" alt="cheddar">
+          </section>
         </div>
       </div>
       <div class="swiper-pagination"></div>
@@ -59,12 +65,14 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 <script>
   var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 1,
-    spaceBetween: 100,
+    slidesPerView: 1.5,
+    spaceBetween: 50,
     loop: true,
+    //freeMode: true,
+    speed: 2000,
     autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
+      delay: 3000,
+      disableOnInteraction: true,
     },
     pagination: {
       el: ".swiper-pagination",

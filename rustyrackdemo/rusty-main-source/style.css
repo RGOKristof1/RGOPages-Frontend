@@ -10,11 +10,11 @@
   grid-template-columns: 1fr 1fr;
   background-color: rgba(0,0,0,0.4);
   gap: .25rem;
-  padding-bottom: 2.4rem;
+  padding-bottom: .4rem;
   border-radius: .5rem;
 }
 .swiper-slide img{
-  width:  clamp(10px,20vw,20000px);
+  width:  clamp(10px,18vw,360px);
   border-radius: 1rem;
 }
 .swiper-slide section{
@@ -36,34 +36,34 @@ section.swiper-right{
   padding-right: .25rem;
 }
 .swiper-slide section h1{
+  text-align: center;
   color: goldenrod;
-  font-size: clamp(10px,.6vw,20000px);
+  font-size: clamp(10px,3.5vw,20000px);
 }
 .swiper-slide section p{
-  font-size: clamp(10px,.4vw,20000px);
+  text-align: center;
+  font-size: clamp(10px,1.5vw,20000px);
 }
 .swiper-slide section h2{
   align-self: self-end;
   color: #9f3e14;
   text-align: center;
-  font-size: clamp(10px,.5vw,20000px);
+  font-size: clamp(10px,2.5vw,20000px);
 }
 .swiper-wrapper {
   transition-timing-function: ease-in-out !important;
 }
 
 
-.swiper-pagination-bullet{
-  height: .3rem;
-  width: .3rem;
-  background: rgb(180, 180, 180);
-  transform: translateX(-4rem);
-}
-.swiper-pagination-bullet-active{
+
+.swiper-pagination-bullet-active, .swiper-pagination-bullet{
   height: .3rem;
   width: .3rem;
   background: white;
-  transform: translateX(-4rem);
+  transform: translateX(-17vw) translateY(.4rem);
+}
+.swiper-pagination-bullet{
+  background: rgb(180, 180, 180);
 }
 /*hi*/
 

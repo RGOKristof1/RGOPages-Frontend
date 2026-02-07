@@ -11,8 +11,8 @@
 </head>
 <body>
   <header>
-    <div id="header-left"
-      <a href="/rustyrackdemo/"><img src="global-source/rustyDeerNoEye.png" alt="deer" id="logo-img" loading="lazy"></a>
+    <div id="header-left">
+      <a><img src="global-source/rustyDeerNoEye.png" alt="deer" id="logo-img" loading="lazy"></a>
       <button id="lang-selector" onclick="toggleLanguage()">
         <img src="global-source/american-flag.webp" alt="usa-flag" id="lang-img">
         <p id="lang-text">EN</p>
@@ -32,11 +32,11 @@
     <div class="swiper mySwiper hero">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <section class="swiper-left">
-            <h1 id="rendelj-text">Rendelj</h1><p id="rendelj-p">Rendelj a woltrol, ugyan olyan frissen kapod!</p><h2>Heltai Jeno ter 2.</h2>
-          </section>
           <section class="swiper-right">
             <img src="global-source/rustyBurger.jpg" alt="burger">
+          </section>
+          <section class="swiper-left">
+            <h1 id="rendelj-text">Rendelj</h1><p id="rendelj-p">Rendelj a woltrol, ugyan olyan frissen kapod!</p><h2>Heltai Jeno ter 2.</h2>
           </section>
         </div>
         <div class="swiper-slide">
@@ -48,11 +48,11 @@
           </section>
         </div>
         <div class="swiper-slide">
-          <section class="swiper-left">
-            <h1 id="kostoldMeg-text">Kostold meg!</h1><p id="kostoldMeg-p">Kostold meg ma az extra sajtos pikans cheddar jalapenos burgerunket!</p><h2>Heltai Jeno ter 2.</h2>
-          </section>
           <section class="swiper-right">
             <img src="global-source/rustyCsipos.jpg" alt="cheddar">
+          </section>
+          <section class="swiper-left">
+            <h1 id="kostoldMeg-text">Kostold meg!</h1><p id="kostoldMeg-p">Kostold meg ma az extra sajtos pikans cheddar jalapenos burgerunket!</p><h2>Heltai Jeno ter 2.</h2>
           </section>
         </div>
       </div>
@@ -69,7 +69,7 @@
     spaceBetween: 15,
     loop: true,
     //freeMode: true,
-    speed: 2000,
+    speed: 1500,
     autoplay: {
       delay: 3000,
       disableOnInteraction: false,

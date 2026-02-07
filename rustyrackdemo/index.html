@@ -12,7 +12,7 @@
   <header>
     <div id="header-left">
       <a href="https://rgopages.hu/rustyrackdemo/"><img src="global-source/rustyDeerNoEye.png" alt="deer" id="logo-img" loading="lazy"></a>
-      <button id="lang-selector">
+      <button id="lang-selector" onclick="toggleLanguage()">
         <img src="global-source/american-flag.webp" alt="usa-flag" id="lang-img">
         <p id="lang-text">EN</p>
       </button> 
@@ -23,7 +23,7 @@
     </div>
 
     <div id="header-right">
-      <a href="etlap/">Etlap</a>
+      <a href="etlap/" id="etlap-button">Etlap</a>
     </div>
   </header>
 
@@ -32,19 +32,19 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <section>
-            <h2>Rendelj</h2><p>Rendelj a woltrol, ugyan olyan frissen kapod!</p><p>Heltai Jeno ter 2.</p>
+            <h2 id="rendelj-text">Rendelj</h2><p id="rendelj-p">Rendelj a woltrol, ugyan olyan frissen kapod!</p><p>Heltai Jeno ter 2.</p>
           </section>
           <img src="global-source/rustyBurger.jpg" alt="burger">
         </div>
         <div class="swiper-slide">
           <img src="global-source/rustyRib.png" alt="oldalas">
           <section>
-            <h2>BBQ Time</h2><p>Ha szombat, akkor oldalas a Rusty Rack-ben!</p><p>Heltai Jeno ter 2.</p>
+            <h2>BBQ Time</h2><p id="bbq-p">Ha szombat, akkor oldalas a Rusty Rack-ben!</p><p>Heltai Jeno ter 2.</p>
           </section>
         </div>
         <div class="swiper-slide">
           <section>
-            <h2>Kostold meg!</h2><p>Kostold meg ma az extra sajtos pikans cheddar jalapenos burgerunket!</p><p>Heltai Jeno ter 2.</p>
+            <h2 id="kostoldMeg-text">Kostold meg!</h2><p id="kostoldMeg-p">Kostold meg ma az extra sajtos pikans cheddar jalapenos burgerunket!</p><p>Heltai Jeno ter 2.</p>
           </section>
           <img src="global-source/rustyCsipos.jpg" alt="cheddar">
         </div>
@@ -53,6 +53,7 @@
     </div>
   </main>
 <script src="global-source/rustyDeerEyeGlow.js"></script>
+<script src="rusty-main-source/script.js"></script>
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 <script>

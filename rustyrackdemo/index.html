@@ -3,23 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
   <link rel="stylesheet" href="global-source/alap-style.css">
   <link rel="stylesheet" href="main-source/style.css">
   <title>Főoldal</title>
 </head>
 <body>
-  
   <header>
-    <a href="https://rgopages.hu/rustyrackdemo/index.html" class="bannerContainer"><img src="global-source/rustyBanner.png" alt="banner" class="banner"></a>
-    <a href="https://rgopages.hu/rustyrackdemo/index.html"><img src="global-source/rustyDeerNoEye.png" alt="deer" id="logo"></a>
-    <a href="etlap/">Etlap</a>
+    <div id="header-left">
+      <a href="https://rgopages.hu/rustyrackdemo/"><img src="global-source/rustyDeerNoEye.png" alt="deer" id="logo-img" loading="lazy"></a>
+      <button id="lang-selector">
+        <img src="global-source/american-flag.webp" alt="usa-flag" id="lang-img">
+        <p id="lang-text">EN</p>
+      </button> 
+    </div>
+
+    <div id="header-center">
+      <a href="https://rgopages.hu/rustyrackdemo/"><img src="global-source/rustyBanner.webp" alt="banner" id="banner-img" loading="lazy"></a>
+    </div>
+
+    <div id="header-right">
+      <a href="etlap/">Etlap</a>
+    </div>
   </header>
+
   <main>
-    <div class="brief">
-    <img src="global-source/rustyLine.png" alt="line">
-    <h1>Rolunk</h1>
+    <div class="swiper mySwiper hero">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <section>
+            <h2>BBQ Time</h2><p>Ha szombat, akkor oldalas a Rusty Rack-ben!</p><p>Heltai Jeno ter 2.</p>
+          </section>
+          <img src="global-source/rustyOldalas.webp" alt="oldalas">
+        </div>
+        <div class="swiper-slide">
+
+        </div>
+        <div class="swiper-slide">
+
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
     </div>
   </main>
 <script src="global-source/rustyDeerEyeGlow.js"></script>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 100,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: true,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+</script>
+<!-- Swiper JS END -->
 </body>
 </html>

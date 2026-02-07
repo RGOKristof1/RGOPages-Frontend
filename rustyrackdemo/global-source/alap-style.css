@@ -12,57 +12,10 @@ html{
   font-size: clamp(16px,4vw,50px);
 }
 body{
-  color: #a14318;
-  background-color: rgb(40, 18, 9);
-  background-image: url("/rustyrackdemo/global-source/rustyBGPattern.png");
-
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  background-color: #170a01;
+  background-image: url("rustyBGPattern.webp");
 }
-header{
-  width: 100vw;
-  background-color: rgba(0,0,0, .3);
-  border-radius: .5rem;
-  margin: 1rem;
-  padding: .5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-}
-header a{
-  color: inherit;
-  text-decoration: none;
-  font-size: 1rem;
-}
-.bannerContainer{
-  position: absolute;
-  top: 1.5rem;
-  right: 50;
-  z-index: 10; 
-}
-.banner{
-  height: clamp(40px,8vw,120px);
-}
-#logo{
-  display: block;
-  height: clamp(40px,8vw,120px);
-  object-fit: fill;
-}
-#logo a{
-  display: flex;        /* nincs inline hülyeség */
-  align-items: center;
-  width: fit-content;   /* csak akkora, mint a kép */
-  height: fit-content;
-}
-
-.brief{
-  width: 5rem;         /* maradhat */
-  margin: 0 auto;      /* a dobozt középre rakja */
-  text-align: center;
-}
-.brief img{
-  width: 100%;
-  height: auto;
+#lang-button{
+  background-image: url("american-flag.webp");
+  background-size: cover;
 }

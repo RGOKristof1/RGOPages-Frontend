@@ -22,6 +22,7 @@ function refreshPageLanguage(){
   document.getElementById("rendelj-p").innerText = "Rendelj a woltrol, ugyan olyan frissen kapod!"
   document.getElementById("bbq-p").innerText = "Ha szombat, akkor oldalas a Rusty Rack-ben!"
   document.getElementById("kostoldMeg-p").innerText = "Kostold meg ma az extra sajtos pikans cheddar jalapenos burgerunket!"
+  document.getElementById("title").innerText = "Fooldal"
   console.log("set to hungarian")
   } else if (language == "en") {
   document.getElementById("lang-img").setAttribute("src","global-source/hungarian-flag.webp")
@@ -32,6 +33,7 @@ function refreshPageLanguage(){
   document.getElementById("rendelj-p").innerText = "Order from Wolt, you get it just as fresh!"
   document.getElementById("bbq-p").innerText = "If it is Saturday, then it is ribs at Rusty Rack!"
   document.getElementById("kostoldMeg-p").innerText = "Taste our extra cheesy spicy cheddar jalapeno burger today!"
+  document.getElementById("title").innerText = "Home"
   console.log("set to english")
   }
 }

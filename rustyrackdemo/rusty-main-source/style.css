@@ -72,5 +72,57 @@ section.swiper-right{
 
 /*hi*/
 
-.item-price{
+.recommendations-item{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  padding: .5rem;
+}
+
+.item-title{
+  position: relative;
+  text-align: center;
+  align-self: center;
+  padding: .2rem;
+  font-size: .9rem;
+}
+.swoosh{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: -1;
+}
+.recommendations-item h3 img{
+  width:  10rem;
+  height: auto;
+}
+
+.recommendations-item img{
+  width:  clamp(1px,35vw,700px);
+  height: auto;
+  padding: .2rem;
+}
+
+
+.price{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.price .price-ring{
+  position: relative;
+  width: 3.2rem;
+  height: auto;
+}
+.price .item-price{
+  position: absolute;
+  z-index: 1;
+}
+@media (max-width:) {
+  
 }

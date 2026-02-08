@@ -35,7 +35,14 @@ body{
   justify-content: center;
   flex-wrap: wrap;
 }
-
+@media (max-width: 318px) {
+  body{
+    display: none;
+  }
+  html{
+    background-color: black;
+  }
+}
 header{
   display: flex;
   justify-content: space-between;

@@ -29,7 +29,7 @@
   </header>
 
   <main>
-    <div class="swiper mySwiper">
+    <div class="swiper myNews">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <section class="swiper-right">
@@ -47,7 +47,7 @@
             <img src="global-source/rustyRib.png" alt="oldalas">
           </section>
           <section class="swiper-right">
-            <h1>BBQ szombat</h1>
+            <h1 id="bbq-text">BBQ szombat</h1>
             <p id="bbq-p">Szombaton az oldalas kerül a középpontba.</p>
             <h2>Heltai Jenő tér 2.</h2>
           </section>
@@ -66,17 +66,71 @@
       </div>
       <div class="swiper-pagination"></div>
     </div>
+
+    <h2>Kóstold meg!</h2>
+
+    <div class="swiper myTryit">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+
+          <div class="recommendations-item">
+            <h3 class="item-title">Loaded Fries</h3>
+            <div class="item-image-wrapper">
+              <img src="global-source/rustyFriesNoBG.webp" alt="" class="item-image">
+              <div class="item-price">1990,-</div>
+              <img src="global-source/rustyPriceRing.webp" alt="" class="price-ring">
+            </div>
+          </div>
+
+          <div class="recommendations-item">
+            <h3 class="item-title">cheddar Jalapeno</h3>
+            <div class="item-image-wrapper">
+              <img src="global-source/rustyBurgerNoBG.webp" alt="" class="item-image">
+              <div class="item-price">3290,-</div>
+              <img src="global-source/rustyPriceRing.webp" alt="" class="price-ring">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <div id="recommendations">
+      
+    </div>
+
   </main>
+
+
+
+
+<!-- Java Script -->
 <script src="global-source/rustyDeerEyeGlow.js"></script>
 <script src="rusty-main-source/script.js"></script>
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 <script>
-  var swiper = new Swiper(".mySwiper", {
+  var swiper = new Swiper(".myNews", {
     slidesPerView: 1.5,
     spaceBetween: 15,
     loop: true,
-    //freeMode: true,
+    speed: 1500,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+  var swiper = new Swiper(".myTryit", {
+    slidesPerView: 1,
+    spaceBetween: 15,
+    loop: true,
     speed: 1500,
     autoplay: {
       delay: 3000,

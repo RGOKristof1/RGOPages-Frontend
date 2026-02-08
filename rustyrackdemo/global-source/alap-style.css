@@ -40,7 +40,9 @@ header{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
+  position: sticky;
+  top: 1rem;
+  z-index: 10;
 
   width: 100%;
 
@@ -49,7 +51,7 @@ header{
   padding: .5rem;
   border-radius: .5rem;
 
-  background-color: rgba(0,0,0,0.3);
+  background: linear-gradient(89deg,rgba(0, 0, 0, .2) 0%, rgba(0, 0, 0, .5) 25%, rgba(0, 0, 0, .8) 50%, rgba(0, 0, 0, .5) 75%, rgba(0, 0, 0, .2) 100%);
 }
 
 #header-left{
@@ -98,9 +100,10 @@ header{
         display: block;
         font-size: 0;
       }
-      
+
 main{
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
 }

@@ -208,45 +208,51 @@
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 <script>
-  var swiper = new Swiper(".myNews", {
-    slidesPerView: 1.5,
-    spaceBetween: 15,
-    loop: true,
-    speed: 1500,
-    autoplay: {
-      delay: 3000,
-      pauseOnMouseEnter: true,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-  });
-  var swiper = new Swiper(".myTryit", {
-    slidesPerView: 1,
-    spaceBetween: 0,
-    loop: true,
-    speed: 6000, 
-    autoplay: {
-      delay: 0,
-      pauseOnMouseEnter: true,
-      reverseDirection: true,
-      disableOnInteraction: false,
-    },
-  });
-  var swiper = new Swiper(".myDrinks", {
-    slidesPerView: 3.5,
-    spaceBetween: 0,
-    loop: true,
-    speed: 5000,
-    shortSwipes: false,
-    autoplay: {
-      delay: 0,
-      pauseOnMouseEnter: true,
-      reverseDirection: true,
-      disableOnInteraction: false,
-    },
+  window.addEventListener('load', function(){
+    new Swiper(".myNews", {
+      slidesPerView: 1.5,
+      spaceBetween: 15,
+      loop: true,
+      speed: 1500,
+      autoplay: {
+        delay: 3000,
+        pauseOnMouseEnter: true,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+
+    new Swiper(".myTryit", {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      loop: true,
+      speed: 5000,
+      autoplay: {
+        delay: 1,
+        pauseOnMouseEnter: true,
+        reverseDirection: true,
+        disableOnInteraction: false,
+      },
+    });
+
+    new Swiper(".myDrinks", {
+      slidesPerView: 3.5,
+      spaceBetween: 0,
+      loop: true,
+      speed: 5000,
+      shortSwipes: false,
+      observer: true,
+      observeParents: true,
+      autoplay: {
+        delay: 1,
+        pauseOnMouseEnter: true,
+        reverseDirection: true,
+        disableOnInteraction: false,
+      },
+    });
   });
 </script>
 <!-- Swiper JS END -->

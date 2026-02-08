@@ -102,13 +102,92 @@
 
         </div>
 
-      </div>
-      <div class="swiper-pagination"></div>
-    </div>
+        <div class="swiper-slide">
 
-    <div id="recommendations">
+          <div class="recommendations-item">
+
+            <h3 class="item-title"><img src="global-source/rustySwoosh.webp" alt="" class="swoosh">Loaded Fries</h3>
+
+            <img src="global-source/rustyFriesNoBG.webp" alt="" class="item-image">
+
+            <div class="price">
+              <div class="item-price">1990,-</div>
+              <img src="global-source/rustyPriceRing.webp" alt="" class="price-ring">
+            </div>
+
+          </div>
+
+          <div class="recommendations-item">
+
+            <h3 class="item-title"><img src="global-source/rustySwoosh.webp" alt="" class="swoosh">cheddar Jalapeno</h3>
+
+            <img src="global-source/rustyBurgerNoBG.webp" alt="" class="item-image">
+
+            <div class="price">
+              <div class="item-price">3290,-</div>
+              <img src="global-source/rustyPriceRing.webp" alt="" class="price-ring">
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
       
     </div>
+
+    <h2>Innivalok!</h2>
+
+    <div class="swiper myDrinks">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="global-source/drinks/monyo1.webp" alt="" class="item-image">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="global-source/drinks/monyo2.webp" alt="" class="item-image">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="global-source/drinks/monyo3.webp" alt="" class="item-image">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="global-source/drinks/monyo4.webp" alt="" class="item-image">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="global-source/drinks/cocaColaClassic.webp" alt="" class="item-image">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="global-source/drinks/cocaColaZero.webp" alt="" class="item-image">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="global-source/drinks/drPepper.webp" alt="" class="item-image">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="global-source/drinks/sprite.webp" alt="" class="item-image">
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+    
 
   </main>
 
@@ -128,6 +207,7 @@
     speed: 1500,
     autoplay: {
       delay: 3000,
+      pauseOnMouseEnter: true,
       disableOnInteraction: false,
     },
     pagination: {
@@ -137,16 +217,26 @@
   });
   var swiper = new Swiper(".myTryit", {
     slidesPerView: 1,
-    spaceBetween: 15,
+    spaceBetween: 0,
     loop: true,
-    speed: 1500,
+    speed: 8000, 
     autoplay: {
-      delay: 3000,
+      delay: 0,
+      pauseOnMouseEnter: true,
+      reverseDirection: true,
       disableOnInteraction: false,
     },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
+  });
+  var swiper = new Swiper(".myDrinks", {
+    slidesPerView: 3.5,
+    spaceBetween: 0,
+    loop: true,
+    speed: 10000,
+    shortSwipes: false,
+    autoplay: {
+      delay: 0,
+      pauseOnMouseEnter: true,
+      disableOnInteraction: false,
     },
   });
 </script>

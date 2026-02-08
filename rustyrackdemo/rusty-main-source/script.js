@@ -44,14 +44,7 @@ function refreshPageLanguage(){
   }
 }
 
-function continueToPage() {
-  document.getElementById('body').classList.remove("overflow-hidden")
-  document.getElementById('cover').remove()
-  localStorage.setItem("confirmed",true)
-}
-if (localStorage.getItem("confirmed")||false){
-  continueToPage()
-}
+
 refreshPageLanguage()
 
 

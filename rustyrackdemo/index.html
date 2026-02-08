@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="/rustyrackdemo/rusty-main-source/style.css">
   <title id="title">Főoldal</title>
 </head>
-<body>
+
+<body id="body" class="overflow-hidden"><div id="cover"><h1 class="disclaimer">Figyelem!</h1><p class="disclaimer">Ez a weboldal kizárólag bemutatási célból készült. Nem hivatalos, a tartalom részben fiktív.</p><button onclick="continueToPage()">Értem</button></div>
   <header>
     <div id="header-left">
       <a><img src="global-source/rustyDeerNoEye.png" alt="deer" id="logo-img" loading="lazy"></a>
@@ -67,7 +68,7 @@
       <div class="swiper-pagination"></div>
     </div>
 
-    <h2>Kóstold meg!</h2>
+    <h2 id="h2kosti">Kóstold meg!</h2>
 
     <div class="swiper myTryit">
       <div class="swiper-wrapper">
@@ -137,7 +138,7 @@
       
     </div>
 
-    <h2>Innivalok!</h2>
+    <h2 id="drinks">Innivalok!</h2>
 
     <div class="swiper myDrinks">
       <div class="swiper-wrapper">
@@ -191,6 +192,13 @@
 
   </main>
 
+  <footer>
+  <p>
+    Ez a weboldal kizárólag bemutatási célból készült. Nem hivatalos, a tartalom részben fiktív.
+  </p>
+  <p>Made by RGOPages</p>
+</footer>
+
 
 
 
@@ -219,7 +227,7 @@
     slidesPerView: 1,
     spaceBetween: 0,
     loop: true,
-    speed: 8000, 
+    speed: 6000, 
     autoplay: {
       delay: 0,
       pauseOnMouseEnter: true,
@@ -231,11 +239,12 @@
     slidesPerView: 3.5,
     spaceBetween: 0,
     loop: true,
-    speed: 10000,
+    speed: 5000,
     shortSwipes: false,
     autoplay: {
       delay: 0,
       pauseOnMouseEnter: true,
+      reverseDirection: true,
       disableOnInteraction: false,
     },
   });

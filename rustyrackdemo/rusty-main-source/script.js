@@ -23,6 +23,8 @@ function refreshPageLanguage(){
   document.getElementById("rendelj-p").innerText = "Woltról rendelsz. Ugyanaz a friss íz érkezik."
   document.getElementById("bbq-p").innerText = "Szombaton az oldalas kerül a középpontba."
   document.getElementById("kostoldMeg-p").innerText = "Extra sajtos, pikáns cheddar jalapeño burger."
+  document.getElementById("h2kosti").innerText = "Kóstold meg!"
+  document.getElementById("drinks").innerText = "Innivalok"
   document.getElementById("title").innerText = "Fooldal"
   console.log("set to hungarian")
   } else if (language == "en") {
@@ -35,11 +37,21 @@ function refreshPageLanguage(){
   document.getElementById("rendelj-p").innerText = "Order from Wolt. Fresh taste arrives to you."
   document.getElementById("bbq-p").innerText = "Saturday means ribs at Rusty Rack."
   document.getElementById("kostoldMeg-p").innerText = "Extra cheesy spicy cheddar jalapeno burger. Try it today."
+  document.getElementById("h2kosti").innerText = "Try it!"
+  document.getElementById("drinks").innerText = "Drinks"
   document.getElementById("title").innerText = "Home"
   console.log("set to english")
   }
 }
 
+function continueToPage() {
+  document.getElementById('body').classList.remove("overflow-hidden")
+  document.getElementById('cover').remove()
+  localStorage.setItem("confirmed",true)
+}
+if (localStorage.getItem("confirmed")||false){
+  continueToPage()
+}
 refreshPageLanguage()
 
 

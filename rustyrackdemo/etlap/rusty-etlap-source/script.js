@@ -27,7 +27,7 @@ function refreshPageLanguage(){
   console.log("set to english")
   }
 }
-
+console.log("cigany")
 refreshPageLanguage()
 
 

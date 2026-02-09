@@ -47,27 +47,10 @@ function refreshPageLanguage(){
 
 refreshPageLanguage()
 
-function refreshNews() {
-  let winWidth = window.screen.width
-  if (winWidth < 758) {
-      new Swiper(".myNews", {
-        slidesPerView: 1,
-        direction: "vertical",
-        spaceBetween: 15,
-        loop: true,
-        speed: 1500,
-        autoplay: {
-          delay: 3000,
-          pauseOnMouseEnter: true,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-      });
-    } else {
-      new Swiper(".myNews", {
+
+window.addEventListener('load', function(){
+  
+  new Swiper(".myNews", {
         slidesPerView: 1.5,
         spaceBetween: 15,
         loop: true,
@@ -82,16 +65,6 @@ function refreshNews() {
           clickable: true,
         },
       });
-      location.reload();
-    }
-}
-window.addEventListener('resize', function() {
-  refreshNews()
-},);
-
-window.addEventListener('load', function(){
-  
-  refreshNews()
 
   new Swiper(".myTryit", {
     slidesPerView: 1,

@@ -16,7 +16,7 @@ function refreshPageLanguage(){
   if (language == "hu") {
   document.getElementById("lang-img").setAttribute("src","/rustyrackdemo/rusty-global-source/images/american-flag.webp")
   document.getElementById("lang-text").innerText = "EN"
-  document.getElementById("etlap-button").innerText = "Etlap"
+  document.getElementById("etlap-button").innerText = "Étlap"
   document.getElementById("rendelj-text").innerText = "Rendelj online"
   document.getElementById("bbq-text").innerText = "BBQ Szombat"
   document.getElementById("kostoldMeg-text").innerText = "Kóstold meg"
@@ -24,7 +24,7 @@ function refreshPageLanguage(){
   document.getElementById("bbq-p").innerText = "Szombaton az oldalas kerül a középpontba."
   document.getElementById("kostoldMeg-p").innerText = "Extra sajtos, pikáns cheddar jalapeño burger."
   document.getElementById("h2kosti").innerText = "Kóstold meg!"
-  document.getElementById("drinks").innerText = "Innivalok"
+  document.getElementById("drinks").innerText = "Innivalók"
   document.getElementById("title").innerText = "Fooldal"
   console.log("set to hungarian")
   } else if (language == "en") {

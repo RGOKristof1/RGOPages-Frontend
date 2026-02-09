@@ -3,29 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/rustyrackdemo/global-source/rustyDeerWithEye.png" type="image/x-icon">
+  <!--Page Icon-->
+  <link rel="shortcut icon" href="/rustyrackdemo/rusty-global-source/images/rustyDeerWithEye.webp" type="image/x-icon">
+  <!--Styles-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="global-source/alap-style.css">
-  <link rel="stylesheet" href="/rustyrackdemo/rusty-main-source/style.css">
+  <link rel="stylesheet" href="/rustyrackdemo/rusty-global-source/basic-style.css">
+  <link rel="stylesheet" href="/rustyrackdemo/rusty-home-source/style.css">
+  <!--Page Title-->
   <title id="title">Főoldal</title>
 </head>
 
 <body>
   <header>
     <div id="header-left">
-      <a><img src="global-source/rustyDeerNoEye.png" alt="deer" id="logo-img" loading="lazy"></a>
+      <a><img src="/rustyrackdemo/rusty-global-source/images/rustyDeerNoEye.webp" alt="deer" id="logo-img"></a>
       <button id="lang-selector" onclick="toggleLanguage()">
-        <img src="global-source/american-flag.webp" alt="usa-flag" id="lang-img">
+        <img src="/rustyrackdemo/rusty-global-source/images/american-flag.webp" alt="usa-flag" id="lang-img">
         <p id="lang-text">EN</p>
       </button> 
     </div>
 
     <div id="header-center">
-      <a href="/rustyrackdemo/"><img src="global-source/rustyBanner.webp" alt="banner" id="banner-img" loading="lazy"></a>
+      <a href="/rustyrackdemo/"><img src="/rustyrackdemo/rusty-global-source/images/rustyBanner.webp" alt="banner" id="banner-img"></a>
     </div>
 
     <div id="header-right">
-      <a href="etlap/" id="etlap-button">Etlap</a>
+      <a href="/rustyrackdemo/etlap/" id="etlap-button">Étlap</a>
     </div>
   </header>
 
@@ -34,18 +37,18 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <section class="swiper-right">
-            <img src="global-source/rustyBurger.jpg" alt="burger">
+            <img src="/rustyrackdemo/rusty-home-source/images/rustyBannerBurger.webp" alt="burger">
           </section>
           <section class="swiper-left">
             <h1 id="rendelj-text">Rendelj online</h1>
-            <p id="rendelj-p">Woltról rendelsz. Ugyanaz a friss íz érkezik.</p>
-            <h2>Heltai Jenő tér 2.</h2>
+            <p id="rendelj-p">Woltról vagy Foodoraról rendelsz. Ugyanaz a friss íz érkezik.</p>
+            <img id="partners" src="/rustyrackdemo/rusty-global-source/images/rustyPartners.webp" alt="">
           </section>
         </div>
 
         <div class="swiper-slide">
           <section class="swiper-left">
-            <img src="global-source/rustyRib.png" alt="oldalas">
+            <img src="/rustyrackdemo/rusty-home-source/images/rustyBannerBBQTime.webp" alt="oldalas">
           </section>
           <section class="swiper-right">
             <h1 id="bbq-text">BBQ szombat</h1>
@@ -56,7 +59,7 @@
 
         <div class="swiper-slide">
           <section class="swiper-right">
-            <img src="global-source/rustyCsipos.jpg" alt="cheddar">
+            <img src="/rustyrackdemo/rusty-home-source/images/rustyBannerPikans.webp" alt="cheddar">
           </section>
           <section class="swiper-left">
             <h1 id="kostoldMeg-text">Kóstold meg</h1>
@@ -77,61 +80,63 @@
 
           <div class="recommendations-item">
 
-            <h3 class="item-title"><img src="global-source/rustySwoosh.webp" alt="" class="swoosh">Loaded Fries</h3>
+            <h3 class="item-title"><img src="/rustyrackdemo/rusty-global-source/images/rustySwoosh.webp" alt="Swoosh" class="swoosh">Loaded Fries</h3>
 
-            <img src="global-source/rustyFriesNoBG.webp" alt="" class="item-image">
+            <img src="/rustyrackdemo/rusty-global-source/images/food/rustyLoadedFries.webp" alt="LoadedFries" class="item-image">
 
             <div class="price">
               <div class="item-price">1990,-</div>
-              <img src="global-source/rustyPriceRing.webp" alt="" class="price-ring">
+              <img src="/rustyrackdemo/rusty-global-source/images/rustyPriceRing.webp" alt="PriceRing" class="price-ring">
             </div>
 
           </div>
 
           <div class="recommendations-item">
 
-            <h3 class="item-title"><img src="global-source/rustySwoosh.webp" alt="" class="swoosh">cheddar Jalapeno</h3>
+            <h3 class="item-title"><img src="/rustyrackdemo/rusty-global-source/images/rustySwoosh.webp" alt="Swoosh" class="swoosh">cheddar Jalapeno</h3>
 
-            <img src="global-source/rustyBurgerNoBG.webp" alt="" class="item-image">
+            <img src="/rustyrackdemo/rusty-global-source/images/food/rustyCheddarJalapeno.webp" alt="CheddarJalapeno" class="item-image">
 
             <div class="price">
               <div class="item-price">3290,-</div>
-              <img src="global-source/rustyPriceRing.webp" alt="" class="price-ring">
+              <img src="/rustyrackdemo/rusty-global-source/images/rustyPriceRing.webp" alt="PriceRing" class="price-ring">
             </div>
 
           </div>
 
         </div>
-
         <div class="swiper-slide">
 
           <div class="recommendations-item">
 
-            <h3 class="item-title"><img src="global-source/rustySwoosh.webp" alt="" class="swoosh">Loaded Fries</h3>
+            <h3 class="item-title"><img src="/rustyrackdemo/rusty-global-source/images/rustySwoosh.webp" alt="Swoosh" class="swoosh">Carnivore</h3>
 
-            <img src="global-source/rustyFriesNoBG.webp" alt="" class="item-image">
+            <img src="/rustyrackdemo/rusty-global-source/images/food/rustyCarnivore.webp" alt="Carnivore" class="item-image">
 
             <div class="price">
               <div class="item-price">1990,-</div>
-              <img src="global-source/rustyPriceRing.webp" alt="" class="price-ring">
+              <img src="/rustyrackdemo/rusty-global-source/images/rustyPriceRing.webp" alt="PriceRing" class="price-ring">
             </div>
 
           </div>
 
           <div class="recommendations-item">
 
-            <h3 class="item-title"><img src="global-source/rustySwoosh.webp" alt="" class="swoosh">cheddar Jalapeno</h3>
+            <h3 class="item-title"><img src="/rustyrackdemo/rusty-global-source/images/rustySwoosh.webp" alt="Swoosh" class="swoosh">Mustard</h3>
 
-            <img src="global-source/rustyBurgerNoBG.webp" alt="" class="item-image">
+            <img src="/rustyrackdemo/rusty-global-source/images/food/rustyMustard.webp" alt="Mustard" class="item-image">
 
             <div class="price">
               <div class="item-price">3290,-</div>
-              <img src="global-source/rustyPriceRing.webp" alt="" class="price-ring">
+              <img src="/rustyrackdemo/rusty-global-source/images/rustyPriceRing.webp" alt="PriceRing" class="price-ring">
             </div>
 
           </div>
 
+
         </div>
+
+        
 
       </div>
 
@@ -142,45 +147,89 @@
 
     <div class="swiper myDrinks">
       <div class="swiper-wrapper">
-
         <div class="swiper-slide">
           <div class="drink">
-            <img src="global-source/drinks/monyo1.webp" alt="" class="item-image">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/drPepper.webp" alt="" class="item-image">
           </div>
         </div>
         <div class="swiper-slide">
           <div class="drink">
-            <img src="global-source/drinks/monyo2.webp" alt="" class="item-image">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/szentkiralyiSzensavas.webp" alt="" class="item-image slim-bottled">
           </div>
         </div>
         <div class="swiper-slide">
           <div class="drink">
-            <img src="global-source/drinks/monyo3.webp" alt="" class="item-image">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/szentkiralyiMentes.webp" alt="" class="item-image slim-bottled">
           </div>
         </div>
         <div class="swiper-slide">
           <div class="drink">
-            <img src="global-source/drinks/monyo4.webp" alt="" class="item-image">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/liptonPeach.webp" alt="" class="item-image slim-bottled">
           </div>
         </div>
         <div class="swiper-slide">
           <div class="drink">
-            <img src="global-source/drinks/cocaColaClassic.webp" alt="" class="item-image">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/liptonLemon.webp" alt="" class="item-image slim-bottled">
           </div>
         </div>
         <div class="swiper-slide">
           <div class="drink">
-            <img src="global-source/drinks/cocaColaZero.webp" alt="" class="item-image">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/liptonGreen.webp" alt="" class="item-image slim-bottled">
           </div>
         </div>
         <div class="swiper-slide">
           <div class="drink">
-            <img src="global-source/drinks/drPepper.webp" alt="" class="item-image">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/sevenUp.webp" alt="" class="item-image slim-bottled">
           </div>
         </div>
         <div class="swiper-slide">
           <div class="drink">
-            <img src="global-source/drinks/sprite.webp" alt="" class="item-image">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/canadaDry.webp" alt="" class="item-image slim-bottled">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/pepsi.webp" alt="" class="item-image slim-bottled">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/pepsiZero.webp" alt="" class="item-image slim-bottled">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/schweppesOrange.webp" alt="" class="item-image slim-bottled">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/schweppesIndianTonic.webp" alt="" class="item-image slim-bottled">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/schweppesPinkTonic.webp" alt="" class="item-image slim-bottled">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/monyoPils.webp" alt="" class="item-image">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/monyoMaracuja.webp" alt="" class="item-image">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/monyoOctopus.webp" alt="" class="item-image">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="drink">
+            <img src="/rustyrackdemo/rusty-global-source/images/drinks/monyoCascaraCola.webp" alt="" class="item-image">
           </div>
         </div>
 
@@ -203,8 +252,8 @@
 
 
 <!-- Java Script -->
-<script src="global-source/rustyDeerEyeGlow.js"></script>
-<script src="rusty-main-source/script.js"></script>
+<script src="/rustyrackdemo/rusty-global-source/rustyDeerEyeGlow.js"></script>
+<script src="/rustyrackdemo/rusty-home-source/script.js"></script>
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 <script>

@@ -7,6 +7,10 @@
 @media (min-width: 768px) and (max-width: 2100px) {.swiper{margin: 1rem clamp(1px,10vw,450px);}}
 @media (min-width: 2100px) {.swiper{margin: 1rem clamp(1px,18vw,1000px);}}
 
+.myNews.swiper{
+  height: 10rem;
+  width: auto;
+}
 .myNews .swiper-slide {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -159,14 +163,8 @@ section.swiper-right{
   height: 15rem;
   width: auto;
   background-color: black;
-  height: 15rem;
+  height: 18rem;
   box-shadow: 0px 0px 50px 50px black;
-}
-.drink .slim-bottled{
-  height: 15rem;
-  height: 15rem;
-  padding-left: 3rem;
-  box-shadow: 0px 0px 30px 30px black;
 }
 html{
   background-color: black;

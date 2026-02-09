@@ -47,4 +47,78 @@ function refreshPageLanguage(){
 
 refreshPageLanguage()
 
+function refreshNews() {
+  let winWidth = window.screen.width
+  if (winWidth < 758) {
+      new Swiper(".myNews", {
+        slidesPerView: 1,
+        direction: "vertical",
+        spaceBetween: 15,
+        loop: true,
+        speed: 1500,
+        autoplay: {
+          delay: 3000,
+          pauseOnMouseEnter: true,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    } else {
+      new Swiper(".myNews", {
+        slidesPerView: 1.5,
+        spaceBetween: 15,
+        loop: true,
+        speed: 1500,
+        autoplay: {
+          delay: 3000,
+          pauseOnMouseEnter: true,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+      location.reload();
+    }
+}
+window.addEventListener('resize', function() {
+  refreshNews()
+},);
 
+window.addEventListener('load', function(){
+  
+  refreshNews()
+
+  new Swiper(".myTryit", {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    loop: true,
+    speed: 66000,
+    autoplay: {
+      delay: 1,
+      pauseOnMouseEnter: true,
+      reverseDirection: true,
+      disableOnInteraction: false,
+    },
+  });
+
+  new Swiper(".myDrinks", {
+    slidesPerView: 3,
+    spaceBetween: 0,
+    loop: true,
+    speed: 4000,
+    shortSwipes: false,
+    observer: true,
+    observeParents: true,
+    autoplay: {
+      delay: 1,
+      pauseOnMouseEnter: true,
+      reverseDirection: true,
+      disableOnInteraction: false,
+    },
+  });
+});

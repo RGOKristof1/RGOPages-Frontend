@@ -192,58 +192,8 @@
 
 
 <!-- Java Script -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 <script src="/rustyrackdemo/rusty-global-source/rustyDeerEyeGlow.js"></script>
 <script src="/rustyrackdemo/rusty-home-source/script.js"></script>
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-<script>
-  window.addEventListener('load', function(){
-    new Swiper(".myNews", {
-      slidesPerView: 1.5,
-      spaceBetween: 15,
-      loop: true,
-      speed: 1500,
-      autoplay: {
-        delay: 3000,
-        pauseOnMouseEnter: true,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-    });
-
-    new Swiper(".myTryit", {
-      slidesPerView: 1,
-      spaceBetween: 0,
-      loop: true,
-      speed: 5000,
-      autoplay: {
-        delay: 1,
-        pauseOnMouseEnter: true,
-        reverseDirection: true,
-        disableOnInteraction: false,
-      },
-    });
-
-    new Swiper(".myDrinks", {
-      slidesPerView: 3.5,
-      spaceBetween: 0,
-      loop: true,
-      speed: 5000,
-      shortSwipes: false,
-      observer: true,
-      observeParents: true,
-      autoplay: {
-        delay: 1,
-        pauseOnMouseEnter: true,
-        reverseDirection: true,
-        disableOnInteraction: false,
-      },
-    });
-  });
-</script>
-<!-- Swiper JS END -->
 </body>
 </html>

@@ -14,13 +14,13 @@ function toggleLanguage() {
 
 function refreshPageLanguage(){
   if (language == "hu") {
-  document.getElementById("lang-img").setAttribute("src","/rustyrackdemo/global-source/american-flag.webp")
+  document.getElementById("lang-img").setAttribute("src","/rustyrackdemo/rusty-global-source/images/american-flag.webp")
   document.getElementById("lang-text").innerText = "EN"
   document.getElementById("etlap-button").innerText = "Fooldal"
   document.getElementById("title").innerText = "Etlap"
   console.log("set to hungarian")
   } else if (language == "en") {
-  document.getElementById("lang-img").setAttribute("src","/rustyrackdemo/global-source/hungarian-flag.webp")
+  document.getElementById("lang-img").setAttribute("src","/rustyrackdemo/rusty-global-source/images/hungarian-flag.webp")
   document.getElementById("lang-text").innerText = "HU"
   document.getElementById("etlap-button").innerText = "Home"
   document.getElementById("title").innerText = "Menu"

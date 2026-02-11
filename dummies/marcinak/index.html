@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      div{
+        height: 4vw;
+        width: 4vh;
+        border-color: black;
+        border-width: 1vw;
+        border-style: solid;
+      }
+      .red{
+        background-color: red;
+      }
+      .blue{
+        background-color: blue;
+      }
+      .reset{
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="color"></div>
+    <button onClick="red()">red</button>
+    <button onClick="blue()">blue</button> 
+    <button onClick="reset()">reset</button>
+    <script>
+      function red() {
+        document.getElementById("color").setAttribute("class","red")
+      }
+      function blue() {
+        document.getElementById("color").setAttribute("class","blue")
+      }
+      function reset() {
+        document.getElementById("color").setAttribute("class","reset")
+      }
+    </script>
+  </body>
+</html>

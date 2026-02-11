@@ -70,7 +70,7 @@ window.addEventListener('load', function(){
     slidesPerView: 1,
     spaceBetween: 0,
     loop: true,
-    speed: 66000,
+    speed: 6000,
     autoplay: {
       delay: 1,
       pauseOnMouseEnter: true,

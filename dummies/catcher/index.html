@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{
+            font-family: monospace;
+            font-size: clamp(8px,3vw,30px);
+        }
+        body{
+            background-color: rgb(14, 18, 20);
+            color: white;
+        }
+        header{
+            height: 3.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            background-color: #ffffff31;
+            padding: clamp(10px,1vw,30px);
+        }
+        button{
+            font-size: 1rem;
+            border: none;
+            border-radius: .5rem;
+            padding: .1rem .2rem;
+        }
+        input{
+            border: none;
+            border-radius: .5rem;
+            padding: .1rem .2rem;
+        }
+
+        h1{
+            font-size: 1.8rem;
+        }
+        #timer{
+            width: 3rem;
+            height: 1.5rem;
+            font-size: 1rem;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #gameMenu{
+            display: flex;
+            gap: 2rem;
+        }
+        #emojiSelect{
+            width: 2rem;
+            height: 2rem;
+            font-size: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <input id="timer"  value="60" maxlength="3"></input>
+        <h1>Emoji Catcher</h1><div id="gameMenu"><input id="emojiSelect"></input><button id="gameInterface" onclick="startGame()">Kezdés</button></div>
+    </header>
+
+
+
+
+<script>
+    function gameEnd() {
+        console.log("Game ended!")
+    }
+    function startGame() {
+        let gameLength = document.getElementById("timer").value || 1;
+        let playerCharacter = document.getElementById("emojiSelect").value || "🍕";
+        
+        document.getElementById("timer").setAttribute("disabled","true")
+        
+        let currentTime = gameLength
+        const intervalId = setInterval(() => {
+            console.log(currentTime)
+            currentTime -= 1
+            document.getElementById("timer").value = currentTime
+            if (currentTime == 0) {
+                clearInterval(intervalId);
+            }
+        }, 1000);
+        console.log("Game ended!")
+    }
+</script>
+</body>
+</html>

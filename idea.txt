@@ -1,13 +1,32 @@
 https://dribbble.com/shots/10724776-Carlos-Personal-Portfolio-Website
 
-colors:
-bg - 2
-cards - 1
-text - 1
-highlight - 1
+hero + header:
+    2/3 screen
+        logo
+        navbar
+        headline
+            Left: 60% text
+            Right: 40% pic
 
-scale:
-1st div + header: 2/3 screen
-2nd div: 2/3 screen
-3rd div: fullscreen
-footer: fullscreen 
+2nd div:
+    2/3 screen
+        What we do - service cards
+
+
+3rd div:
+    fullscreen
+        Why us - pros
+
+footer:
+    fullscreen
+        Contact
+        Insta
+
+
+
+
+colors:
+    bg - 2
+    cards - 1
+    text - 1
+    highlight - 1

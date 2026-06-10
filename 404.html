@@ -7,14 +7,36 @@
         margin: 0;
         padding: 0;
       }
-
+      body{
+        position: relative;
+      }
       canvas{
         display: block;
+      }
+      div{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        background-color: #ffffff58;
+
+        width: clamp(400px,20vw,10000px);
+        height: clamp(400px,20vw,10000px);
+
+        display: grid;
+        grid-template-rows: 3fr 1fr;
+      }
+      div img{
+        
+        height: 100%;
       }
     </style>
   </head>
   <body>
-
+    <div>
+      <img src="global-source/404.png" alt="404">
+      <h2>Ez az oldal nem elérhető!</h2>
+    </div>
     <script type="text/javascript">
       var canvas = document.createElement('canvas');
       var height = canvas.height = window.innerHeight;

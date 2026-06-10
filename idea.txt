@@ -23,8 +23,6 @@ footer:
         Insta
 
 
-
-
 colors:
     bg - 2
     cards - 1

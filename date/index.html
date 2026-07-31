@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Current Date Algorithm</title>
+  <style>
+    @font-face {
+      font-family: myFont;
+      src: url(sources/font.ttf);
+    }
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: myFont;
+    }
+    html{
+      height: 100%;
+      font-size: clamp(15px, 3vw, 76px);
+
+      background-color: black;
+      background-image: url(images/csillagos-eg-tile.png);
+      background-repeat: repeat;
+      animation: starsScroll 40s linear infinite;
+    }
+
+    @keyframes starsScroll {
+      from {
+          background-position: 0 0;
+      }
+      to {
+          background-position: 1254px 1254px; /* átlós irány */
+      }
+    }
+
+    body{
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #calendar{
+      z-index: 0;
+      display: grid;
+      grid-template-columns: repeat(9,1fr);
+      grid-template-rows: repeat(6,1fr);
+
+
+
+      background-color: black;
+      border: black .25rem solid;
+      border-radius: .3rem;
+      outline: white .25rem solid;
+      box-shadow: rgba(255, 255, 255, .2) 0 0 1000px;
+    }
+    .cube{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 2rem;
+      height: 2rem;
+
+      background-color: white;
+    }
+    .black{
+      background-color: black;
+    }
+
+    /*
+    <corner rounding>
+    */
+    .jan{
+      border-radius: .3rem 0 0 0;
+      overflow: hidden;
+    }
+    .tue{
+      border-radius: 0 .3rem 0 0;
+      overflow: hidden;
+    }
+    .perc{
+      z-index: -1;
+      outline: white solid 1rem;
+    }
+    .sun{
+      border-radius: 0 0 .3rem 0;
+      overflow: hidden;
+    }
+    .sep{
+      border-radius: 0 0 0 .3rem;
+      overflow: hidden;
+    }
+    .fourteen{
+      border-radius: 0 0 .3rem 0;
+      overflow: hidden;
+    }
+    .black{
+      border-radius: .3rem 0 0 0;
+      overflow: hidden;
+    }
+    /*
+    </corner rounding>
+    */
+  </style>
+</head>
+<body>
+  <div id="calendar">
+    <div class="cube month jan">jan</div>
+    <div class="cube month feb">feb</div>
+    <div class="cube month mar">mar</div>
+    <div class="cube month apr">apr</div>
+    <div class="cube num one">1</div>
+    <div class="cube num two">2</div>
+    <div class="cube num three">3</div>
+    <div class="cube day mon">mon</div>
+    <div class="cube day tue">tue</div>
+
+    <div class="cube month may">may</div>
+    <div class="cube num four">4</div>
+    <div class="cube num five">5</div>
+    <div class="cube num six">6</div>
+    <div class="cube num seven">7</div>
+    <div class="cube num eight">8</div>
+    <div class="cube num nine">9</div>
+    <div class="cube day wed">wed</div>
+    <div class="cube blank"></div>
+
+    <div class="cube month jun">jun</div>
+    <div class="cube num ten">10</div>
+    <div class="cube num eleven">11</div>
+    <div class="cube num twelve">12</div>
+    <div class="cube num thirteen">13</div>
+    <div class="cube num thirtyone">31</div>
+    <div class="cube num fifteen">15</div>
+    <div class="cube day thu">thu</div>
+    <div class="cube blank"></div>
+
+    <div class="cube month jul">jul</div>
+    <div class="cube num sixteen">16</div>
+    <div class="cube num seventeen">17</div>
+    <div class="cube num eighteen">18</div>
+    <div class="cube num nineteen">19</div>
+    <div class="cube num twenty">20</div>
+    <div class="cube num twentyone">21</div>
+    <div class="cube day fri">fri</div>
+    <div class="cube day sat">sat</div>
+
+    <div class="cube month aug">aug</div>
+    <div class="cube num twentytwo">22</div>
+    <div class="cube num twentythree">23</div>
+    <div class="cube num twentyfour">24</div>
+    <div class="cube num twentyfive">25</div>
+    <div class="cube num twentysix">26</div>
+    <div class="cube num twentyseven">27</div>
+    <div class="cube blank perc"></div>
+    <div class="cube day sun">sun</div>
+
+    <div class="cube month sep">sep</div>
+    <div class="cube month oct">oct</div>
+    <div class="cube month nov">nov</div>
+    <div class="cube month dec">dec</div>
+    <div class="cube num twentyeight">28</div>
+    <div class="cube num twentynine">29</div>
+    <div class="cube num thirty">30</div>
+    <div class="cube num fourteen">14</div>
+    <div class="cube black"></div>
+  </div>
+<script>
+  const date = new Date()
+
+  const month = date.getMonth()
+  const months = [
+    "jan", "feb", "mar", "apr",
+    "may", "jun", "jul", "aug",
+    "sep", "oct", "nov", "dec"
+  ];
+  document.querySelector("." + months[month]).style.color = "gold";
+
+  const day = date.getDay()
+  console.log(day)
+  const days = [
+    "sun", "mon", "tue", "wed", "thu",
+    "fri", "sat"
+  ];
+  document.querySelector("." + days[day]).style.color = "gold";
+  const num = date.getDate()
+  const nums = [
+    "one", "two", "three", "four", "five",
+    "six", "seven", "eight", "nine", "ten",
+    "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+    "sixteen", "seventeen", "eighteen", "nineteen", "twenty",
+    "twentyone", "twentytwo", "twentythree", "twentyfour", "twentyfive",
+    "twentysix", "twentyseven", "twentyeight", "twentynine", "thirty",
+    "thirtyone"
+  ];
+  document.querySelector("." + nums[num - 1]).style.color = "gold";
+</script>
+</body>
+</html>

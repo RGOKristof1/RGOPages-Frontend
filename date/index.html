@@ -69,6 +69,13 @@
 
       background-color: white;
     }
+    @media (max-width: 768px) {
+      .cube{
+      width: 2rem;
+      height: 2rem;
+      font-size: .8rem;
+    }
+    }
     .black{
       background-color: black;
     }
@@ -76,13 +83,17 @@
     .tray{
       width: 8rem;
       height: 12rem;
-      background-color: rgba(255, 255, 255, 0.382);
+
+      border: black .25rem solid;
+      border-radius: .3rem;
+      outline: white .25rem solid;
+      box-shadow: rgba(255, 255, 255, .2) 0 0 1000px;
+      background-color: white;
     }
     @media (max-width: 768px) {
       .tray{
-        width: 12rem;
-        height: 8rem;
-        background-color: rgba(255, 255, 255, 0.382);
+        width: 20rem;
+        height: 12rem;
       }
     }
 

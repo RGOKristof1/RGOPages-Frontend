@@ -17,7 +17,7 @@
     }
     html{
       height: 100%;
-      font-size: clamp(15px, 3vw, 76px);
+      font-size: clamp(15px, 3vw, 86px);
 
       background-color: black;
       background-image: url(images/csillagos-eg-tile.png);
@@ -37,13 +37,13 @@
     body{
       height: 100%;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
+      gap: 1rem;
     }
     @media (max-width: 768px) {
       body {
         flex-direction: column;
-        gap: 2rem;
       }
     }
 
@@ -52,8 +52,6 @@
       display: grid;
       grid-template-columns: repeat(9,1fr);
       grid-template-rows: repeat(6,1fr);
-
-
 
       background-color: black;
       border: black .25rem solid;

@@ -37,9 +37,16 @@
     body{
       height: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: space-around;
       align-items: center;
     }
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+
     #calendar{
       z-index: 0;
       display: grid;
@@ -58,8 +65,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 2rem;
-      height: 2rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      font-size: 0.7rem;
 
       background-color: white;
     }
@@ -67,8 +75,21 @@
       background-color: black;
     }
 
+    .tray{
+      width: 8rem;
+      height: 12rem;
+      background-color: rgba(255, 255, 255, 0.382);
+    }
+    @media (max-width: 768px) {
+      .tray{
+        width: 12rem;
+        height: 8rem;
+        background-color: rgba(255, 255, 255, 0.382);
+      }
+    }
+
     /*
-    <corner rounding>aa
+    <corner rounding>
     */
     .jan{
       border-radius: .3rem 0 0 0;
@@ -104,6 +125,10 @@
   </style>
 </head>
 <body>
+  <div class="tray tray1">
+
+  </div>
+
   <div id="calendar">
     <div class="cube month jan">jan</div>
     <div class="cube month feb">feb</div>
@@ -164,6 +189,10 @@
     <div class="cube num thirty">30</div>
     <div class="cube num fourteen">14</div>
     <div class="cube black"></div>
+  </div>
+  
+  <div class="tray tray2">
+
   </div>
 <script>
   const date = new Date()

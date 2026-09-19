@@ -1,12 +1,128 @@
-:root{
-  --mText: #ffffff;
-  --mBackground: #14171f;
-  --mPrimary: #ecacec;
-  --mSecondary: #5e72a1;
-  --mAccent: #9b70ff;
+:root {
+  /* ===== Brand ===== */
+  --primary:            #ECACEC;   /* signature orchid */
+  --primary-hover:      #E398E3;
+  --primary-active:     #D981D9;
+  --primary-soft:       #F6D6F6;   /* tags, selected states */
+  --primary-subtle-bg:  #FBF0FB;   /* tinted sections, banners */
+  --primary-strong:     #A14BA1;   /* AA-safe links & text in brand hue */
+  --on-primary:         #2B1030;   /* text/icons ON primary buttons */
+  --logo:               #ECACEC;
+  --logo-ink:           #1C1226;   /* wordmark companion on light bg */
+
+  /* ===== Neutrals (plum-tinted, not gray) ===== */
+  --bg:                 #FCFAFD;
+  --bg-secondary:       #F6F2F8;
+  --surface:            #FFFFFF;
+  --surface-elevated:   #FFFFFF;   /* + --shadow-elevated */
+  --border:             #EAE2EE;
+  --border-strong:      #D5C9DB;
+  --text-primary:       #1C1226;
+  --text-secondary:     #564A63;
+  --text-muted:         #8B7E97;
+  --shadow-elevated:    0 8px 30px rgba(28, 18, 38, 0.08);
+
+  /* ===== Semantic ===== */
+  --success:            #1F9D63;  --success-bg: #E7F8EF;
+  --warning:            #B07700;  --warning-bg: #FFF6E0;
+  --error:              #D2375A;  --error-bg:   #FDEBEF;
+  --info:               #4F63E0;  --info-bg:    #ECEFFE;
+
+  /* ===== Supporting accents ===== */
+  --accent-mint:        #2BB394;   /* complementary — stats, checkmarks */
+  --accent-violet:      #7C5CE0;   /* secondary — illustrations, tags */
+  --accent-cyan:        #0FA3C2;   /* tertiary — code, tech details */
+  --grad-stop-1:        #ECACEC;   /* decorative gradient trio */
+  --grad-stop-2:        #B392F0;
+  --grad-stop-3:        #8FE8FF;
+
+  /* ===== Gradients ===== */
+  --gradient-hero:       linear-gradient(135deg, #FBF0FB 0%, #F0E7FC 45%, #E6F7FD 100%);
+  --gradient-hero-text:  linear-gradient(120deg, #A14BA1 0%, #7C5CE0 60%, #0FA3C2 100%);
+  --gradient-cta:        linear-gradient(135deg, #F2BDF2 0%, #E08FE0 100%);
+  --gradient-card-hover: linear-gradient(180deg, rgba(236,172,236,0.10) 0%, rgba(236,172,236,0) 60%);
+  --glow-primary:        radial-gradient(closest-side, rgba(236,172,236,0.35), transparent 70%);
+  --glow-violet:         radial-gradient(closest-side, rgba(124,92,224,0.22), transparent 70%);
+}
+
+[data-theme="dark"] {
+  /* ===== Brand ===== */
+  --primary:            #ECACEC;
+  --primary-hover:      #F2C0F2;   /* hovers lighten on dark UIs */
+  --primary-active:     #E59AE5;
+  --primary-soft:       #3A2440;
+  --primary-subtle-bg:  #221527;
+  --primary-strong:     #ECACEC;   /* the brand IS the link color here */
+  --on-primary:         #2B1030;
+  --logo:               #ECACEC;
+  --logo-ink:           #F5F0F8;
+
+  /* ===== Neutrals ===== */
+  --bg:                 #0E0A12;
+  --bg-secondary:       #14101A;
+  --surface:            #191420;
+  --surface-elevated:   #221B2C;
+  --border:             #2E2639;
+  --border-strong:      #443A55;
+  --text-primary:       #F5F0F8;
+  --text-secondary:     #C3B8CE;
+  --text-muted:         #8E8299;
+  --shadow-elevated:    0 8px 30px rgba(0, 0, 0, 0.45);
+
+  /* ===== Semantic ===== */
+  --success:            #46D695;  --success-bg: #11281D;
+  --warning:            #F2B73F;  --warning-bg: #2B2110;
+  --error:              #FF7E93;  --error-bg:   #2D131A;
+  --info:               #93A4FF;  --info-bg:    #161B33;
+
+  /* ===== Supporting accents ===== */
+  --accent-mint:        #6FE3C0;
+  --accent-violet:      #A78BFA;
+  --accent-cyan:        #7DE7F7;
+  --grad-stop-1:        #ECACEC;
+  --grad-stop-2:        #8B6CF0;
+  --grad-stop-3:        #4ECDE6;
+
+  /* ===== Gradients ===== */
+  --gradient-hero:       linear-gradient(135deg, #1A0F22 0%, #241433 50%, #0F1F2A 100%);
+  --gradient-hero-text:  linear-gradient(120deg, #ECACEC 0%, #A78BFA 60%, #7DE7F7 100%);
+  --gradient-cta:        linear-gradient(135deg, #F2C0F2 0%, #E08FE0 100%);
+  --gradient-card-hover: linear-gradient(180deg, rgba(236,172,236,0.07) 0%, rgba(236,172,236,0) 60%);
+  --glow-primary:        radial-gradient(closest-side, rgba(236,172,236,0.18), transparent 70%);
+  --glow-violet:         radial-gradient(closest-side, rgba(139,108,240,0.20), transparent 70%);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  color: var(--mText);
+  
+  font-family: "Bungee", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html{
+  font-size: clamp(15px, 2vw, 40px);
+}
+
+body{
+  background-color: black;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--mBackground);
+}
 
 h1{
   color: var(--mPrimary);
@@ -14,4 +130,11 @@ h1{
   font-family: "Tomorrow", sans-serif;
   font-weight: 700;
   font-style: normal;
+}
+main{
+  height: calc(2/3*100vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--mBackgroundSecondary);
 }

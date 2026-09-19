@@ -1,26 +1,21 @@
 https://dribbble.com/shots/10724776-Carlos-Personal-Portfolio-Website
 
 hero + header:
-    2/3 screen
         logo
-        navbar
-        headline
-            Left: 60% text
-            Right: 40% pic
+        catchphrase in the middle of the hero and two portrais of us beside the text left and right
 
-2nd div:
-    2/3 screen
+2nd section:
         What we do - service cards
 
 
-3rd div:
-    fullscreen
+3rd section:
         Why us - pros
+        the client doesnt have to worry about anything we make sure everything works
 
 footer:
     fullscreen
         Contact
-        Insta
+        
 
 
 colors:

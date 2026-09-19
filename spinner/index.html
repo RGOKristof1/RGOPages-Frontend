@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spinner</title>
+  <style>
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html{
+      height: 100%;
+      background-color: black;
+      font-size: clamp(15px, 3vw, 86px);
+    }
+    body{
+      height: 100%;
+      background-color: black;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    main{
+      background-color: #5c5c5c;
+      padding: 2rem;
+    }
+
+    #spinner{
+      background-color: #fff;
+      height: 10rem;
+      width: 10rem;
+      border-radius: 5rem;
+      position: relative;
+      clip-path: view-box;
+    }
+
+    .slice{
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 5rem;
+      position: absolute;
+      background-color: red;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      transform-origin: 50% 0%;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      align-items: center;
+    }
+    .slice-name{
+      font-size: .4rem;
+      transform: translateX(-50%);
+      rotate: 90deg;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div id="spinner">
+      <div class="option"></div>
+    </div>
+  </main>
+
+<script>
+function generatingSlices(numOfSlices) {
+  let sliceDegree = 360/numOfSlices
+  let sliceRotation = 0
+  let sliceWidth = 2 * 5 * Math.tan((sliceDegree / 2) * Math.PI / 180)
+  let sliceColor = "black"
+  let sliceName = "I wasn't supposed to exist!"
+  let sliceNameFontSize = Math.max(0.2, sliceDegree / 180)
+  for (let i = 0; i < numOfSlices; i++) {
+    sliceColor = `rgb(${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)})`
+    document.getElementById("spinner").innerHTML += 
+    `
+    <div class="slice" style="width: ${sliceWidth}rem; transform: translateX(-50%) rotate(${sliceRotation}deg); background-color: ${sliceColor};"><div class="slice-name" style="font-size: ${sliceNameFontSize}rem;">${sliceName}</div></div>
+    `
+    sliceRotation += sliceDegree
+  }
+}
+generatingSlices(55)
+</script>
+</body>
+</html>

@@ -1,11 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+<meta charset="UTF-8">
+<title>Percs – Top Artists teszt</title>
 </head>
 <body>
-  This will be Spotify Percs
+  <h1>Top 10 Artist (teszt)</h1>
+  <p id="status">Betöltés...</p>
+  <ul id="list"></ul>
+
+  <script type="module">
+    import { SpotifyApi } from "https://esm.sh/@spotify/web-api-ts-sdk";
+
+    // --- IDE ÍRD BE A SAJÁT CLIENT ID-D (a Spotify Dashboardból) ---
+    const CLIENT_ID = "e69fd46c54f24fe88d1d49bcfa809bfb";
+
+    // Ennek pontosan meg kell egyeznie azzal, amit a Dashboardban
+    // Redirect URI-ként megadtál!
+    const REDIRECT_URI = "https://rgopages.hu/spotifypercs/callback";
+
+    const sdk = SpotifyApi.withUserAuthorization(
+      CLIENT_ID,
+      REDIRECT_URI,
+      ["user-top-read"]
+    );
+
+    const statusEl = document.getElementById("status");
+    const listEl = document.getElementById("list");
+
+    async function run() {
+      try {
+        // Lekérjük a bejelentkezett user top 10 artistját
+        const result = await sdk.currentUser.topItems("artists", "medium_term", 10);
+
+        statusEl.textContent = "Top 10 artistod:";
+        result.items.forEach((artist, i) => {
+          const li = document.createElement("li");
+          li.textContent = `${i + 1}. ${artist.name}`;
+          listEl.appendChild(li);
+        });
+      } catch (err) {
+        statusEl.textContent = "Hiba történt, nézd meg a konzolt.";
+        console.error(err);
+      }
+    }
+
+    run();
+  </script>
 </body>
 </html>

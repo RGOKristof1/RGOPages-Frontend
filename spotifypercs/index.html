@@ -24,16 +24,13 @@
     }
 
     .loader{
+      display: flex;
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      display: none;
       z-index: 99;
-    }
-    .loader-active{
-      display: flex;
     }
 
     .loader-half{
@@ -75,12 +72,17 @@
       left: calc(50% - 1rem);
       height: 2rem;
       width: 2rem;
+      opacity: 0;
     }
     .loader-logo.in{
+      opacity: 100%;
       animation: logoIn 1s ease-out;
     }
     .loader-logo.out{
       animation: logoOut 1s ease-in-out;
+    }
+    .loader-logo.loading{
+      animation: logoLoading 2s ease-in-out alternate infinite;
     }
     @keyframes logoIn{
       0%{
@@ -101,24 +103,38 @@
         transform:scale(0);
       }
     }
+    @keyframes logoLoading{
+      100%{
+        transform: scale(120%);
+      }
+    }
   </style>
 </head>
 <body onload="LoadIn()">
-  <div class="loader loader-active">
+  <div class="loader">
     <div class="loader-half top"></div>
-    <img src="source/spotifypercslogo-front.webp" alt="Spotify Percs Logo" class="loader-logo">
+    <img src="source/spotifypercslogo-front.webp" alt="Spotify Percs Logo" draggable="false" class="loader-logo" onload="preLoad()">
     <div class="loader-half bottom"></div>
   </div>
+  <main>
+    <img src="source/155603.jpg" alt="halo">
+  </main>
   <script>
-    document.getElementsByTagName("html")[0].style.overflow = "hidden"
-    document.getElementsByClassName("loader-logo")[0].classList.add("in")
+    const loaderLogo = document.getElementsByClassName("loader-logo")[0]
+    function preLoad() {
+      document.getElementsByTagName("html")[0].style.overflow = "hidden"
+      loaderLogo.classList.add("in")
+      setTimeout(function() {
+        loaderLogo.classList.add("loading")
+      }, 1000);
+    }
     function LoadIn() {
       setTimeout(function() {
         document.getElementsByClassName("loader-half top")[0].classList.add("out")
-        document.getElementsByClassName("loader-logo")[0].classList.add("out")
+        loaderLogo.classList.replace("loading","out")
         document.getElementsByClassName("loader-half bottom")[0].classList.add("out")
         setTimeout(function() {
-          document.getElementsByClassName("loader")[0].classList.remove("loader-active")
+          document.getElementsByClassName("loader")[0].style.display = "none"
           document.getElementsByTagName("html")[0].style.overflow = "auto"
         }, 1000);
       }, 1000);

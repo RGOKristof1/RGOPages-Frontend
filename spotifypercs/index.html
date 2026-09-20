@@ -9,7 +9,6 @@
 
     }
     *{
-      overflow: hidden;
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -69,9 +68,6 @@
       }
     }
 
-    
-    
-
     .loader-logo{
       z-index: 100;
       position: absolute;
@@ -114,6 +110,7 @@
     <div class="loader-half bottom"></div>
   </div>
   <script>
+    document.getElementsByTagName("html")[0].style.overflow = "hidden"
     document.getElementsByClassName("loader-logo")[0].classList.add("in")
     function LoadIn() {
       setTimeout(function() {
@@ -122,6 +119,7 @@
         document.getElementsByClassName("loader-half bottom")[0].classList.add("out")
         setTimeout(function() {
           document.getElementsByClassName("loader")[0].classList.remove("loader-active")
+          document.getElementsByTagName("html")[0].style.overflow = "auto"
         }, 1000);
       }, 1000);
     }

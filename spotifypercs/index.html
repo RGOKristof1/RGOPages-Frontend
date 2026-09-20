@@ -1,51 +1,130 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Percs – Top Artists teszt</title>
-</head>
-<body>
-  <h1>Top 10 Artist (teszt)</h1>
-  <p id="status">Betöltés...</p>
-  <ul id="list"></ul>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Percs</title>
+  <style>
+    :root{
 
-  <script type="module">
-    import { SpotifyApi } from "https://esm.sh/@spotify/web-api-ts-sdk";
+    }
+    *{
+      overflow: hidden;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html{
+      background-color: black;
+      font-size: clamp(1.8rem, 1.2rem + 2.5vw, 3rem);
 
-    // --- IDE ÍRD BE A SAJÁT CLIENT ID-D (a Spotify Dashboardból) ---
-    const CLIENT_ID = "e69fd46c54f24fe88d1d49bcfa809bfb";
+      height: 100%;
+    }
+    body{
+      height: 100%;
+    }
 
-    // Ennek pontosan meg kell egyeznie azzal, amit a Dashboardban
-    // Redirect URI-ként megadtál!
-    const REDIRECT_URI = "https://rgopages.hu/spotifypercs/callback";
+    .loader{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: none;
+      z-index: 99;
+    }
+    .loader-active{
+      display: flex;
+    }
 
-    const sdk = SpotifyApi.withUserAuthorization(
-      CLIENT_ID,
-      REDIRECT_URI,
-      ["user-top-read"]
-    );
-
-    const statusEl = document.getElementById("status");
-    const listEl = document.getElementById("list");
-
-    async function run() {
-      try {
-        // Lekérjük a bejelentkezett user top 10 artistját
-        const result = await sdk.currentUser.topItems("artists", "medium_term", 10);
-
-        statusEl.textContent = "Top 10 artistod:";
-        result.items.forEach((artist, i) => {
-          const li = document.createElement("li");
-          li.textContent = `${i + 1}. ${artist.name}`;
-          listEl.appendChild(li);
-        });
-      } catch (err) {
-        statusEl.textContent = "Hiba történt, nézd meg a konzolt.";
-        console.error(err);
+    .loader-half{
+      background-color: #031108;
+      position: absolute;
+      height: 50vh;
+      width: 100vw;
+    }
+    .loader-half.top{
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .loader-half.top.out{
+      animation: topOut 1s ease-in-out;
+    }
+    @keyframes topOut{
+      100%{
+        top: -50vh;
+      }
+    }
+    .loader-half.bottom{
+      top: 50%;
+      left: 0;
+    }
+    .loader-half.bottom.out{
+      animation: bottomOut 1s ease-in-out;
+    }
+    @keyframes bottomOut{
+      100%{
+        top: 100vh;
       }
     }
 
-    run();
+    
+    
+
+    .loader-logo{
+      z-index: 100;
+      position: absolute;
+      top: calc(50% - 1rem);
+      left: calc(50% - 1rem);
+      height: 2rem;
+      width: 2rem;
+    }
+    .loader-logo.in{
+      animation: logoIn 1s ease-out;
+    }
+    .loader-logo.out{
+      animation: logoOut 1s ease-in-out;
+    }
+    @keyframes logoIn{
+      0%{
+        transform: scale(2000%) rotate(180deg);
+        
+      }
+      90%{
+        transform: scale(90%);
+      }
+      100%{
+        transform: scale(100%);
+      }
+    }
+    @keyframes logoOut{
+      100%{
+        top: -1rem;
+        opacity: 0;
+        transform:scale(0);
+      }
+    }
+  </style>
+</head>
+<body onload="LoadIn()">
+  <div class="loader loader-active">
+    <div class="loader-half top"></div>
+    <img src="source/spotifypercslogo-front.webp" alt="Spotify Percs Logo" class="loader-logo">
+    <div class="loader-half bottom"></div>
+  </div>
+  <script>
+    document.getElementsByClassName("loader-logo")[0].classList.add("in")
+    function LoadIn() {
+      setTimeout(function() {
+        document.getElementsByClassName("loader-half top")[0].classList.add("out")
+        document.getElementsByClassName("loader-logo")[0].classList.add("out")
+        document.getElementsByClassName("loader-half bottom")[0].classList.add("out")
+        setTimeout(function() {
+          document.getElementsByClassName("loader")[0].classList.remove("loader-active")
+        }, 1000);
+      }, 1000);
+    }
   </script>
 </body>
 </html>

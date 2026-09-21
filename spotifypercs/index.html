@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spotify Percs</title>
   <style>
+
     *{
       box-sizing: border-box;
       margin: 0;
@@ -18,6 +19,8 @@
     body{
       height: 100%;
     }
+
+    /*Load in animation*/
     .loader{
       display: flex;
       position: fixed;
@@ -68,10 +71,12 @@
         transform:scale(0);
       }
     }
-
+    /*Load in animation end*/
   </style>
   <script defer>
+    //Load in animation
     function startLoading() {
+      document.querySelector("html").style.overflow = "hidden"
 
       document.querySelector(".loader-half-top").classList.add("loader-half-coloring")
       document.querySelector(".loader-half-bottom").classList.add("loader-half-coloring")
@@ -85,11 +90,16 @@
     function endLoading() {
       setTimeout(() => {
         document.querySelector(".loader-logo").classList.add("loader-logo-animate-pulse","loader-logo-animate-out")
+
         document.querySelector(".loader-half-top").classList.add("loader-half-top-animate-out")
         document.querySelector(".loader-half-bottom").classList.add("loader-half-bottom-animate-out")
 
+        setTimeout(() => {
+          document.querySelector("html").style.overflow = "auto"
+        }, 1000);
       }, 1000);
     }
+    //Load in animation end
   </script>
 </head>
 <body onload="endLoading()">

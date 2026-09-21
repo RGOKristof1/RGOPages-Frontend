@@ -19,6 +19,33 @@
     body{
       height: 100%;
     }
+    main{
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+    .promo-image-animation{
+      animation: promoImageAnimation 2s forwards 1s;
+    }
+    @keyframes promoImageAnimation {
+      to{
+        opacity: 0;
+      }
+    }
+    .promo-image-animation-re{
+      animation: promoImageAnimationRe 2s ease-in-out forwards;
+    }
+    @keyframes promoImageAnimationRe {
+      from{
+        scale: 0;
+        opacity: 0;
+      }
+      to{
+        scale: 20%;
+        opacity: 100%;
+      }
+    }
 
     /*Load in animation*/
     .loader{
@@ -74,6 +101,21 @@
     /*Load in animation end*/
   </style>
   <script defer>
+    // Fix: iOS Safari can render position:fixed elements shrunk into a corner
+    // if the page reloads (pull-to-refresh) while it was previously pinch-zoomed/panned.
+    // This forces a clean 1:1 viewport before the loader is laid out.
+    if ('scrollRestoration' in history) history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
+
+    (function resetZoom() {
+      const viewport = document.querySelector('meta[name="viewport"]');
+      if (!viewport) return;
+      const original = viewport.getAttribute("content");
+      viewport.setAttribute("content", original + ", maximum-scale=1.0");
+      setTimeout(() => viewport.setAttribute("content", original), 100);
+    })();
+    //Fix end
+
     //Load in animation
     function startLoading() {
       document.querySelector("html").style.overflow = "hidden"
@@ -97,6 +139,12 @@
         setTimeout(() => {
           document.querySelector(".loader").style.display = "none"
           document.querySelector("html").style.overflow = "auto"
+          //new shit
+            document.querySelector(".promo-image").classList.add("promo-image-animation")
+          setTimeout(() => {
+            document.querySelector(".promo-image").setAttribute("src","source/spotifypercslogo-main.webp")
+            document.querySelector(".promo-image").classList.add("promo-image-animation-re")
+          }, 3000);
         }, 1000);
       }, 1000);
     }
@@ -117,7 +165,7 @@
     <div class="loader-half loader-half-bottom"></div>
   </div>
   <main>
-    <img src="source/155603.jpg" alt="">
+    <img src="source/promo.jpg" alt="" class="promo-image">
   </main>
 </body>
 </html>

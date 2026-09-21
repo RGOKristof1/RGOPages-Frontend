@@ -5,140 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spotify Percs</title>
   <style>
-    :root{
-
-    }
     *{
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
     html{
-      background-color: black;
-      font-size: clamp(1.8rem, 1.2rem + 2.5vw, 3rem);
-
       height: 100%;
+      font-size: clamp(1.8rem, 1.2rem + 2.5vw, 3rem);
+      background-color: black;
     }
     body{
       height: 100%;
     }
-
     .loader{
       display: flex;
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
       height: 100vh;
-      z-index: 99;
-    }
-
-    .loader-half{
-      background-color: #031108;
-      position: absolute;
-      height: 50vh;
       width: 100vw;
-    }
-    .loader-half.top{
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-    .loader-half.top.out{
-      animation: topOut 1s ease-in-out;
-    }
-    @keyframes topOut{
-      100%{
-        top: -50vh;
-      }
-    }
-    .loader-half.bottom{
-      top: 50%;
-      left: 0;
-    }
-    .loader-half.bottom.out{
-      animation: bottomOut 1s ease-in-out;
-    }
-    @keyframes bottomOut{
-      100%{
-        top: 100vh;
-      }
-    }
-
-    .loader-logo{
       z-index: 100;
+    }
+    .loader-half{ /*Add class .loader-half-coloring to animate!*/
       position: absolute;
-      top: calc(50% - 1rem);
+      left: 0;
+      height: 50%;
+      width: 100%;
+      background-color: black;
+      transition: background-color 0.5s;
+    }
+    .loader-half-coloring{background-color: #1db954;}
+
+    .loader-half-top{top: 0;} /*Add class .loader-half-top-animate-out to animate!*/
+    .loader-half-top-animate-out{animation: loaderHalfTopOut 1s  ease-in-out forwards;}
+    @keyframes loaderHalfTopOut {to{top: -50%;}}
+
+    .loader-half-bottom{top: 50%;} /*Add class .loader-half-bottom-animate-out to animate!*/
+    .loader-half-bottom-animate-out{animation: loaderHalfBottomOut 1s  ease-in-out forwards;}
+    @keyframes loaderHalfBottomOut {to{top: 100%;}}
+
+    .loader-logo{ /*Add class .loader-logo-animate-in and .loader-logo-animate-pulse and .loader-logo-animate-out to animate!*/
+      position: absolute;
+      bottom: -1rem;
       left: calc(50% - 1rem);
       height: 2rem;
       width: 2rem;
-      opacity: 0;
+      z-index: 101;
     }
-    .loader-logo.in{
-      opacity: 100%;
-      animation: logoIn 1s ease-out;
+    .loader-logo-animate-in{animation: loaderLogoIn 1s ease-out forwards;}
+    @keyframes loaderLogoIn {
+      0%{transform: scale(2000%) rotate(180deg);}
+      90%{transform: scale(90%);}
+      100%{transform: scale(100%);}
     }
-    .loader-logo.out{
-      animation: logoOut 1s ease-in-out;
-    }
-    .loader-logo.loading{
-      animation: logoLoading 2s ease-in-out alternate infinite;
-    }
-    @keyframes logoIn{
-      0%{
-        transform: scale(2000%) rotate(180deg);
-        
-      }
-      90%{
-        transform: scale(90%);
-      }
+    .loader-logo-animate-pulse{animation: loaderLogoPulse 2s ease-in-out alternate infinite;}
+    @keyframes loaderLogoPulse {100%{transform: scale(120%);}}
+    .loader-logo-animate-out{animation: loaderLogoOut 1s ease-in-out forwards;}
+    @keyframes loaderLogoOut {
       100%{
-        transform: scale(100%);
-      }
-    }
-    @keyframes logoOut{
-      100%{
-        top: -1rem;
         opacity: 0;
         transform:scale(0);
       }
     }
-    @keyframes logoLoading{
-      100%{
-        transform: scale(120%);
-      }
-    }
+
   </style>
-</head>
-<body onload="LoadIn()">
-  <div class="loader">
-    <div class="loader-half top"></div>
-    <img src="source/spotifypercslogo-front.webp" alt="Spotify Percs Logo" draggable="false" class="loader-logo" onload="preLoad()">
-    <div class="loader-half bottom"></div>
-  </div>
-  <main>
-    <img src="source/155603.jpg" alt="halo">
-  </main>
-  <script>
-    const loaderLogo = document.getElementsByClassName("loader-logo")[0]
-    function preLoad() {
-      document.getElementsByTagName("html")[0].style.overflow = "hidden"
-      loaderLogo.classList.add("in")
-      setTimeout(function() {
-        loaderLogo.classList.add("loading")
+  <script defer>
+    function startLoading() {
+
+      document.querySelector(".loader-half-top").classList.add("loader-half-coloring")
+      document.querySelector(".loader-half-bottom").classList.add("loader-half-coloring")
+
+      document.querySelector(".loader-logo").classList.add("loader-logo-animate-in")
+      setTimeout(() => {
+        document.querySelector(".loader-logo").classList.replace("loader-logo-animate-in","loader-logo-animate-pulse")
       }, 1000);
+      
     }
-    function LoadIn() {
-      setTimeout(function() {
-        document.getElementsByClassName("loader-half top")[0].classList.add("out")
-        loaderLogo.classList.replace("loading","out")
-        document.getElementsByClassName("loader-half bottom")[0].classList.add("out")
-        setTimeout(function() {
-          document.getElementsByClassName("loader")[0].style.display = "none"
-          document.getElementsByTagName("html")[0].style.overflow = "auto"
-        }, 1000);
+    function endLoading() {
+      setTimeout(() => {
+        document.querySelector(".loader-logo").classList.add("loader-logo-animate-pulse","loader-logo-animate-out")
+        document.querySelector(".loader-half-top").classList.add("loader-half-top-animate-out")
+        document.querySelector(".loader-half-bottom").classList.add("loader-half-bottom-animate-out")
+
       }, 1000);
     }
   </script>
+</head>
+<body onload="endLoading()">
+  <div class="loader">
+    <div class="loader-half loader-half-top">
+      <img 
+        src="source/spotifypercslogo-front.webp" 
+        alt="Spotify Percs Logo" 
+        draggable="false" 
+        class="loader-logo"
+        onload="startLoading()"
+      >
+    </div>
+    <div class="loader-half loader-half-bottom"></div>
+  </div>
+  <main>
+    <img src="source/155603.jpg" alt="">
+  </main>
 </body>
 </html>

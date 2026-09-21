@@ -95,6 +95,7 @@
         document.querySelector(".loader-half-bottom").classList.add("loader-half-bottom-animate-out")
 
         setTimeout(() => {
+          document.querySelector(".loader").style.display = "none"
           document.querySelector("html").style.overflow = "auto"
         }, 1000);
       }, 1000);

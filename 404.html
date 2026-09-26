@@ -1,148 +1,111 @@
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>404 Page Not Found</title>
-    <style media="screen">
-      html,body{
-        margin: 0;
-        padding: 0;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - RGOPage Not Found</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap');
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html{
+      font-family: "Space Grotesk", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 300;
+      font-style: normal;
+      font-size: clamp(1.8rem, 1.2rem + 2.5vw, 3rem);
+      background-color: #000;
+      height: 100%;
+      overflow: hidden;
+    }
+    body{
+      background-color: #000;
+      height: 100%;
+    }
+    .background{
+      height: 100%;
+
+    }
+    .background-text{
+      padding: .1rem;
+      border-radius: 999px;
+      background-color: rgba(0, 0, 0, .5);
+      white-space: nowrap;
+      overflow: hidden;
+      position: absolute;
+      color: white;
+      left: 0%;
+      transform: translateX(-100%) translateY(-50%);
+    }
+    @keyframes backgroundTextMove {
+      from{
+        left: 0%;
+        transform: translateX(-100%) translateY(-50%);
       }
-      body{
-        position: relative;
+      to{
+        left: 100%;
+        transform: translateX(0%) translateY(-50%);
       }
-      canvas{
-        display: block;
+    }
+  </style>
+  <script defer>
+    function getRandomArbitrary(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    function getRandomText() {
+      switch (getRandomInt(1, 10)) {
+        case 1:
+          return "RGOPages";
+        case 2:
+          return "Not Found!";
+        case 3:
+          return "Lost?";
+        case 4:
+          return "Nothing Here.";
+        case 5:
+          return "Void.";
+        case 6:
+          return "Error!";
+        case 7:
+          return "Nope.";
+        case 8:
+          return "Page Missing!";
+        case 9:
+          return "???";
+        default:
+          return "404";
       }
-      div{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        background-color: #ffffff58;
-
-        width: clamp(400px,20vw,10000px);
-        height: clamp(400px,20vw,10000px);
-
-        display: grid;
-        grid-template-rows: 3fr 1fr;
+    }
+    function addBackgroundText() {
+      document.querySelector(".background").innerHTML += 
+      `
+        <div
+          class="background-text"
+          style="
+            font-size: .${getRandomInt(5,9)}rem;
+            animation: backgroundTextMove 10s linear infinite ${getRandomArbitrary(1,11)}s;
+            opacity: ${getRandomInt(50,70)}%;
+            top: ${getRandomInt(0,100)}%;
+          "
+          >${getRandomText()}
+        </div>
+      `
+    }
+    function addBackgroundTexts() {
+      for (let i = 0; i < Math.floor(window.innerWidth / 30); i++) {
+        addBackgroundText()
       }
-      div img{
-        
-        height: 100%;
-      }
-    </style>
-  </head>
-  <body>
-    <div>
-      <img src="global-source/404.png" alt="404">
-      <h2>Ez az oldal nem elérhető!</h2>
-    </div>
-    <script type="text/javascript">
-      var canvas = document.createElement('canvas');
-      var height = canvas.height = window.innerHeight;
-      var width = canvas.width = window.innerWidth;
-      var ctx = canvas.getContext('2d');
-      document.body.appendChild(canvas);
-
-      function random(min,max)
-      {
-          return Math.random()*(max-min+1)+min;
-      }
-
-      function range_map(value,in_min, in_max, out_min, out_max) {
-        return (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-      }
-
-      var word_arr = [];
-      var txt_min_size = 5;
-      var txt_max_size = 25;
-      var keypress = false;
-      var acclerate = 2;
-      for (var i = 0; i < 25; i++) {
-        word_arr.push({
-          x : random(0,width),
-          y : random(0,height),
-          text : '404',
-          size : random(txt_min_size,txt_max_size)
-        });
-
-        word_arr.push({
-          x : random(0,width),
-          y : random(0,height),
-          text : 'page',
-          size : random(txt_min_size,txt_max_size)
-        });
-
-        word_arr.push({
-          x : random(0,width),
-          y : random(0,height),
-          text : 'RGOPages',
-          size : random(txt_min_size,txt_max_size)
-        });
-
-        word_arr.push({
-          x : random(0,width),
-          y : random(0,height),
-          text : 'try again',
-          size : random(txt_min_size,txt_max_size)
-        });
-
-        word_arr.push({
-          x : random(0,width),
-          y : random(0,height),
-          text : 'not found',
-          size : random(txt_min_size,txt_max_size)
-        });
-
-        word_arr.push({
-          x : random(0,width),
-          y : random(0,height),
-          text : '404',
-          size : Math.floor(random(txt_min_size,txt_max_size))
-        });
-      }
-
-      function render()
-      {
-        ctx.fillStyle = "rgba(0,0,0,1)";
-        ctx.fillRect(0,0,width,height);
-
-        ctx.fillStyle = "#fff";
-        for (var i = 0; i < word_arr.length; i++) {
-          ctx.font = word_arr[i].size+"px sans-serif";
-          var w = ctx.measureText(word_arr[i].text);
-          ctx.fillText(word_arr[i].text,word_arr[i].x,word_arr[i].y);
-
-          if(keypress)
-          {
-            word_arr[i].x += range_map(word_arr[i].size,txt_min_size,txt_max_size,2,4) * acclerate;
-          }
-          else {
-            word_arr[i].x += range_map(word_arr[i].size,txt_min_size,txt_max_size,2,3);
-          }
-
-          if(word_arr[i].x >= width)
-          {
-            word_arr[i].x = -w.width*2;
-            word_arr[i].y = random(0,height);
-            word_arr[i].size =  Math.floor(random(txt_min_size,txt_max_size));
-
-          }
-        }
-
-        ctx.fill();
-
-        requestAnimationFrame(render);
-      }
-
-      render();
-
-      window.addEventListener('keydown',function(){
-        keypress = true;
-      },true);
-      window.addEventListener('keyup',function(){
-        keypress = false;
-      },true);
-    </script>
-  </body>
+    }
+  </script>
+</head>
+<body onload="addBackgroundTexts()">
+  <div class="background"></div>
+  
+</body>
 </html>

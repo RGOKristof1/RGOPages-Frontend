@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - RGOPage Not Found</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap');
     *{
       box-sizing: border-box;
       margin: 0;
@@ -21,13 +23,14 @@
       height: 100%;
     }
     body{
-      overflow: hidden;
       background-color: #000;
       height: 100%;
+      position: relative;
     }
     .background{
       height: 100%;
-
+      position: relative;
+      overflow: hidden;
     }
     .background-text{
       padding: .1rem;
@@ -37,24 +40,85 @@
       overflow: hidden;
       position: absolute;
       color: white;
-      left: 0%;
-      opacity: 0%;
+      left: 0;
       transform: translateX(-100%) translateY(-50%);
     }
     @keyframes backgroundTextMove {
       from{
-        display: flex;
-        left: 0%;
         transform: translateX(-100%) translateY(-50%);
       }
       to{
-        display: none;
-        left: 100%;
-        transform: translateX(0%) translateY(-50%);
+        transform: translateX(calc(100vw + 100%)) translateY(-50%);
+      }
+    }
+    .info-box{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      white-space: nowrap;
+      padding: 1.5ch 3ch;
+      background-color: rgba(0, 0, 0, 0.8);
+      animation: infoBoxFadeIn 1s ease-in-out;
+      border: white solid 2px;
+      border-radius: 1ch;
+    }
+    .info-box h1{
+      font-size: 1.5rem;
+    }
+    .info-box p{
+      font-size: 1rem;
+    }
+    .info-box a{
+      font-size: 1.3rem;
+    }
+    .info-box hr{
+      height: 2px;
+      width: calc(100% + 1ch);
+      margin: 1ch 0;
+    }
+    @media (max-width: 600px) {
+      .info-box{
+        padding: 1ch 2ch;
+      }
+      .info-box h1{
+        font-size: 1rem;
+      }
+      .info-box p{
+        font-size: .5rem;
+      }
+      .info-box a{
+        font-size: .8rem;
+      }
+      .info-box hr{
+        width: calc(100% + .5ch);
+        margin: .5ch 0;
+      }
+    }
+    a{
+      color: inherit;
+      text-decoration: none;
+    }
+    a:hover{
+      text-shadow: 5px white;
+      text-decoration: underline;
+    }
+    @keyframes infoBoxFadeIn {
+      from{
+        opacity: 0;
+      }
+      to{
+        opacity: 1;
       }
     }
   </style>
-  <script defer>
+  <script>
     function getRandomArbitrary(min, max) {
       return Math.random() * (max - min) + min;
     }
@@ -85,30 +149,32 @@
           return "404";
       }
     }
-    function addBackgroundText() {
-      document.querySelector(".background").innerHTML += 
-      `
-        <div
-          class="background-text"
-          style="
-            font-size: .${getRandomInt(5,9)}rem;
-            animation: backgroundTextMove 10s linear infinite ${getRandomArbitrary(1,11)}s;
-            opacity: ${getRandomInt(50,70)}%;
-            top: ${getRandomInt(0,100)}%;
-          "
-          >${getRandomText()}
-        </div>
-      `
+    function backgroundTextMarkup() {
+      return `<div class="background-text" style="
+        font-size: .${getRandomInt(5, 9)}rem;
+        animation: backgroundTextMove 10s linear infinite ${getRandomArbitrary(1, 11)}s;
+        opacity: ${getRandomInt(50, 70)}%;
+        top: ${getRandomInt(0, 100)}%;
+      ">${getRandomText()}</div>`;
     }
     function addBackgroundTexts() {
-      for (let i = 0; i < Math.floor(window.innerWidth / 30); i++) {
-        addBackgroundText()
+      const count = Math.floor(window.innerWidth / 30);
+      let html = "";
+      for (let i = 0; i < count; i++) {
+        html += backgroundTextMarkup();
       }
+      document.querySelector(".background").innerHTML = html;
     }
+    document.addEventListener("DOMContentLoaded", addBackgroundTexts);
   </script>
 </head>
-<body onload="addBackgroundTexts()">
+<body>
   <div class="background"></div>
-  
+  <div class="info-box">
+    <h1>404</h1>
+    <p>RGOPage not found!</p>
+    <hr>
+    <a href="https://rgopages.hu">Home</a>
+  </div>
 </body>
 </html>

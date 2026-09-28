@@ -1,21 +1,125 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Workbench:BLED,SCAN@0..100,-53..100&display=swap" rel="stylesheet">
+  <title>RGOPages</title>
+  <script>
+    try {
+      const t = localStorage.getItem('theme');
+      if (t) document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+  <style>
+    :root{
+      color-scheme: light dark;
 
-  <link rel="stylesheet" href="global-source/global-styles/global-style.css">
+      /* brand colors: same in both themes, use them as FILLS only (buttons, badges, highlights) */
+      --myblue: #2B4D97;   /* primary fill, put --mywhite text on it */
+      --myorange: #F6703F; /* secondary fill, put --myblack text on it */
 
-  <title>RGOPages - Főoldal</title>
+      /* base neutrals: the theme background/text come from these */
+      --mywhite: #EBF5EE;  /* light bg, dark-theme text, text on blue */
+      --myblack: #0A090C;  /* dark bg, light-theme text, text on orange */
+
+      /* themed tokens: light-dark(light value, dark value), use these in components */
+      --bg:         light-dark(var(--mywhite), var(--myblack)); /* page background */
+      --text:       light-dark(var(--myblack), var(--mywhite)); /* main text */
+      --surface:    light-dark(#F7FBF8, #383343);               /* nav, cards, panels */
+      --border:     light-dark(#ABD5B7, #675D7B);               /* outlines, dividers */
+      --text-muted: light-dark(#675D7B, #CCC7D5);               /* captions, secondary text */
+    }
+
+    :root[data-theme="light"]{ color-scheme: light; }
+    :root[data-theme="dark"]{ color-scheme: dark; }
+
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color .2s, color .2s, border-color .2s;
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{ transition: none; }
+    }
+    html{
+      font-family: "Space Mono", monospace;
+      font-weight: 400;
+      font-style: normal;
+      font-size: clamp(1.8rem, 1.2rem + 2.5vw, 3rem);
+      background-color: var(--bg);
+      color: var(--text);
+    }
+    button{
+      font: inherit;
+    }
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .navigation{
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      align-self: stretch;
+      margin: 1rem;
+      padding: .1rem .2rem;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .navigation-header{
+      font-family: "Workbench";
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+
+      animation: navigationHeaderIn .5s ease-out forwards;
+      font-size: 1rem;
+      position: absolute;
+      left: 50%;
+    }
+    @keyframes navigationHeaderIn {
+      from{
+        font-variation-settings:
+          "BLED" 100,
+          "SCAN" 100;
+      }
+      to{
+        font-variation-settings:
+          "BLED" 0,
+          "SCAN" -30;
+      }
+    }
+    .navigation-header:hover{
+      text-decoration: underline;
+      text-decoration-color: var(--myorange);
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>RGOPages</h1>
-  </header>
-  <main>
-    <div>
-      hicscsc
-    </div>
-  </main>
+  <nav class="navigation">
+    <button id="theme-toggle" type="button"></button>
+    <h1 class="navigation-header">RGOPages</h1>
+    <ul class="navigation-buttons"></ul>
+  </nav>
+  <header></header>
+  <main></main>
+<script>
+  const root = document.documentElement;
+
+  document.querySelector('#theme-toggle').addEventListener('click', () => {
+    const isDark = root.dataset.theme
+      ? root.dataset.theme === 'dark'
+      : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = isDark ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+  });
+</script>
 </body>
 </html>

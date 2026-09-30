@@ -12,39 +12,37 @@
     try {
       const t = localStorage.getItem('theme');
       if (t) document.documentElement.dataset.theme = t;
-    } catch (e) {}
+    } catch (e) {
+      console.log(e)
+    }
   </script>
   <style>
     :root{
       color-scheme: light dark;
+      --mylightest: #efdaf8;
+      --mylight: #d0a9f7;
+      --mymiddle: #80ff00;
+      --mydark: #482e5e;
+      --mydarkest: #08000f;
 
-      /* brand colors: same in both themes, use them as FILLS only (buttons, badges, highlights) */
-      --myblue: #2B4D97;   /* primary fill, put --mywhite text on it */
-      --myorange: #F6703F; /* secondary fill, put --myblack text on it */
+      --accent: var(--mymiddle);
+      --bg: light-dark(var(--mylightest),var(--mydarkest));
+      --surface: light-dark(var(--mylight),var(--mydark));
+      --border: light-dark(var(--mydark),var(--mylight));
+      --text: light-dark(var(--mydarkest),var(--mylightest));
 
-      /* base neutrals: the theme background/text come from these */
-      --mywhite: #EBF5EE;  /* light bg, dark-theme text, text on blue */
-      --myblack: #0A090C;  /* dark bg, light-theme text, text on orange */
 
-      /* themed tokens: light-dark(light value, dark value), use these in components */
-      --bg:         light-dark(var(--mywhite), var(--myblack)); /* page background */
-      --text:       light-dark(var(--myblack), var(--mywhite)); /* main text */
-      --surface:    light-dark(#F7FBF8, #383343);               /* nav, cards, panels */
-      --border:     light-dark(#ABD5B7, #675D7B);               /* outlines, dividers */
-      --text-muted: light-dark(#675D7B, #CCC7D5);               /* captions, secondary text */
+      font-family: "Space Mono", monospace;
+      font-weight: 400;
+      font-style: normal;
     }
-
-    :root[data-theme="light"]{ color-scheme: light; }
-    :root[data-theme="dark"]{ color-scheme: dark; }
+    :root[data-theme="light"] { color-scheme: light; }
+    :root[data-theme="dark"]  { color-scheme: dark; }
 
     *{
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      transition: background-color .2s, color .2s, border-color .2s;
-    }
-    @media (prefers-reduced-motion: reduce){
-      *{ transition: none; }
     }
     html{
       font-family: "Space Mono", monospace;
@@ -54,72 +52,80 @@
       background-color: var(--bg);
       color: var(--text);
     }
-    button{
-      font: inherit;
-    }
     body{
       display: flex;
       flex-direction: column;
       align-items: center;
     }
     .navigation{
+      align-self: stretch;
+
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      align-self: stretch;
-      margin: 1rem;
-      padding: .1rem .2rem;
-      background-color: var(--surface);
-      border: 1px solid var(--border);
-      position: relative;
+
+      margin: .2rem;
+      padding: .4rem;
+      padding-bottom: .2rem;
+      border: var(--border) solid 1px;
+      background-color: var(--surface); 
     }
     .navigation-header{
-      font-family: "Workbench";
+      font-size: 1rem;
+      font-family: "Workbench", sans-serif;
       font-optical-sizing: auto;
       font-weight: 400;
       font-style: normal;
+      font-variation-settings:
+        "BLED" 0,
+        "SCAN" 0;
 
-      animation: navigationHeaderIn .5s ease-out forwards;
-      font-size: 1rem;
-      position: absolute;
-      left: 50%;
     }
-    @keyframes navigationHeaderIn {
-      from{
-        font-variation-settings:
-          "BLED" 100,
-          "SCAN" 100;
-      }
-      to{
-        font-variation-settings:
-          "BLED" 0,
-          "SCAN" -30;
-      }
+    .navigation-header-segment{
+      color: inherit;
+      font-style: inherit;
+      text-decoration: inherit;
     }
-    .navigation-header:hover{
-      text-decoration: underline;
-      text-decoration-color: var(--myorange);
+    .navigation-header-segment:hover{
+      text-decoration: underline var(--accent);
+    }
+    .navigation-links{
+      display: flex;
+      justify-content: space-between;
+      gap: .2rem;
+      font-size: .6rem;
+      list-style: none;
+    }
+    .navigation-links a{
+      list-style: none;
+      color: inherit;
+      font-style: inherit;
+      text-decoration: inherit;
+    }
+
+    .hero{
+      display: flex;
+      align-self: stretch;
+      height: 150vh;
+
+      margin: .2rem;
+      border: var(--border) solid 1px;
+      background-color: var(--surface); 
     }
   </style>
 </head>
 <body>
   <nav class="navigation">
-    <button id="theme-toggle" type="button"></button>
-    <h1 class="navigation-header">RGOPages</h1>
-    <ul class="navigation-buttons"></ul>
+    <h1 class="navigation-header"><a class="navigation-header-segment" href="https://rgopages.hu/rgo">RGO</a><a class="navigation-header-segment" href="https://rgopages.hu/pages">Pages</a></h1>
+    <ul class="navigation-links">
+      <!--
+      <li><a href="#header">Header</a></li>
+      -->
+    </ul>
   </nav>
-  <header></header>
+  <!--
+  <header id="header" class="hero"></header>
   <main></main>
-<script>
-  const root = document.documentElement;
-
-  document.querySelector('#theme-toggle').addEventListener('click', () => {
-    const isDark = root.dataset.theme
-      ? root.dataset.theme === 'dark'
-      : matchMedia('(prefers-color-scheme: dark)').matches;
-    root.dataset.theme = isDark ? 'light' : 'dark';
-    try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
-  });
-</script>
+  -->
 </body>
 </html>

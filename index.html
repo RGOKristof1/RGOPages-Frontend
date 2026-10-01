@@ -44,6 +44,14 @@
       margin: 0;
       padding: 0;
     }
+    a{
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: inherit;
+    }
+    a:hover{
+      text-decoration-color: var(--accent);
+    }
     html{
       font-family: "Space Mono", monospace;
       font-weight: 400;
@@ -79,53 +87,43 @@
       font-variation-settings:
         "BLED" 0,
         "SCAN" 0;
-
     }
-    .navigation-header-segment{
-      color: inherit;
-      font-style: inherit;
-      text-decoration: inherit;
-    }
-    .navigation-header-segment:hover{
-      text-decoration: underline var(--accent);
-    }
-    .navigation-links{
+    .navigation-items{
+      font-size: .6rem;
       display: flex;
       justify-content: space-between;
       gap: .2rem;
-      font-size: .6rem;
       list-style: none;
-    }
-    .navigation-links a{
-      list-style: none;
-      color: inherit;
-      font-style: inherit;
-      text-decoration: inherit;
     }
 
     .hero{
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       align-self: stretch;
-      height: 150vh;
 
       margin: .2rem;
+      padding: .4rem;
       border: var(--border) solid 1px;
       background-color: var(--surface); 
+    }
+    .hero-header{
+      font-size: 1rem;
     }
   </style>
 </head>
 <body>
   <nav class="navigation">
     <h1 class="navigation-header"><a class="navigation-header-segment" href="https://rgopages.hu/rgo">RGO</a><a class="navigation-header-segment" href="https://rgopages.hu/pages">Pages</a></h1>
-    <ul class="navigation-links">
-      <!--
-      <li><a href="#header">Header</a></li>
-      -->
+    <ul class="navigation-items">
+      <li class="navigation-item">
+        <a class="navigation-link" href="#header">Header</a>
+      </li>
     </ul>
   </nav>
-  <!--
-  <header id="header" class="hero"></header>
+  <header id="header" class="hero">
+    <h1 class="hero-header">Home for my personal <a href="https://rgopages.hu/pages">projects</a>.</h1>
+    <img src="/global-source/images/self-portreit.png" alt="self-portreit">
+  </header>
   <main></main>
-  -->
 </body>
 </html>

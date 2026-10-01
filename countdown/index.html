@@ -19,20 +19,40 @@
     align-items: center;      /* vertical center */
     justify-content: center;  /* horizontal center */
     font-family: "Space Mono", ui-monospace, Menlo, Consolas, monospace;
-    font-weight: 700;
     overflow: hidden;
+  }
+  #wrap {
+    position: relative;       /* anchor for the end-time label */
   }
   #display {
     font-size: clamp(3rem, 18vw, 14rem);
+    font-weight: 700;
     line-height: 1;
     text-align: center;
     white-space: nowrap;
     font-variant-numeric: tabular-nums;
   }
+  /* Small end-time label under the main timer. It is positioned absolutely,
+     so the main timer / idle text always stays perfectly centered. */
+  #endtime {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 0.6rem;
+    text-align: center;
+    white-space: nowrap;
+    font-size: clamp(0.8rem, 2.2vw, 1.3rem);   /* change this to make it bigger/smaller */
+    font-weight: 400;
+    letter-spacing: 0.08em;
+  }
 </style>
 </head>
 <body>
-<div id="display">nothin</div>
+<div id="wrap">
+  <div id="display">nothin</div>
+  <div id="endtime"></div>
+</div>
 
 <script>
 /* ==========================================================
@@ -40,14 +60,14 @@
    ========================================================== */
 
 // Text shown while no countdown is running.
-const IDLE_TEXT = "nothin";
+const IDLE_TEXT = "Nothin";
 
 // The countdown sequence starts at this time, in the timezone below.
 const START_HOUR = 8;
 const START_MINUTE = 0;
 
-// Timezone used for the start time. It follows daylight saving automatically
-// (GMT+2 in summer, GMT+1 in winter for Budapest).
+// Timezone used for the start time and the end-time label. It follows
+// daylight saving automatically (GMT+2 in summer, GMT+1 in winter for Budapest).
 const TIMEZONE = "Europe/Budapest";
 
 // null  = the sequence runs every day at START_HOUR:START_MINUTE.
@@ -64,7 +84,7 @@ const ONLY_DATE = null;
 // When the last line finishes, the page goes straight back to IDLE_TEXT.
 const SCHEDULE = [
   ["focus", 45],//1
-  ["break", 10],
+  ["break", 10], 
   ["focus", 45],//2
   ["break", 15],
   ["focus", 45],//3
@@ -82,6 +102,10 @@ const SCHEDULE = [
   ["focus", 45],//9
 ];
 
+// Small label under the timer showing the clock time when the current timer ends
+// (e.g. 11:35). It has the final color of the current timer (green / red) the whole time.
+const SHOW_END_TIME = true;
+
 // Testing: set to true to start the sequence the moment the page loads,
 // instead of waiting for START_HOUR. Set it back to false when you are done.
 const TEST_START_NOW = false;
@@ -98,8 +122,13 @@ const TARGET = {
    ========================================================== */
 
 const el = document.getElementById("display");
+const endEl = document.getElementById("endtime");
 const total = SCHEDULE.reduce((sum, [, min]) => sum + min * 60000, 0);
 const pageLoadedAt = Date.now();
+
+const clockFormat = new Intl.DateTimeFormat("en-GB", {
+  timeZone: TIMEZONE, hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+});
 
 // Offset (ms) of TIMEZONE from UTC at the given instant, DST-aware.
 function tzOffsetMs(utcMs) {
@@ -139,12 +168,14 @@ function pad(n) { return String(n).padStart(2, "0"); }
 
 function tick() {
   const now = Date.now();
-  const elapsed = now - sequenceStart(now);
+  const start = sequenceStart(now);
+  const elapsed = now - start;
 
-  // Before the start time, or after the last cycle: idle text.
+  // Before the start time, or after the last cycle: idle text only.
   if (elapsed < 0 || elapsed >= total) {
     el.textContent = IDLE_TEXT;
     el.style.color = "#fff";
+    endEl.textContent = "";
     return;
   }
 
@@ -157,6 +188,10 @@ function tick() {
       const remaining = Math.ceil((len - inSegment) / 1000);
       el.textContent = pad(Math.floor(remaining / 60)) + ":" + pad(remaining % 60);
       el.style.color = "rgb(" + mix(WHITE, TARGET[type], inSegment / len).join(",") + ")";
+
+      // End-time label: fixed final color of this timer type.
+      endEl.textContent = SHOW_END_TIME ? clockFormat.format(new Date(start + offset + len)) : "";
+      endEl.style.color = "rgb(" + TARGET[type].join(",") + ")";
       return;
     }
     offset += len;

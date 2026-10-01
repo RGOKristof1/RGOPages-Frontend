@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nothin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: #000;
+    color: #fff;
+  }
+  body {
+    display: flex;
+    align-items: center;      /* vertical center */
+    justify-content: center;  /* horizontal center */
+    font-family: "Space Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-weight: 700;
+    overflow: hidden;
+  }
+  #display {
+    font-size: clamp(3rem, 18vw, 14rem);
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+</style>
+</head>
+<body>
+<div id="display">nothin</div>
+
+<script>
+/* ==========================================================
+   CONFIGURATION: edit only this block
+   ========================================================== */
+
+// Text shown while no countdown is running.
+const IDLE_TEXT = "nothin";
+
+// The countdown sequence starts at this time, in the timezone below.
+const START_HOUR = 8;
+const START_MINUTE = 0;
+
+// Timezone used for the start time. It follows daylight saving automatically
+// (GMT+2 in summer, GMT+1 in winter for Budapest).
+const TIMEZONE = "Europe/Budapest";
+
+// null  = the sequence runs every day at START_HOUR:START_MINUTE.
+// "2026-10-05" = it runs only on that date (format YYYY-MM-DD).
+const ONLY_DATE = null;
+
+// HOW TO SET THE CYCLES:
+// Every line below is one countdown: [ type, minutes ].
+//   "focus" = the long timer  (fades white -> pastel green)
+//   "break" = the short timer (fades white -> pastel red)
+// - Add or remove lines to change the number of cycles.
+// - Change the number to change the duration (decimals work, e.g. 0.5 = 30 seconds).
+// - The order of the lines is the order they run in.
+// When the last line finishes, the page goes straight back to IDLE_TEXT.
+const SCHEDULE = [
+  ["focus", 45],//1
+  ["break", 10],
+  ["focus", 45],//2
+  ["break", 15],
+  ["focus", 45],//3
+  ["break", 10],
+  ["focus", 45],//4
+  ["break", 10],
+  ["focus", 45],//5
+  ["break", 25],
+  ["focus", 45],//6
+  ["break", 10],
+  ["focus", 45],//7
+  ["break", 5],
+  ["focus", 45],//8
+  ["break", 5],
+  ["focus", 45],//9
+];
+
+// Testing: set to true to start the sequence the moment the page loads,
+// instead of waiting for START_HOUR. Set it back to false when you are done.
+const TEST_START_NOW = false;
+
+// Colors (RGB). Each timer fades from WHITE to its target color.
+const WHITE = [255, 255, 255];
+const TARGET = {
+  focus: [152, 224, 160],  // pastel green
+  break: [255, 140, 140],  // pastel red
+};
+
+/* ==========================================================
+   LOGIC: no need to edit below
+   ========================================================== */
+
+const el = document.getElementById("display");
+const total = SCHEDULE.reduce((sum, [, min]) => sum + min * 60000, 0);
+const pageLoadedAt = Date.now();
+
+// Offset (ms) of TIMEZONE from UTC at the given instant, DST-aware.
+function tzOffsetMs(utcMs) {
+  const p = {};
+  new Intl.DateTimeFormat("en-US", {
+    timeZone: TIMEZONE, hourCycle: "h23",
+    year: "numeric", month: "numeric", day: "numeric",
+    hour: "numeric", minute: "numeric", second: "numeric",
+  }).formatToParts(new Date(utcMs)).forEach(x => p[x.type] = x.value);
+  const asUtc = Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute, p.second);
+  return asUtc - Math.floor(utcMs / 1000) * 1000;
+}
+
+function sequenceStart(now) {
+  if (TEST_START_NOW) return pageLoadedAt;
+  let y, m, d;
+  if (ONLY_DATE) {
+    [y, m, d] = ONLY_DATE.split("-").map(Number);
+    m -= 1;
+  } else {
+    const local = new Date(now + tzOffsetMs(now)); // wall clock in TIMEZONE, read via UTC getters
+    y = local.getUTCFullYear();
+    m = local.getUTCMonth();
+    d = local.getUTCDate();
+  }
+  const wall = Date.UTC(y, m, d, START_HOUR, START_MINUTE, 0); // 8:00 as if it were UTC
+  let start = wall - tzOffsetMs(wall);
+  start = wall - tzOffsetMs(start); // re-check, in case the offset differs at that instant
+  return start;
+}
+
+function mix(from, to, t) {
+  return from.map((c, i) => Math.round(c + (to[i] - c) * t));
+}
+
+function pad(n) { return String(n).padStart(2, "0"); }
+
+function tick() {
+  const now = Date.now();
+  const elapsed = now - sequenceStart(now);
+
+  // Before the start time, or after the last cycle: idle text.
+  if (elapsed < 0 || elapsed >= total) {
+    el.textContent = IDLE_TEXT;
+    el.style.color = "#fff";
+    return;
+  }
+
+  // Find the current countdown inside the sequence.
+  let offset = 0;
+  for (const [type, min] of SCHEDULE) {
+    const len = min * 60000;
+    if (elapsed < offset + len) {
+      const inSegment = elapsed - offset;
+      const remaining = Math.ceil((len - inSegment) / 1000);
+      el.textContent = pad(Math.floor(remaining / 60)) + ":" + pad(remaining % 60);
+      el.style.color = "rgb(" + mix(WHITE, TARGET[type], inSegment / len).join(",") + ")";
+      return;
+    }
+    offset += len;
+  }
+}
+
+tick();
+setInterval(tick, 200);
+</script>
+</body>
+</html>

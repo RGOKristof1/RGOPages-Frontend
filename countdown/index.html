@@ -22,7 +22,7 @@
     overflow: hidden;
   }
   #wrap {
-    position: relative;       /* anchor for the end-time label */
+    position: relative;       /* anchor for the badge and the end-time label */
   }
   #display {
     font-size: clamp(3rem, 18vw, 14rem);
@@ -32,26 +32,54 @@
     white-space: nowrap;
     font-variant-numeric: tabular-nums;
   }
-  /* Small end-time label under the main timer. It is positioned absolutely,
-     so the main timer / idle text always stays perfectly centered. */
+  /* Lesson badge above the top-right corner of the main timer. Absolutely
+     positioned, so the main timer / idle text always stays perfectly centered. */
+  #badge {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    margin-bottom: 0.6rem;
+    padding: 0.2em 0.9em;
+    border: 1px solid currentColor;   /* follows the timer's final color */
+    border-radius: 999px;
+    white-space: nowrap;
+    font-size: clamp(0.8rem, 2.2vw, 1.3rem);   /* change this to make it bigger/smaller */
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  #badge:empty { display: none; }
+  /* Small label under the main timer. It is positioned absolutely, so the main
+     timer / idle text always stays perfectly centered. The grid keeps the end
+     clock alone in the middle column (exactly centered); the next break length
+     sits in the right column, a bit to the right of the center. */
   #endtime {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     margin-top: 0.6rem;
-    text-align: center;
     white-space: nowrap;
     font-size: clamp(0.8rem, 2.2vw, 1.3rem);   /* change this to make it bigger/smaller */
     font-weight: 400;
     letter-spacing: 0.08em;
   }
+  #endclock { grid-column: 2; }
+  #nextbreak {
+    font-size: clamp(0.5rem, 1.8vw, 1rem);
+    grid-column: 3;
+    justify-self: start;
+    margin-left: 1em;       /* distance from the end clock */
+  }
+  #endtime span:empty { display: none; }
 </style>
 </head>
 <body>
 <div id="wrap">
+  <div id="badge"></div>
   <div id="display">nothin</div>
-  <div id="endtime"></div>
+  <div id="endtime"><span id="endclock"></span><span id="nextbreak"></span></div>
 </div>
 
 <script>
@@ -70,7 +98,13 @@ const START_MINUTE = 0;
 // daylight saving automatically (GMT+2 in summer, GMT+1 in winter for Budapest).
 const TIMEZONE = "Europe/Budapest";
 
-// null  = the sequence runs every day at START_HOUR:START_MINUTE.
+// Days of the week the sequence runs on (in TIMEZONE):
+// 0 = Sunday, 1 = Monday ... 6 = Saturday.  [1, 2, 3, 4, 5] = Monday to Friday.
+// On the other days the page just shows IDLE_TEXT.
+// Ignored when ONLY_DATE is set or TEST_START_NOW is true.
+const ACTIVE_DAYS = [1, 2, 3, 4, 5];
+
+// null  = the sequence runs every active day at START_HOUR:START_MINUTE.
 // "2026-10-05" = it runs only on that date (format YYYY-MM-DD).
 const ONLY_DATE = null;
 
@@ -106,8 +140,18 @@ const SCHEDULE = [
 // (e.g. 11:35). It has the final color of the current timer (green / red) the whole time.
 const SHOW_END_TIME = true;
 
+// To the right of the end-time label: the length of the upcoming break (in pastel red), e.g. 5′.
+// Only shown during a "focus" timer that is followed by a "break", never during a break.
+const SHOW_NEXT_BREAK = true;
+
+// Badge in the top-right corner of the main timer: which lesson we are in.
+// A "focus" timer and the "break" after it count as the same lesson,
+// the next "focus" starts the next lesson. Shown during breaks too.
+const SHOW_LESSON_BADGE = true;
+
 // Testing: set to true to start the sequence the moment the page loads,
-// instead of waiting for START_HOUR. Set it back to false when you are done.
+// instead of waiting for START_HOUR (also works on weekends).
+// Set it back to false when you are done.
 const TEST_START_NOW = false;
 
 // Colors (RGB). Each timer fades from WHITE to its target color.
@@ -122,7 +166,10 @@ const TARGET = {
    ========================================================== */
 
 const el = document.getElementById("display");
+const badgeEl = document.getElementById("badge");
 const endEl = document.getElementById("endtime");
+const endClockEl = document.getElementById("endclock");
+const nextBreakEl = document.getElementById("nextbreak");
 const total = SCHEDULE.reduce((sum, [, min]) => sum + min * 60000, 0);
 const pageLoadedAt = Date.now();
 
@@ -142,6 +189,7 @@ function tzOffsetMs(utcMs) {
   return asUtc - Math.floor(utcMs / 1000) * 1000;
 }
 
+// Start of today's sequence (ms), or null if today is not an active day.
 function sequenceStart(now) {
   if (TEST_START_NOW) return pageLoadedAt;
   let y, m, d;
@@ -150,6 +198,7 @@ function sequenceStart(now) {
     m -= 1;
   } else {
     const local = new Date(now + tzOffsetMs(now)); // wall clock in TIMEZONE, read via UTC getters
+    if (!ACTIVE_DAYS.includes(local.getUTCDay())) return null;
     y = local.getUTCFullYear();
     m = local.getUTCMonth();
     d = local.getUTCDate();
@@ -164,34 +213,65 @@ function mix(from, to, t) {
   return from.map((c, i) => Math.round(c + (to[i] - c) * t));
 }
 
+function rgb(c) { return "rgb(" + c.join(",") + ")"; }
+
 function pad(n) { return String(n).padStart(2, "0"); }
+
+// 10 -> "10′", 0.5 -> "30″" (prime = minutes, double prime = seconds)
+function formatLength(min) {
+  return Number.isInteger(min) ? min + "′" : Math.round(min * 60) + "″";
+}
+
+function showIdle() {
+  el.textContent = IDLE_TEXT;
+  el.style.color = "#fff";
+  badgeEl.textContent = "";
+  endClockEl.textContent = "";
+  nextBreakEl.textContent = "";
+}
 
 function tick() {
   const now = Date.now();
   const start = sequenceStart(now);
+
+  // Not an active day: idle text only.
+  if (start === null) return showIdle();
+
   const elapsed = now - start;
 
   // Before the start time, or after the last cycle: idle text only.
-  if (elapsed < 0 || elapsed >= total) {
-    el.textContent = IDLE_TEXT;
-    el.style.color = "#fff";
-    endEl.textContent = "";
-    return;
-  }
+  if (elapsed < 0 || elapsed >= total) return showIdle();
 
   // Find the current countdown inside the sequence.
   let offset = 0;
-  for (const [type, min] of SCHEDULE) {
+  let lesson = 0;
+  for (let i = 0; i < SCHEDULE.length; i++) {
+    const [type, min] = SCHEDULE[i];
     const len = min * 60000;
+    if (type === "focus") lesson++;   // a break keeps the number of the lesson before it
     if (elapsed < offset + len) {
       const inSegment = elapsed - offset;
       const remaining = Math.ceil((len - inSegment) / 1000);
       el.textContent = pad(Math.floor(remaining / 60)) + ":" + pad(remaining % 60);
-      el.style.color = "rgb(" + mix(WHITE, TARGET[type], inSegment / len).join(",") + ")";
+      el.style.color = rgb(mix(WHITE, TARGET[type], inSegment / len));
 
-      // End-time label: fixed final color of this timer type.
-      endEl.textContent = SHOW_END_TIME ? clockFormat.format(new Date(start + offset + len)) : "";
-      endEl.style.color = "rgb(" + TARGET[type].join(",") + ")";
+      // Everything below uses the fixed final color of this timer type.
+      const finalColor = rgb(TARGET[type]);
+
+      badgeEl.textContent = SHOW_LESSON_BADGE ? lesson + ". óra" : "";
+      badgeEl.style.color = finalColor;
+
+      endEl.style.color = finalColor;
+      endClockEl.textContent = SHOW_END_TIME ? clockFormat.format(new Date(start + offset + len)) : "";
+
+      // Next break length: only during a focus timer that is followed by a break.
+      const next = SCHEDULE[i + 1];
+      if (SHOW_NEXT_BREAK && type === "focus" && next && next[0] === "break") {
+        nextBreakEl.textContent = formatLength(next[1]);
+        nextBreakEl.style.color = rgb(TARGET.break);
+      } else {
+        nextBreakEl.textContent = "";
+      }
       return;
     }
     offset += len;

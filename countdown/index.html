@@ -67,10 +67,9 @@
   }
   #endclock { grid-column: 2; }
   #nextbreak {
-    font-size: clamp(0.5rem, 1.8vw, 1rem);
     grid-column: 3;
     justify-self: start;
-    margin-left: 1em;       /* distance from the end clock */
+    margin-left: 1.4em;       /* distance from the end clock */
   }
   #endtime span:empty { display: none; }
 </style>
@@ -140,7 +139,7 @@ const SCHEDULE = [
 // (e.g. 11:35). It has the final color of the current timer (green / red) the whole time.
 const SHOW_END_TIME = true;
 
-// To the right of the end-time label: the length of the upcoming break (in pastel red), e.g. 5′.
+// To the right of the end-time label: the length of the upcoming break (always gold), e.g. 5′.
 // Only shown during a "focus" timer that is followed by a "break", never during a break.
 const SHOW_NEXT_BREAK = true;
 
@@ -148,6 +147,11 @@ const SHOW_NEXT_BREAK = true;
 // A "focus" timer and the "break" after it count as the same lesson,
 // the next "focus" starts the next lesson. Shown during breaks too.
 const SHOW_LESSON_BADGE = true;
+
+// Lessons (by number, same numbering as the badge) that use GOLD instead of
+// pastel green: the 45 timer, the small end clock and the lesson badge.
+// The break after such a lesson stays red. Empty list [] = no gold lessons.
+const GOLD_LESSONS = [5];
 
 // Testing: set to true to start the sequence the moment the page loads,
 // instead of waiting for START_HOUR (also works on weekends).
@@ -159,6 +163,7 @@ const WHITE = [255, 255, 255];
 const TARGET = {
   focus: [152, 224, 160],  // pastel green
   break: [255, 140, 140],  // pastel red
+  gold:  [255, 200, 64],   // gold (GOLD_LESSONS and the next break length)
 };
 
 /* ==========================================================
@@ -253,10 +258,12 @@ function tick() {
       const inSegment = elapsed - offset;
       const remaining = Math.ceil((len - inSegment) / 1000);
       el.textContent = pad(Math.floor(remaining / 60)) + ":" + pad(remaining % 60);
-      el.style.color = rgb(mix(WHITE, TARGET[type], inSegment / len));
+      // Gold lessons fade to gold instead of green; breaks are always red.
+      const target = (type === "focus" && GOLD_LESSONS.includes(lesson)) ? TARGET.gold : TARGET[type];
+      el.style.color = rgb(mix(WHITE, target, inSegment / len));
 
-      // Everything below uses the fixed final color of this timer type.
-      const finalColor = rgb(TARGET[type]);
+      // Everything below uses the fixed final color of this timer.
+      const finalColor = rgb(target);
 
       badgeEl.textContent = SHOW_LESSON_BADGE ? lesson + ". óra" : "";
       badgeEl.style.color = finalColor;
@@ -268,7 +275,7 @@ function tick() {
       const next = SCHEDULE[i + 1];
       if (SHOW_NEXT_BREAK && type === "focus" && next && next[0] === "break") {
         nextBreakEl.textContent = formatLength(next[1]);
-        nextBreakEl.style.color = rgb(TARGET.break);
+        nextBreakEl.style.color = rgb(TARGET.gold);
       } else {
         nextBreakEl.textContent = "";
       }

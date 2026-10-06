@@ -266,7 +266,7 @@ function tick() {
       // Everything below uses the fixed final color of this timer.
       const finalColor = rgb(target);
 
-      badgeEl.textContent = SHOW_LESSON_BADGE ? (type === "break" ? "szünet" : lesson + ". óra") : "";
+      badgeEl.textContent = SHOW_LESSON_BADGE ? (type === "break" ? lesson + ". szünet" : lesson + ". óra") : "";
       badgeEl.style.color = finalColor;
 
       endEl.style.color = finalColor;

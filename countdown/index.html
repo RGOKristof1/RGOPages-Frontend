@@ -145,7 +145,8 @@ const SHOW_NEXT_BREAK = true;
 
 // Badge in the top-right corner of the main timer: which lesson we are in.
 // A "focus" timer and the "break" after it count as the same lesson,
-// the next "focus" starts the next lesson. Shown during breaks too.
+// the next "focus" starts the next lesson. During a break the badge says "szünet"
+// instead of the lesson number.
 const SHOW_LESSON_BADGE = true;
 
 // Lessons (by number, same numbering as the badge) that use GOLD instead of
@@ -265,7 +266,7 @@ function tick() {
       // Everything below uses the fixed final color of this timer.
       const finalColor = rgb(target);
 
-      badgeEl.textContent = SHOW_LESSON_BADGE ? lesson + ". óra" : "";
+      badgeEl.textContent = SHOW_LESSON_BADGE ? (type === "break" ? "szünet" : lesson + ". óra") : "";
       badgeEl.style.color = finalColor;
 
       endEl.style.color = finalColor;

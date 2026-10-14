@@ -4,144 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light dark">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Workbench:BLED,SCAN@0..100,-53..100&display=swap" rel="stylesheet">
   <title>RGOPages</title>
-  <script>
-    try {
-      const t = localStorage.getItem('theme');
-      if (t) document.documentElement.dataset.theme = t;
-    } catch (e) {
-      console.log(e)
-    }
-  </script>
-  <style>
-    :root{
-      color-scheme: light dark;
-      --mylightest: #efdaf8;
-      --mylight: #d0a9f7;
-      --mymiddle: #80ff00;
-      --mydark: #482e5e;
-      --mydarkest: #08000f;
-
-      --accent: var(--mymiddle);
-      --bg: light-dark(var(--mylightest),var(--mydarkest));
-      --surface: light-dark(var(--mylight),var(--mydark));
-      --border: light-dark(var(--mydark),var(--mylight));
-      --text: light-dark(var(--mydarkest),var(--mylightest));
-
-
-      font-family: "Space Mono", monospace;
-      font-weight: 400;
-      font-style: normal;
-    }
-    :root[data-theme="light"] { color-scheme: light; }
-    :root[data-theme="dark"]  { color-scheme: dark; }
-
-    *{
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    a{
-      color: inherit;
-      text-decoration: underline;
-      text-decoration-color: inherit;
-    }
-    a:hover{
-      text-decoration-color: var(--accent);
-    }
-    html{
-      font-family: "Space Mono", monospace;
-      font-weight: 400;
-      font-style: normal;
-      font-size: clamp(1.8rem, 1.2rem + 2.5vw, 3rem);
-      background-color: var(--bg);
-      color: var(--text);
-    }
-    body{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .navigation{
-      align-self: stretch;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-
-      margin: .2rem;
-      padding: .4rem;
-      padding-bottom: .2rem;
-      border: var(--border) solid 1px;
-      background-color: var(--surface); 
-    }
-    .navigation-header{
-      font-size: 1rem;
-      font-family: "Workbench", sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 400;
-      font-style: normal;
-      font-variation-settings:
-        "BLED" 0,
-        "SCAN" 0;
-    }
-    .navigation-items{
-      font-size: .6rem;
-      display: flex;
-      justify-content: space-between;
-      gap: .2rem;
-      list-style: none;
-    }
-
-    .hero{
-      align-self: stretch;
-      display: flex;
-      justify-content: end;
-
-
-      margin: .2rem;
-      border: var(--border) solid 1px;
-      background-color: var(--surface);
-
-      line-height: 1;
-      position: relative;
-    }
-    .hero-header{
-      position: absolute;
-      top: 0;
-      left: 0;
-      margin: .4rem;
-      max-width: 7.5rem;
-      font-size: 1.2rem;
-      z-index: 1;
-    }
-    .hero-image{
-      justify-self: center;
-      margin: .4rem;
-      height: 15rem;
-      -webkit-transform: scaleX(-1);
-      transform: scaleX(-1);
-    }
-    @media (min-width:  768px) {
-      .hero-header{
-      font-size: 1.5rem;
-    }
-    .hero-image{
-      height: 20rem;
-    }
-    }
-    @media (min-width:  1024px) {
-      .hero-header{
-        margin-right: 1rem;
-    }
-    .hero-image{
-        margin-left: 1rem;
-    }
-  }
-  </style>
+  <script src="/global-source/JS/script.js"></script>
+  <link rel="stylesheet" href="/global-source/CSS/style.css">
 </head>
 <body>
   <nav class="navigation">
@@ -153,7 +18,7 @@
     </ul>
   </nav>
   <header id="header" class="hero">
-    <h1 class="hero-header">Home for my personal <a href="https://rgopages.hu/pages">projects</a>.</h1>
+    <h1 class="hero-header">Home for my personal <a href="https://rgopages.hu">projects</a>.</h1>
     <img class="hero-image" src="/global-source/images/self-portrait.webp" alt="self-portreit">
   </header>
   <main></main>

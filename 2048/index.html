@@ -1,11 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2048</title>
+  <title>RGOPages - 2048</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Workbench&display=swap');
+
+    :root {
+      color-scheme: light dark;
+      --mylightest: #efdaf8;
+      --mylight: #d0a9f7;
+      --mymiddle: #80ff00;
+      --mydark: #482e5e;
+      --mydarkest: #08000f;
+
+      --accent: var(--mymiddle);
+      --bg: light-dark(var(--mylightest), var(--mydarkest));
+      --surface: light-dark(var(--mylight), var(--mydark));
+      --border: light-dark(var(--mydark), var(--mylight));
+      --text: light-dark(var(--mydarkest), var(--mylightest));
+
+
+      font-family: "Space Mono", monospace;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    :root[data-theme="light"] {
+      color-scheme: light;
+    }
+
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: inherit;
+    }
+
+    a:hover {
+      text-decoration-color: var(--accent);
+    }
+
+    html {
+      font-family: "Space Mono", monospace;
+      font-weight: 400;
+      font-style: normal;
+      font-size: clamp(1.8rem, 1.2rem + 2.5vw, 3rem);
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .navigation {
+      align-self: stretch;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+
+      margin: .2rem;
+      padding: .4rem;
+      padding-bottom: .2rem;
+      border: var(--border) solid 1px;
+      background-color: var(--surface);
+    }
+
+    .navigation-header {
+      font-size: 1rem;
+      font-family: "Workbench", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+      font-variation-settings:
+        "BLED" 0,
+        "SCAN" 0;
+    }
+
+    .navigation-items {
+      font-size: .6rem;
+      display: flex;
+      justify-content: space-between;
+      gap: .2rem;
+      list-style: none;
+    }
+  </style>
+  <style>
+    html {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+    }
+
+    .main-title {
+      font-size: 2rem;
+      font-family: "Workbench", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+      font-variation-settings:
+        "BLED" 0,
+        "SCAN" 0;
+    }
+
+    .playground {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      background-color: #fff;
+    }
+    .maingrid{
+      position: relative;
+
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      grid-template-rows: repeat(4,1fr);
+      background-color: black;
+    }
+    .movebutton{
+      position: absolute;
+    }
+    .up{
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100%);
+    }
+    .right{
+      top: 50%;
+      right: 0;
+      transform: translateX(100%) translateY(-50%);
+    }
+    .down{
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) translateY(100%);
+    }
+    .left{
+      top: 50%;
+      left: 0;
+      transform: translateX(-100%) translateY(-50%);
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Na erre kivancsi vagyok, na megegyszer</h1>
+  <header>
+    <h1 class="main-title">2048</h1>
+  </header>
+  <main class="playground">
+    <div class="maingrid">
+      <button class="movebutton up" onclick="shift('up')">up</button>
+      <button class="movebutton right" onclick="shift('right')">right</button>
+      <button class="movebutton down" onclick="shift('down')">down</button>
+      <button class="movebutton left" onclick="shift('left')">left</button>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+    </div>
+  </main>
 </body>
+
 </html>

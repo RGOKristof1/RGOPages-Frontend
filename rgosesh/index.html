@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0d0c14">
+<title>RGOSesh IV. – házibuli, zene, SoundCloud</title>
+<meta name="description" content="RGOSesh: házibuli, ahol a zene a buliban születik, a végén pedig kikerül SoundCloudra. Jön az RGOSesh IV.">
+<meta property="og:title" content="RGOSesh IV. jön">
+<meta property="og:description" content="Házibuli, zene, kiadás a végén. Hallgasd meg az első három RGOSesht SoundCloudon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0c14;--fg:#f4f2ff;--mut:#a29fbd;--a:#7a6bff;--b:#ffd23f;--card:#181628;--do:.5;--r:28px}
+@media(prefers-color-scheme:light){:root{--bg:#f5f3ff;--fg:#14122a;--mut:#5d5a78;--a:#5a49f0;--b:#f2b705;--card:#fff;--do:.16}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font:400 1.05rem/1.55 "Bricolage Grotesque",system-ui,sans-serif;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--b);outline-offset:3px}
+.tick{background:var(--b);color:#14122a;font-weight:800;white-space:nowrap;overflow:hidden;padding:calc(.5rem + env(safe-area-inset-top)) 0 .5rem}
+.tick div{display:inline-block;animation:m 30s linear infinite}
+@keyframes m{to{transform:translateX(-50%)}}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem}
+.logo{font-weight:800;font-size:1.25rem;text-decoration:none}.logo b{color:var(--a)}
+.pill{border:2px solid currentColor;border-radius:99px;padding:.45em 1.1em;font-weight:600;text-decoration:none;font-size:.95rem}
+.hero{position:relative;isolation:isolate;overflow:hidden;padding-bottom:4.5rem}
+.hero>:not(nav):not(.disc){margin-left:1.25rem;margin-right:1.25rem}
+.disc{position:absolute;z-index:-1;width:130vw;max-width:900px;aspect-ratio:1;right:-48vw;top:5rem;border-radius:50%;opacity:var(--do);animation:spin 16s linear infinite;
+background:radial-gradient(circle,var(--b) 0 10%,var(--a) 10.5% 16%,#0d0c14 16.5% 17.5%,#0000 18%),repeating-radial-gradient(circle,#0000 0 3px,#ffffff14 3px 4px),conic-gradient(from 20deg,#1b1830,#34295f,#1b1830 25%,#34295f 50%,#1b1830 75%,#34295f)}
+@keyframes spin{to{transform:rotate(1turn)}}
+.kick{margin-top:5vh;max-width:22ch;color:var(--mut);font-size:1.15rem}
+h1{font-weight:800;line-height:.86;letter-spacing:-.045em;font-size:clamp(3.6rem,20vw,12rem);margin-top:1rem}
+.w{display:block;overflow:hidden;padding:.06em 0}
+.w i{display:inline-block;font-style:normal;animation:rise .9s cubic-bezier(.2,.9,.2,1) both;animation-delay:calc(var(--i)*70ms)}
+@keyframes rise{from{transform:translateY(110%) rotate(8deg)}}
+.iv{display:block;color:var(--b);font-size:1.2em;transform-origin:left bottom;animation:stamp .8s .75s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes stamp{from{transform:scale(2.4) rotate(-9deg);opacity:0}}
+.when{margin-top:1.5rem;font-size:1.4rem;font-weight:600}
+.cta{display:inline-block;margin-top:1.5rem;padding:1em 1.7em;border-radius:99px;background:var(--b);color:#14122a;font-weight:800;text-decoration:none;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.cta:active{transform:scale(.95)}
+@media(hover:hover){.cta:hover{transform:translateY(-3px) rotate(-1.5deg)}}
+section{max-width:1100px;margin:0 auto;padding:3.5rem 1.25rem}
+h2{font-weight:800;font-size:clamp(2.1rem,9vw,4.2rem);line-height:.95;letter-spacing:-.035em;margin-bottom:1.5rem}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;padding-top:0}
+.stats div{background:var(--card);border-radius:var(--r);padding:1.1rem .9rem}
+.stats b{display:block;font-size:clamp(2.4rem,12vw,5rem);line-height:1;color:var(--b);font-weight:800}
+.stats span{font-size:.9rem;color:var(--mut)}
+.st{list-style:none;padding:0;display:grid;gap:1rem}
+.st li{display:flex;gap:1rem;align-items:flex-start;background:var(--card);border-radius:var(--r);padding:1.25rem}
+.st b{flex:none;display:grid;place-items:center;width:3rem;aspect-ratio:1;border-radius:50%;background:var(--a);color:#fff;font-size:1.3rem}
+.st h3{font-size:1.35rem;line-height:1.1;margin-bottom:.25rem}.st p{color:var(--mut)}
+.rail{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.5rem 1.25rem 1.5rem;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.ed{flex:0 0 78vw;max-width:340px;scroll-snap-align:center;background:var(--card);border-radius:var(--r);padding:.9rem;display:flex;flex-direction:column;gap:.7rem}
+.cv{position:relative;aspect-ratio:1;border-radius:calc(var(--r) - 8px);display:grid;place-items:center;font-size:5.5rem;font-weight:800;color:#fff;overflow:hidden;background:linear-gradient(135deg,hsl(var(--h) 85% 58%),hsl(calc(var(--h) + 50) 80% 38%))}
+.cv::before{content:"";position:absolute;width:70%;aspect-ratio:1;border-radius:50%;border:2px dashed #ffffff55;animation:spin 20s linear infinite}
+.ed h3{font-size:1.3rem;line-height:1.1;padding:0 .3rem}
+.ed p{color:var(--mut);padding:0 .3rem;flex:1}
+.ed a{align-self:flex-start;margin:0 .3rem .3rem;font-weight:700;text-decoration:none;border-bottom:3px solid var(--b)}
+@media(min-width:900px){.rail{justify-content:center;overflow:visible}.ed{flex-basis:320px}.st{grid-template-columns:repeat(3,1fr)}.st li{flex-direction:column}}
+.end{margin:1rem 1.25rem 3rem;padding:3rem 1.5rem;border-radius:calc(var(--r)*1.5);background:var(--a);color:#fff;position:relative;overflow:hidden;text-align:center}
+.end::after{content:"";position:absolute;width:60vw;max-width:420px;aspect-ratio:1;border-radius:50%;background:var(--b);right:-18%;bottom:-35%}
+.end>*{position:relative;z-index:1}.end h2{margin-bottom:.8rem}.end p{max-width:34ch;margin:0 auto}
+footer{padding:1rem 1.25rem 2rem;text-align:center;color:var(--mut);font-size:.9rem}
+@keyframes pop{from{opacity:0;transform:translateY(36px) scale(.94)}}
+@supports(animation-timeline:view()){
+.st li{animation:pop linear both;animation-timeline:view();animation-range:entry 0% entry 70%}
+.ed{animation:pop linear both;animation-timeline:view(inline);animation-range:entry 0% entry 100%}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="tick" aria-hidden="true"><div>RGOSESH IV ▼ HAMAROSAN ▼ HÁZIBULI ▼ ZENE ▼ SOUNDCLOUD ▼ </div></div>
+
+<header class="hero">
+<nav><a class="logo" href="/">RGO<b>Pages</b></a><a class="pill sc" data-k="main" href="https://soundcloud.com/rgomusic-64789104">SoundCloud</a></nav>
+<div class="disc" aria-hidden="true"></div>
+<p class="kick">Házibuli, ahol a zene a buliban születik.</p>
+<h1 aria-label="RGOSesh IV."><span class="w" aria-hidden="true">RGOSesh</span><span class="iv" aria-hidden="true">IV.</span></h1>
+<p class="when" id="when" data-date="">Dátum hamarosan</p>
+<a class="cta" href="#kiadasok">Hallgasd az előzőket</a>
+</header>
+
+<section class="stats" aria-label="Számok">
+<div><b data-n="3">3</b><span>kiadás eddig</span></div>
+</section>
+
+<section>
+<h2>Így megy</h2>
+<ol class="st">
+<li><b>1</b><div><h3>HB</h3><p>Összejövünk, és a buli közben zenét csinálunk.</p></div></li>
+<li><b>2</b><div><h3>Zene</h3><p>Ami a bulin elkészül, azt a végén összeszedjük.</p></div></li>
+<li><b>3</b><div><h3>Kiadás</h3><p>EP vagy album formában kikerül SoundCloudra. Bárki meghallgathatja.</p></div></li>
+</ol>
+</section>
+
+<section id="kiadasok" style="padding-bottom:0">
+<h2>Az eddigiek</h2>
+</section>
+<div class="rail">
+<article class="ed"><div class="cv" style="--h:265">I</div><h3>RGOSesh</h3><p>Az első. Innen indult az egész.</p><a class="sc" data-k="e1" href="https://soundcloud.com/rgomusic-64789104/sets/rgosesh-iii-back-2-school">Meghallgatom</a></article>
+<article class="ed"><div class="cv" style="--h:330">II</div><h3>RGOSesh vol. 2</h3><p>Második buli, második kiadás.</p><a class="sc" data-k="e2" href="https://soundcloud.com/rgomusic-64789104/sets/rgosesh-vol-2">Meghallgatom</a></article>
+<article class="ed"><div class="cv" style="--h:35">III</div><h3>RGOSesh III. Back-2-School</h3><p>Tanévkezdő buli, tanévkezdő hangulat.</p><a class="sc" data-k="e3" href="https://soundcloud.com/rgomusic-64789104/sets/rgosesh">Meghallgatom</a></article>
+</div>
+
+<div class="end">
+<h2>RGOSesh IV. jön.</h2>
+<p>Nincs jelentkezés, nincs regisztráció. Hallgasd meg az első hármat, és figyeld az oldalt a negyedikért.</p>
+<a class="cta sc" data-k="main" href="https://soundcloud.com/rgomusic-64789104">SoundCloud</a>
+</div>
+
+<footer>RGOSesh az <a href="/">RGOPages</a> része</footer>
+
+<script>
+const SC={main:'https://soundcloud.com/rgomusic-64789104',e1:'https://soundcloud.com/rgomusic-64789104/sets/rgosesh-iii-back-2-school',e2:'https://soundcloud.com/rgomusic-64789104/sets/rgosesh-vol-2',e3:'https://soundcloud.com/rgomusic-64789104/sets/rgosesh'}; // ide jönnek a SoundCloud linkek
+document.querySelectorAll('[data-k]').forEach(a=>a.href=SC[a.dataset.k]||SC.main);
+const m=document.querySelector('.tick div');m.innerHTML=m.innerHTML.repeat(8);
+document.querySelectorAll('.w').forEach(e=>e.innerHTML=[...e.textContent].map((c,i)=>`<i style="--i:${i}">${c}</i>`).join(''));
+// dátum: <p id="when" data-date="2026-12-12T20:00:00+01:00"> -> visszaszámláló
+const w=document.getElementById('when'),d=Date.parse(w.dataset.date);
+if(d){const t=()=>{const s=Math.max(0,(d-Date.now())/1e3|0);w.textContent=`${s/86400|0} nap ${s/3600%24|0} óra ${s/60%60|0} perc`};t();setInterval(t,3e4)}
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);const el=e.target,n=+el.dataset.n,t0=performance.now();
+(function f(t){const p=Math.min(1,(t-t0)/1200);el.textContent=Math.round(n*(1-(1-p)**3));p<1&&requestAnimationFrame(f)})(t0)}),{threshold:.6});
+document.querySelectorAll('[data-n]').forEach(e=>{e.textContent=0;io.observe(e)})}
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f1829">
+<meta name="color-scheme" content="dark">
+<title>Széki Ádám kabátja</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --seam: #050912;
+    --baffle: #131d31;
+    --baffle-hi: #26344f;
+    --ivory: #f4f1ea;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--seam);
+    color: var(--ivory);
+    font-family: "Jost", Futura, "Century Gothic", "Avenir Next", sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  /* Puffer baffles: horizontal quilted channels with a stitched seam */
+  .fabric, .light, .sheen, .shade { position: fixed; inset: 0; pointer-events: none; }
+  .fabric {
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='88'%3E%3Crect width='4' height='1' fill='white' fill-opacity='.16'/%3E%3C/svg%3E") 0 0 / 8px 88px repeat,
+      linear-gradient(180deg, var(--seam) 0, var(--baffle) 9%, var(--baffle-hi) 50%, var(--baffle) 91%, var(--seam) 100%) 0 0 / 100% 88px repeat-y;
+  }
+  .shade {
+    background: linear-gradient(180deg, rgba(5,9,18,.6) 0, rgba(5,9,18,.1) 38%, rgba(5,9,18,.85) 100%);
+  }
+  .light {
+    --x: 72%; --y: 22%;
+    background: radial-gradient(circle at var(--x) var(--y), rgba(255,255,255,.16), transparent 42%);
+    transition: background .2s ease-out;
+  }
+  .sheen {
+    background: linear-gradient(100deg, transparent 42%, rgba(255,255,255,.2) 50%, transparent 58%) 160% 0 / 260% 100% no-repeat;
+    animation: sweep 2.6s cubic-bezier(.4, 0, .2, 1) .15s 1 forwards;
+  }
+  @keyframes sweep { to { background-position: -60% 0; } }
+
+  main {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: max(28px, env(safe-area-inset-top)) 28px max(32px, env(safe-area-inset-bottom));
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .brand {
+    font-weight: 400;
+    font-size: .95rem;
+    letter-spacing: .5em;
+    margin-right: -.5em;
+  }
+  .content { opacity: 0; animation: fade 1.2s ease .9s 1 forwards; }
+  @keyframes fade { to { opacity: 1; } }
+  h1 {
+    font-weight: 300;
+    font-size: clamp(2.5rem, 11vw, 4.75rem);
+    line-height: 1.04;
+    letter-spacing: -.015em;
+    text-wrap: balance;
+  }
+  .greet { display: block; opacity: .55; }
+  .lead {
+    margin-top: 1.6rem;
+    max-width: 32ch;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    font-weight: 400;
+    color: rgba(244,241,234,.78);
+  }
+  .status {
+    margin-top: 2.6rem;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    font-size: .9rem;
+    font-weight: 400;
+    color: rgba(244,241,234,.6);
+  }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--ivory);
+    animation: ping 1.8s ease-out 1.6s 3;
+  }
+  @keyframes ping {
+    0% { box-shadow: 0 0 0 0 rgba(244,241,234,.55); }
+    100% { box-shadow: 0 0 0 14px rgba(244,241,234,0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sheen { display: none; }
+    .content { animation: none; opacity: 1; }
+    .dot { animation: none; }
+    .light { transition: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="fabric"></div>
+  <div class="light" id="light"></div>
+  <div class="sheen"></div>
+  <div class="shade"></div>
+
+  <main>
+    <div class="brand">MONCLER</div>
+
+    <div class="content">
+      <h1><span class="greet" id="greet">Szia!</span>Ez Széki Ádám kabátja.</h1>
+      <p class="lead">Köszi, hogy rám koppintottál. Ádám nálam jó kezekben van: amíg hideg van, én vigyázok rá.</p>
+      <div class="status"><span class="dot"></span>Érintés érzékelve</div>
+    </div>
+  </main>
+
+<script>
+  // Greeting by the visitor's local time
+  (function () {
+    var h = new Date().getHours();
+    var g = h >= 5 && h < 9 ? "Jó reggelt!" :
+            h >= 9 && h < 18 ? "Szép napot!" :
+            h >= 18 && h < 22 ? "Jó estét!" : "Jó éjszakát!";
+    document.getElementById("greet").textContent = g;
+  })();
+
+  // Light on the fabric follows the finger or cursor
+  (function () {
+    var light = document.getElementById("light");
+    window.addEventListener("pointermove", function (e) {
+      light.style.setProperty("--x", (e.clientX / window.innerWidth * 100) + "%");
+      light.style.setProperty("--y", (e.clientY / window.innerHeight * 100) + "%");
+    }, { passive: true });
+  })();
+</script>
+</body>
+</html>

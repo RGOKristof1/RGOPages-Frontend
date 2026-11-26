@@ -178,6 +178,7 @@ const endClockEl = document.getElementById("endclock");
 const nextBreakEl = document.getElementById("nextbreak");
 const total = SCHEDULE.reduce((sum, [, min]) => sum + min * 60000, 0);
 const pageLoadedAt = Date.now();
+const IDLE_TITLE = document.title;   // tab title while no countdown is running
 
 const clockFormat = new Intl.DateTimeFormat("en-GB", {
   timeZone: TIMEZONE, hour: "2-digit", minute: "2-digit", hourCycle: "h23",
@@ -234,6 +235,7 @@ function showIdle() {
   badgeEl.textContent = "";
   endClockEl.textContent = "";
   nextBreakEl.textContent = "";
+  document.title = IDLE_TITLE;
 }
 
 function tick() {
@@ -266,8 +268,11 @@ function tick() {
       // Everything below uses the fixed final color of this timer.
       const finalColor = rgb(target);
 
-      badgeEl.textContent = SHOW_LESSON_BADGE ? (type === "break" ? lesson + ". szünet" : lesson + ". óra") : "";
+      // Same label for the badge and the tab title, e.g. "8. óra" / "8. szünet".
+      const label = type === "break" ? lesson + ". szünet" : lesson + ". óra";
+      badgeEl.textContent = SHOW_LESSON_BADGE ? label : "";
       badgeEl.style.color = finalColor;
+      document.title = label + " - " + el.textContent;   // e.g. "8. óra - 34:15"
 
       endEl.style.color = finalColor;
       endClockEl.textContent = SHOW_END_TIME ? clockFormat.format(new Date(start + offset + len)) : "";

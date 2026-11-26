@@ -1,23 +1,79 @@
-.space-mono-regular {
-  font-family: "Space Mono", monospace;
-  font-weight: 400;
-  font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Workbench&display=swap');
+:root{
+    color-scheme: light dark;
+    --mylightest: #efdaf8;
+    --mylight: #d0a9f7;
+    --mymiddle: #80ff00;
+    --mydark: #482e5e;
+    --mydarkest: #08000f;
 
-.space-mono-bold {
-  font-family: "Space Mono", monospace;
-  font-weight: 700;
-  font-style: normal;
-}
+    --accent: var(--mymiddle);
+    --bg: light-dark(var(--mylightest),var(--mydarkest));
+    --surface: light-dark(var(--mylight),var(--mydark));
+    --border: light-dark(var(--mydark),var(--mylight));
+    --text: light-dark(var(--mydarkest),var(--mylightest));
 
-.space-mono-regular-italic {
-  font-family: "Space Mono", monospace;
-  font-weight: 400;
-  font-style: italic;
-}
 
-.space-mono-bold-italic {
-  font-family: "Space Mono", monospace;
-  font-weight: 700;
-  font-style: italic;
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"]  { color-scheme: dark; }
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+a{
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: inherit;
+}
+a:hover{
+    text-decoration-color: var(--accent);
+}
+html{
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(1.8rem, 1.2rem + 2.5vw, 3rem);
+    background-color: var(--bg);
+    color: var(--text);
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.navigation{
+    align-self: stretch;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    margin: .2rem;
+    padding: .4rem;
+    padding-bottom: .2rem;
+    border: var(--border) solid 1px;
+    background-color: var(--surface); 
+}
+.navigation-header{
+    font-size: 1rem;
+    font-family: "Workbench", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+    "BLED" 0,
+    "SCAN" 0;
+}
+.navigation-items{
+    font-size: .6rem;
+    display: flex;
+    justify-content: space-between;
+    gap: .2rem;
+    list-style: none;
 }
